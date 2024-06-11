@@ -50,6 +50,11 @@
     height: 24px;
 }
 
+.actions-icon {
+    width: 24px;
+    height: 24px;
+}
+
 .menu-toggle {
     display: none;
     cursor: pointer;
