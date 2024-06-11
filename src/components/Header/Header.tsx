@@ -28,8 +28,11 @@ export default function Header({title}: HeaderProps){
                 <nav className={`nav ${menuOpen ? 'open' : ''}`}>
                     <ul className="nav-links">
                         <li><Link to='/'>
+                                <span className="nav-item">
                                 <img src={HomeIcon} alt="Home" className="nav-icon" />
-                                Home
+                                    Home
+                                </span>
+                                
                             </Link>
                         </li>
                         <li><Link to='/shows'>Shows</Link></li>
