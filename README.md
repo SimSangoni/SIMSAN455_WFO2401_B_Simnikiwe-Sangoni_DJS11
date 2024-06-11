@@ -6,6 +6,7 @@
 **Table of Contents**
 
 - [Project Plan](ProjectPlan.md)
+- [Components and Requirements](Comp-and-Pages-plan.md)
 - [🤖 Technology](#-technology)
 - [📦Data](#data)
 	- [Relationships](#relationships)
