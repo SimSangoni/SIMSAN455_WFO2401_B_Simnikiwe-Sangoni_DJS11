@@ -22,7 +22,10 @@
   2. Add styling in `Header.css`.
   3. Integrate into `App.tsx`.
 
+### Desktop View Inspiration for Header Component
 ![Alt text](src/assets/inspo_Images/header-desktop-view.png)
+
+### Mobile View Inspiration for Header Component
 ![Alt text](src/assets/inspo_Images/header-mobile-view.png)
 
 
