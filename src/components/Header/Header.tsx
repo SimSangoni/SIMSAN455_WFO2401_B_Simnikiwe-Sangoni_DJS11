@@ -21,10 +21,6 @@ export default function Header({title}: HeaderProps){
                     <Link to='/'>{title}</Link> 
                 </div>
 
-                <div className="menu-toggle" onClick={toggleMenu}>
-                    <span>Toggle Menu</span>
-                </div>
-
                 <nav className={`nav ${menuOpen ? 'open' : ''}`}>
                     <ul className="nav-links">
                         <li><Link to='/'>Home</Link></li>
@@ -32,6 +28,10 @@ export default function Header({title}: HeaderProps){
                         <li><Link to='/genres'>Genres</Link></li>
                     </ul>
                 </nav>
+
+                <div className="menu-toggle" onClick={toggleMenu}>
+                    <span>Home</span>
+                </div>
             
                 <div className="user-actions">
                     <span className="search-icon">Search</span>
