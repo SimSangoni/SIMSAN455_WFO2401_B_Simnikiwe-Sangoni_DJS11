@@ -21,7 +21,7 @@ export default function Header({title}: HeaderProps){
                     <Link to='/'>{title}</Link> 
                 </div>
 
-                <div onClick={toggleMenu}>
+                <div className="menu-toggle" onClick={toggleMenu}>
                     <span>Toggle Menu</span>
                 </div>
 
