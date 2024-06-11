@@ -37,6 +37,11 @@
     font-size: 18px;
 }
 
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .nav {
       display: none;
@@ -61,4 +66,4 @@
     .menu-toggle {
       display: block;
     }
-  }
+}
