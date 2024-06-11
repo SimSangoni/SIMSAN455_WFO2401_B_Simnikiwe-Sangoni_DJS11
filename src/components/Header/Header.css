@@ -79,6 +79,10 @@ cursor: pointer;
       flex-direction: column;
       gap: 10px;
     }
+
+    .nav-icon {
+        display: flex;
+    }
   
     .menu-toggle {
       display: block;
