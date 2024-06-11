@@ -11,6 +11,9 @@ import SearchIcon from './header-icons/search-icon.svg'
 import UserIcon from './header-icons/user-icon.svg'
 import MenuIcon from './header-icons/menu-icon.svg'
 import PodcastIcon from '../../../public/favicon.svg'
+import darkThemeIcon from '../../assets/theme-icons/dark-theme-icon.svg'
+import lightThemeIcon from '../../assets/theme-icons/light-theme-icon.svg'
+
 
 
 export default function Header(){
