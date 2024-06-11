@@ -1,6 +1,6 @@
 # Project Plan and To-Do List
 
-**Table of Contents**
+## **Table of Contents**
 
 -[Week One](#week-1-initial-setup-and-basic-structure)
   -[Tuesday](#tuesday-setup-and-project-structure)
@@ -12,7 +12,7 @@
   -[Tuesday](#tuesday-playback-features)
   -[Wednesday](#wednesday-uiux-enhancements)
   -[Thursday](#thursday-testing-and-debugging)
-  -[Friday](#friday-final-touches)
+  -[Friday](#friday-final-touches-and-presentation)
 -[Daily To-do list](#detailed-daily-to-do-list)
 
 ## Week 1: Initial Setup and Basic Structure
@@ -88,7 +88,23 @@
 - **Presentation:**
   - Rehearse your presentation and ensure you are ready to demonstrate your project effectively.
 
-## Detailed Daily To-Do List
+# Detailed Daily To-Do List
+
+## **Contents Page for Daily to-do**
+[Week One](#week-1-initial-setup-and-basic-structure-1)
+  -[Tuesday](#tuesday-setup-and-project-structure-1)
+  -[Wednesday](#wednesday-basic-components-and-routing-1)
+  -[Thursday](#thursday-home-and-show-pages-1)
+  -[Friday](#week-2-advanced-features-and-final-touches-1)
+
+[Week Two](#week-2-advanced-features-and-final-touches-1)
+  -[Monday](#monday-search-and-filtering-1)
+  -[Tuesday](#tuesday-playback-features-1)
+  -[Wednesday](#wednesday-uiux-enhancements-1)
+  -[Thursday](#thursday-testing-and-debugging-1)
+  -[Friday](#friday-final-touches)
+
+## Week 1: Initial Setup and Basic Structure
 
 ### **Tuesday: Setup and Project Structure**
 - Verify `npm run dev` and `npm start` commands.

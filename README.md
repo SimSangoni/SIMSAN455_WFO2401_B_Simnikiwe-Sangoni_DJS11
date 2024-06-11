@@ -3,7 +3,7 @@
 
 
 <!-- omit in toc -->
-**Table of Contents**
+## **Table of Contents**
 
 - [Project Plan](ProjectPlan.md)
 - [Components and Requirements](Comp-and-Pages-plan.md)
