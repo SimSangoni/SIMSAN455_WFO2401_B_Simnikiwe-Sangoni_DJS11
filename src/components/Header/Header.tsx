@@ -19,7 +19,7 @@ import lightThemeIcon from '../../assets/theme-icons/light-theme-icon.svg'
 export default function Header(){
 
     const [menuOpen, setMenuOpen] = useState(false);
-    const [theme, setTheme] = useState('dark')
+    const [theme, setTheme] = useState('light')
 
     useEffect(() => {
         applyTheme(theme);
