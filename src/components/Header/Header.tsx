@@ -86,7 +86,7 @@ export default function Header(){
                     </span>
                     <button onClick={toggleTheme}>
                         {
-                            theme === 'light' 
+                            theme === 'dark' 
                             ? (<img src={lightThemeIcon} alt="Light Mode" className="icon" />)
                             : (<img src={darkThemeIcon} alt="Dark Mode" className="icon" />)
                         }
