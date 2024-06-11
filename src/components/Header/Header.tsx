@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import './Header.css';
 import { useState } from "react";
 
+// Import Icons for header page
+
+import HomeIcon from './header-icons/home-icon.svg'
+
 interface HeaderProps {
     title: string;
 }
@@ -23,7 +27,10 @@ export default function Header({title}: HeaderProps){
 
                 <nav className={`nav ${menuOpen ? 'open' : ''}`}>
                     <ul className="nav-links">
-                        <li><Link to='/'>Home</Link></li>
+                        <li><Link to='/'>
+                                <img src={HomeIcon} alt="Home" className="nav-icon" />
+                            </Link>
+                        </li>
                         <li><Link to='/shows'>Shows</Link></li>
                         <li><Link to='/genres'>Genres</Link></li>
                     </ul>
