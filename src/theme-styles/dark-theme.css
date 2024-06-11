@@ -1,0 +1,25 @@
+:root {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --primary-color: #bb86fc;
+    --secondary-color: #03dac6;
+    --link-color: #bb86fc;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  a {
+    color: var(--link-color);
+  }
+  
+  .header {
+    background-color: var(--background-color);
+  }
+  
+  .nav-links a {
+    color: var(--text-color);
+  }
+  
