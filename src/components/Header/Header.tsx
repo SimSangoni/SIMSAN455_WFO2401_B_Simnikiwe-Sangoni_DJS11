@@ -7,7 +7,7 @@ interface HeaderProps {
 
 export default function Header({title}: HeaderProps){
 return (
-    <header>
+    <header className="header">
         <div>
             <Link to='/'>{title}</Link> 
         </div>
