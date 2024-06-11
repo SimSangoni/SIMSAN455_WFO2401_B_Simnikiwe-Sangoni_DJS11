@@ -13,7 +13,6 @@ import MenuIcon from './header-icons/menu-icon.svg'
 import PodcastIcon from '../../../public/favicon.svg'
 import darkThemeIcon from '../../assets/theme-icons/dark-theme-icon.svg'
 import lightThemeIcon from '../../assets/theme-icons/light-theme-icon.svg'
-import { func } from "prop-types";
 
 
 
@@ -22,9 +21,9 @@ export default function Header(){
     const [menuOpen, setMenuOpen] = useState(false);
     const [theme, setTheme] = useState('dark')
 
-    // useEffect(() => {
-    //     applyTheme(theme);
-    //   }, [theme]);
+    useEffect(() => {
+        applyTheme(theme);
+      }, [theme]);
 
     function toggleTheme() {
         console.log("Theme Toggled")
