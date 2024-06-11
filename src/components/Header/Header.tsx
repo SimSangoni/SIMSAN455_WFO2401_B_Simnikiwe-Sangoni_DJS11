@@ -29,6 +29,7 @@ export default function Header({title}: HeaderProps){
                     <ul className="nav-links">
                         <li><Link to='/'>
                                 <img src={HomeIcon} alt="Home" className="nav-icon" />
+                                Home
                             </Link>
                         </li>
                         <li><Link to='/shows'>Shows</Link></li>
