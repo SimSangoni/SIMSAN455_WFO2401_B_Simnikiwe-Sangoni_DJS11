@@ -29,7 +29,7 @@ export default function Header({title}: HeaderProps){
                     </ul>
                 </nav>
                 <div onClick={toggleMenu}>
-                    menu-icon
+                    &#9776;
                 </div>
             </div>
         </header>
