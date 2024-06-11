@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import './Header.css';
 import { useState } from "react";
+import { applyTheme } from "../../utils/themeUtils";
 
 // Import Icons for header page
 import HomeIcon from './header-icons/home-icon.svg'
@@ -14,7 +15,8 @@ import PodcastIcon from '../../../public/favicon.svg'
 
 export default function Header(){
 
-    const [menuOpen, setMenuOpen] = useState(false)
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [theme, setTheme] = useState('dark')
 
     function toggleMenu() {
         console.log("Menu Toggled")
