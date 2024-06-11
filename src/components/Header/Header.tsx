@@ -30,13 +30,13 @@ export default function Header({title}: HeaderProps){
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/shows'>Shows</Link></li>
                         <li><Link to='/genres'>Genres</Link></li>
-                        <li><button>Toggle Theme</button></li> 
                     </ul>
                 </nav>
             
                 <div>
                     <span>Search</span>
                     <span>Login</span>
+                    <button>Toggle Theme</button>
                 </div>
             </div>
         </header>
