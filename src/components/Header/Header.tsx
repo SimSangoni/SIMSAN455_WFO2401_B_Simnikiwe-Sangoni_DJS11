@@ -21,15 +21,23 @@ export default function Header({title}: HeaderProps){
                 <div className="logo">
                     <Link to='/'>{title}</Link> 
                 </div>
-                <nav className="nav">
+
+                <div onClick={toggleMenu}>
+                    <span>Toggle Menu</span>
+                </div>
+
+                <nav className={`nav ${menuOpen ? 'open' : ''}`}>
                     <ul className="nav-links">
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/shows'>Shows</Link></li>
                         <li><Link to='/genres'>Genres</Link></li>
+                        <li><button>Toggle Theme</button></li> 
                     </ul>
                 </nav>
-                <div onClick={toggleMenu}>
-                    &#9776;
+            
+                <div>
+                    <span>Search</span>
+                    <span>Login</span>
                 </div>
             </div>
         </header>
