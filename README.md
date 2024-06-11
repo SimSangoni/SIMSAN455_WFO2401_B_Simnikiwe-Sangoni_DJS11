@@ -5,7 +5,7 @@
 <!-- omit in toc -->
 **Table of Contents**
 
-- [Project Plan](#ProjectPlan.md)
+- [Project Plan](ProjectPlan.md)
 - [🤖 Technology](#-technology)
 - [📦Data](#data)
 	- [Relationships](#relationships)
