@@ -72,11 +72,6 @@ export default function Header(){
                                 </span>              
                             </Link>
                         </li>
-                        {/* <li>
-                            <span className="nav-item">
-                                Theme
-                            </span>
-                        </li> */}
                     </ul>
                 </nav>
                     <img className="menu-toggle icon nav-icon" onClick={toggleMenu} src={MenuIcon} alt="Menu" />
@@ -88,6 +83,9 @@ export default function Header(){
                     <span>
                         <img src={UserIcon} alt="User" className="icon" />
                     </span>
+                    <button onClick={toggleTheme}>
+                        Toggle theme
+                    </button>
                 </div>
             </div>
         </header>
