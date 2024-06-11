@@ -1,15 +1,20 @@
+import { Link } from "react-router-dom";
 
-export default function Header(){
+interface HeaderProps {
+    title: string;
+}
+
+export default function Header({title}: HeaderProps){
 return (
     <header>
         <div>
-            Header Title
+            <Link to='/'>{title}</Link> 
         </div>
         <nav>
             <ul>
-                <li>Home</li>
-                <li>Shows</li>
-                <li>Genres</li>
+                <li><Link to='/'>Home</Link></li>
+                <li><Link to='/shows'>Shows</Link></li>
+                <li><Link to='/genres'>Genres</Link></li>
             </ul>
         </nav>
     </header>
