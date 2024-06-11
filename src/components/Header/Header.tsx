@@ -11,7 +11,6 @@ export default function Header({title}: HeaderProps){
     const [menuOpen, setMenuOpen] = useState(false)
 
     function toggleMenu() {
-        console.log('Menu toggled')
         setMenuOpen(!menuOpen)
     }
 

@@ -36,3 +36,29 @@
     text-decoration: none;
     font-size: 18px;
 }
+
+@media (max-width: 768px) {
+    .nav {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+  
+    .nav.open {
+      display: flex;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+  }
