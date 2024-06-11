@@ -4,6 +4,7 @@
     --primary-color: #bb86fc;
     --secondary-color: #03dac6;
     --link-color: #bb86fc;
+    --svg-fill-color: #ffffff;
   }
   
   body {
@@ -21,5 +22,9 @@
   
   .nav-links a {
     color: var(--text-color);
+  }
+
+  .nav-icon, .theme-icon, .search-icon {
+    fill: var(--svg-fill-color); 
   }
   
