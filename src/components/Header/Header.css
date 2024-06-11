@@ -43,10 +43,15 @@
 }
 
 .user-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.search-icon {
+cursor: pointer;
+}
+  
 
 @media (max-width: 768px) {
     .nav {
