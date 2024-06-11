@@ -11,6 +11,7 @@ export default function Header({title}: HeaderProps){
     const [menuOpen, setMenuOpen] = useState(false)
 
     function toggleMenu() {
+        console.log('Menu toggled')
         setMenuOpen(!menuOpen)
     }
 
@@ -27,6 +28,9 @@ export default function Header({title}: HeaderProps){
                         <li><Link to='/genres'>Genres</Link></li>
                     </ul>
                 </nav>
+                <div onClick={toggleMenu}>
+                    menu-icon
+                </div>
             </div>
         </header>
     )
