@@ -22,6 +22,10 @@
   2. Add styling in `Header.css`.
   3. Integrate into `App.tsx`.
 
+![Alt text](src/assets/inspo_Images/header-desktop-view.png)
+![Alt text](src/assets/inspo_Images/header-mobile-view.png)
+
+
 ## 2. Home Page
 - **Purpose**: Displays a list of podcast shows.
 - **Contents**:
@@ -73,4 +77,30 @@
   - List of genres
   - List of shows for the selected genre
 - **File**: `src/pages/Genres.tsx`
-- **Description**: Displays shows filtered by genre,
+- **Description**: Displays shows filtered by genre, allowing users to select a genre and view related shows.
+- **Implementation Plan**:
+  1. Create `Genres.tsx` with a list of genres.
+  2. Fetch and display shows for the selected genre.
+
+## 7. Search Functionality
+- **Purpose**: Allows users to search for shows by title.
+- **Implementation**: 
+  - Search bar on the Home Page
+  - Filtered results displayed dynamically
+- **File**: `src/pages/Home.tsx`
+- **Description**: Provides a search bar on the Home Page to filter shows by title.
+- **Implementation Plan**:
+  1. Add search bar to `Home.tsx`.
+  2. Implement filtering logic.
+
+## 8. Audio Playback
+- **Purpose**: Enables users to play, pause, and seek within episodes.
+- **Implementation**: 
+  - Audio player component with controls
+  - Persist playback position
+- **File**: `src/components/AudioPlayer.tsx`
+- **Description**: Renders an audio player with play, pause, and seek controls, and persists playback position.
+- **Implementation Plan**:
+  1. Create `AudioPlayer.tsx` with audio controls.
+  2. Integrate into `Episode.tsx`.
+
