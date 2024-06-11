@@ -1,19 +1,18 @@
 # Project Plan and To-Do List
 
 ## **Table of Contents**
-
--[Week One](#week-1-initial-setup-and-basic-structure)
-  -[Tuesday](#tuesday-setup-and-project-structure)
-  -[Wednesday](#wednesday-basic-components-and-routing)
-  -[Thursday](#thursday-home-and-show-pages)
-  -[Friday](#friday-season-and-episode-pages)
--[Week Two](#week-2-advanced-features-and-final-touches)
-  -[Monday](#monday-search-and-filtering)
-  -[Tuesday](#tuesday-playback-features)
-  -[Wednesday](#wednesday-uiux-enhancements)
-  -[Thursday](#thursday-testing-and-debugging)
-  -[Friday](#friday-final-touches-and-presentation)
--[Daily To-do list](#detailed-daily-to-do-list)
+- [Week One](#week-1-initial-setup-and-basic-structure)
+  - [Tuesday](#tuesday-setup-and-project-structure)
+  - [Wednesday](#wednesday-basic-components-and-routing)
+  - [Thursday](#thursday-home-and-show-pages)
+  - [Friday](#friday-season-and-episode-pages)
+- [Week Two](#week-2-advanced-features-and-final-touches)
+  - [Monday](#monday-search-and-filtering)
+  - [Tuesday](#tuesday-playback-features)
+  - [Wednesday](#wednesday-uiux-enhancements)
+  - [Thursday](#thursday-testing-and-debugging)
+  - [Friday](#friday-final-touches-and-presentation)
+- [Daily To-do list](#detailed-daily-to-do-list)
 
 ## Week 1: Initial Setup and Basic Structure
 
