@@ -24,7 +24,4 @@
     color: var(--text-color);
   }
 
-  .nav-icon, .theme-icon, .search-icon {
-    fill: var(--svg-fill-color); 
-  }
   

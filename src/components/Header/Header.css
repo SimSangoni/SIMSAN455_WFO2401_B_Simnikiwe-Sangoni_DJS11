@@ -3,8 +3,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--background-color);
-    color: var(--text-color);
 }
 
 .header-content {
@@ -44,13 +42,12 @@
 
     text-decoration: none;
     font-size: 18px;
-    color: var(--text-color);
 }
 
 .icon {
     width: 24px;
     height: 24px;
-    fill: var(--svg-fill-color);
+
 }
 
 
@@ -83,7 +80,6 @@
       top: 60px;
       left: 50%;
       transform: translateX(-70%);
-      /* right: 0; */
       flex-direction: column;
       align-items: center;
       padding: 20px;
@@ -117,6 +113,6 @@
         position: absolute;
         top: 10px;
         left: 50%;
-        /* transform: translateX(80%); */
+    
     }
 }
