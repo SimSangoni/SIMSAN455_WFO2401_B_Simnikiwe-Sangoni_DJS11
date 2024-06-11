@@ -79,13 +79,8 @@ export default function Header(){
                         </li> */}
                     </ul>
                 </nav>
-
-                <div className="menu-toggle" onClick={toggleMenu}>
-                    <span>
-                        <img src={MenuIcon} alt="Menu" className="icon nav-icon" />
-                    </span>
-                </div>
-            
+                    <img className="menu-toggle icon nav-icon" onClick={toggleMenu} src={MenuIcon} alt="Menu" />
+              
                 <div className="user-actions">
                     <span className="search-icon">
                         <img src={SearchIcon} alt="Search" className="icon" />
