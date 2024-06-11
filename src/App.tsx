@@ -10,7 +10,7 @@ export default function App() {
   return (
     
     <Router>
-      <Header title="Podcastly"/>
+      <Header/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shows" element={<Shows />} />
