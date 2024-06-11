@@ -13,6 +13,7 @@ import MenuIcon from './header-icons/menu-icon.svg'
 import PodcastIcon from '../../../public/favicon.svg'
 import darkThemeIcon from '../../assets/theme-icons/dark-theme-icon.svg'
 import lightThemeIcon from '../../assets/theme-icons/light-theme-icon.svg'
+import { func } from "prop-types";
 
 
 
@@ -25,9 +26,10 @@ export default function Header(){
     //     applyTheme(theme);
     //   }, [theme]);
 
-    const toggleTheme = () => {
+    function toggleTheme() {
+        console.log("Theme Toggled")
         setTheme(theme === 'light' ? 'dark' : 'light');
-      };
+      }
 
     function toggleMenu() {
         console.log("Menu Toggled")
@@ -84,7 +86,11 @@ export default function Header(){
                         <img src={UserIcon} alt="User" className="icon" />
                     </span>
                     <button onClick={toggleTheme}>
-                        Toggle theme
+                        {
+                            theme === 'light' 
+                            ? (<img src={lightThemeIcon} alt="Light Mode" className="icon" />)
+                            : (<img src={darkThemeIcon} alt="Dark Mode" className="icon" />)
+                        }
                     </button>
                 </div>
             </div>
