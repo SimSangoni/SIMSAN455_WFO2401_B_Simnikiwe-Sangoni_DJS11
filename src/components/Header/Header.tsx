@@ -33,7 +33,7 @@ export default function Header({title}: HeaderProps){
                     </ul>
                 </nav>
             
-                <div>
+                <div className="user-actions">
                     <span>Search</span>
                     <span>Login</span>
                     <button>Toggle Theme</button>
