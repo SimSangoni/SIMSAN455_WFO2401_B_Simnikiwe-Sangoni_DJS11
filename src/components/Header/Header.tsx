@@ -21,9 +21,9 @@ export default function Header(){
     const [menuOpen, setMenuOpen] = useState(false);
     const [theme, setTheme] = useState('light')
 
-    useEffect(() => {
-        applyTheme(theme);
-      }, [theme]);
+    // useEffect(() => {
+    //     applyTheme(theme);
+    //   }, [theme]);
 
     function toggleTheme() {
         console.log("Theme Toggled")
