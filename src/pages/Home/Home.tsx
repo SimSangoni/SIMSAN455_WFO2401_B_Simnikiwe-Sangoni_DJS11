@@ -24,22 +24,24 @@ export default function Home(){
 
     async function fetchShows() {
         try {
-          const response = await fetch('https://podcast-api.netlify.app/');
+          const response = await fetch('https://podcast-api.netlify.app/shows');
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
           const data = await response.json();
-        //   console.log(data); 
+          console.log(data[0]); 
           setShows(data);
         } catch (error) {
-          console.error('Error fetching shows:', error);
-        //   setError(error.message);
+            if (error instanceof Error) {
+                console.error('Error fetching shows:', error.message);
+                setError(error.message);
+            } else {
+                console.error('Error fetching shows:', error);
+                setError('An unexpected error occurred');
+            }
+          
         }
       };
-
-      fetchShows()
-
-
 
 
     return (
