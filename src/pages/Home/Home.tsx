@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 
 
 interface Show {
@@ -13,11 +14,18 @@ interface Show {
 
 export default function Home(){
 
+    const[shows, setShows] = useState<Show[]>([])
+
+    useEffect(() => {
+        fetchShows();
+      }, []);
+
     async function fetchShows() {
         try {
           const response = await fetch('https://podcast-api.netlify.app/');
           const data = await response.json();
-          console.log(data[0]); 
+        //   console.log(data[0]); 
+          setShows(data);
         } catch (error) {
           console.error('Error fetching shows:', error);
         }
