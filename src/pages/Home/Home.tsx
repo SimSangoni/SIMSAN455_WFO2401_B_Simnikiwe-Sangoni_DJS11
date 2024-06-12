@@ -50,8 +50,9 @@ export default function Home(){
                         <div className="show-content">
                             <h1 className="show-title">{show.title}</h1>
                             <p className="show-description">{show.description}</p>
-                            <p className="show-seasons">Seasons: {show.seasons}</p>
+                            
                         </div>
+                            <p className="show-seasons">Seasons: {show.seasons}</p>
                     </div> 
                 )) }
             </div> 

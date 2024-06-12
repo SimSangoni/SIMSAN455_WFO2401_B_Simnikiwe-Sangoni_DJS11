@@ -13,6 +13,9 @@
     padding: 20px;
     border-radius: 10px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .show-container::before {
@@ -41,8 +44,13 @@
   }
 
   .show-seasons {
-    margin: 10px 0;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
     font-weight: bold;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
   }
 
   @media (min-width: 768px) {
