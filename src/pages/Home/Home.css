@@ -1,6 +1,6 @@
 .home {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 20px;
     padding: 20px;
   }
@@ -29,4 +29,24 @@
   .show-content {
     position: relative;
     z-index: 1;
+  }
+
+  .show-title {
+    font-size: 2em;
+    margin: 0;
+  }
+  
+  .show-description {
+    margin: 10px 0;
+  }
+
+  .show-seasons {
+    margin: 10px 0;
+    font-weight: bold;
+  }
+
+  @media (min-width: 768px) {
+    .home {
+      grid-template-columns: 1fr 1fr;
+    }
   }
