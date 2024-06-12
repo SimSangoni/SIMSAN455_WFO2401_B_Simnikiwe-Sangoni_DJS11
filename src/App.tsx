@@ -12,11 +12,11 @@ export default function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    const themeLink = document.getElementById('theme-link') as HTMLElement;
-    if (theme === 'light') {
-      themeLink.setAttribute('href', './src/themes/light-theme.css');
+    const themeLink = document.getElementById('theme-link');
+    if (themeLink) {
+      themeLink.setAttribute('href', theme === 'light' ? './src/themes/light-theme.css' : './src/themes/dark-theme.css');
     } else {
-      themeLink.setAttribute('href', './src/themes/dark-theme.css');
+      console.error("Theme link element not found");
     }
   }, [theme]);
 
