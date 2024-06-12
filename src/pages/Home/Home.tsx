@@ -3,7 +3,7 @@ import './Home.css'
 
 
 interface Show {
-    id: number;
+    id: string;
     title: string;
     description: string;
     seasons: number;
@@ -16,6 +16,7 @@ interface Show {
 export default function Home(){
 
     const[shows, setShows] = useState<Show[]>([])
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         fetchShows();
@@ -24,11 +25,15 @@ export default function Home(){
     async function fetchShows() {
         try {
           const response = await fetch('https://podcast-api.netlify.app/');
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
           const data = await response.json();
           console.log(data); 
           setShows(data);
         } catch (error) {
           console.error('Error fetching shows:', error);
+        //   setError(error.message);
         }
       };
 
@@ -40,10 +45,12 @@ export default function Home(){
     return (
             <div className="home">
                 {shows.map( show => (
-                    <div key={show.id} className="show-container">
-                        <h1>{show.title}</h1>
-                        <p>{show.description}</p>
-                        <img src={show.image} alt={`${show.title} movie image`} />
+                    <div key={show.id} className="show-container" 
+                        style={{ backgroundImage: `url(${show.image})` }}>
+                        <div className="show-content">
+                            <h1>{show.title}</h1>
+                            <p>{show.description}</p>
+                        </div>
                     </div> 
                 )) }
             </div> 

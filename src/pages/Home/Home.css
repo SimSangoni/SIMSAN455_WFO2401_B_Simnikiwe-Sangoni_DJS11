@@ -14,3 +14,8 @@
     border-radius: 10px;
     overflow: hidden;
   }
+
+  .show-content {
+    position: relative;
+    z-index: 1;
+  }
