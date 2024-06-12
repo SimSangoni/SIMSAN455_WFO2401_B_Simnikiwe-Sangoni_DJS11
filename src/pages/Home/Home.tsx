@@ -33,7 +33,7 @@ export default function Home(){
           setShows(data);
         } catch (error) {
           console.error('Error fetching shows:', error);
-          setError(error.message);
+        //   setError(error.message);
         }
       };
 
@@ -48,8 +48,9 @@ export default function Home(){
                     <div key={show.id} className="show-container" 
                         style={{ backgroundImage: `url(${show.image})` }}>
                         <div className="show-content">
-                            <h1>{show.title}</h1>
-                            <p>{show.description}</p>
+                            <h1 className="show-title">{show.title}</h1>
+                            <p className="show-description">{show.description}</p>
+                            <p className="show-seasons">Seasons: {show.seasons}</p>
                         </div>
                     </div> 
                 )) }
