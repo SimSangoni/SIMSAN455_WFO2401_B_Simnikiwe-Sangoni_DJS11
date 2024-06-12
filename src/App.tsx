@@ -13,13 +13,10 @@ export default function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    const themeLink = document.getElementById('theme-link');
-    if (themeLink) {
-      themeLink.setAttribute('href', theme === 'light' ? './src/themes/light-theme.css' : './src/themes/dark-theme.css');
-    } else {
-      console.error("Theme link element not found");
+    document.body.classList.remove('light-theme', 'dark-theme');
+    document.body.classList.add(theme === 'light' ? 'light-theme' : 'dark-theme');
     }
-  }, [theme]);
+  , [theme]);
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
