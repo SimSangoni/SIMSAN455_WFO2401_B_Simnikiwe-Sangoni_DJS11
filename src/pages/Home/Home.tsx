@@ -29,11 +29,11 @@ export default function Home(){
             throw new Error(`HTTP error! status: ${response.status}`);
           }
           const data = await response.json();
-          console.log(data); 
+        //   console.log(data); 
           setShows(data);
         } catch (error) {
           console.error('Error fetching shows:', error);
-        //   setError(error.message);
+          setError(error.message);
         }
       };
 
