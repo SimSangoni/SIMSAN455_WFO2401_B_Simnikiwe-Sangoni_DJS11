@@ -16,7 +16,6 @@ interface Show {
 export default function Home(){
 
     const[shows, setShows] = useState<Show[]>([])
-    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         fetchShows();
@@ -34,10 +33,8 @@ export default function Home(){
         } catch (error) {
             if (error instanceof Error) {
                 console.error('Error fetching shows:', error.message);
-                setError(error.message);
             } else {
                 console.error('Error fetching shows:', error);
-                setError('An unexpected error occurred');
             }
           
         }
