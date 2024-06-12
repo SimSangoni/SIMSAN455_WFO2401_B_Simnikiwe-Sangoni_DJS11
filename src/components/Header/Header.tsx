@@ -14,8 +14,13 @@ import darkThemeIcon from '../../assets/theme-icons/dark-theme-icon.svg'
 import lightThemeIcon from '../../assets/theme-icons/light-theme-icon.svg'
 
 
+interface HeaderProps {
+    toggleTheme: () => void;
+    theme: 'light' | 'dark';
+  }
 
-export default function Header({toggleTheme, theme}){
+
+export default function Header({toggleTheme, theme}: HeaderProps){
 
     const [menuOpen, setMenuOpen] = useState(false);
 
