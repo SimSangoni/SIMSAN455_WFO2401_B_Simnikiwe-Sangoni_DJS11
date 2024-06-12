@@ -5,6 +5,7 @@ import Shows from "./pages/Shows/Shows";
 import Genres from "./pages/Genres/Genres";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './main.css' // For global styling in future
+import './styles/themes.css'
 
 
 export default function App() {
