@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Shows from "./pages/Shows/Shows";
@@ -8,10 +9,16 @@ import './main.css' // For global styling in future
 
 export default function App() {
 
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
   return (
     
     <Router>
-      <Header/>
+      <Header toggleTheme={toggleTheme} theme={theme}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shows" element={<Shows />} />

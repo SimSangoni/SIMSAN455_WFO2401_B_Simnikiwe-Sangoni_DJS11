@@ -15,15 +15,10 @@ import lightThemeIcon from '../../assets/theme-icons/light-theme-icon.svg'
 
 
 
-export default function Header(){
+export default function Header({toggleTheme, theme}){
 
     const [menuOpen, setMenuOpen] = useState(false);
-    const [theme, setTheme] = useState('light')
 
-    function toggleTheme() {
-        console.log("Theme Toggled")
-        setTheme(theme === 'light' ? 'dark' : 'light');
-      }
 
     function toggleMenu() {
         console.log("Menu Toggled")
