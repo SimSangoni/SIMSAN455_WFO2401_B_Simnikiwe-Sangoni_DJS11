@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import './Header.css';
-import { useState, useEffect } from "react";
-import { applyTheme } from "../../utils/themeUtils";
+import { useState } from "react";
 
 // Import Icons for header page
 import HomeIcon from './header-icons/home-icon.svg'
@@ -21,9 +20,7 @@ export default function Header(){
     const [menuOpen, setMenuOpen] = useState(false);
     const [theme, setTheme] = useState('light')
 
-    // useEffect(() => {
-    //     applyTheme(theme);
-    //   }, [theme]);
+
 
     function toggleTheme() {
         console.log("Theme Toggled")
