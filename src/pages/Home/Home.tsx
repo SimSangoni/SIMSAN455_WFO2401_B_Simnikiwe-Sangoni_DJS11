@@ -1,4 +1,16 @@
 
+
+interface Show {
+    id: number;
+    title: string;
+    description: string;
+    seasons: number;
+    image: string;
+    genres: number[];
+    updated: string;
+}
+
+
 export default function Home(){
 
     async function fetchShows() {
