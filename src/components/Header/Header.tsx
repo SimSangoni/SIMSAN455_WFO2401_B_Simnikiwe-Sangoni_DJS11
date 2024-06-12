@@ -20,8 +20,6 @@ export default function Header(){
     const [menuOpen, setMenuOpen] = useState(false);
     const [theme, setTheme] = useState('light')
 
-
-
     function toggleTheme() {
         console.log("Theme Toggled")
         setTheme(theme === 'light' ? 'dark' : 'light');
