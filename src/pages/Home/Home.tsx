@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import './Home.css'
 
 
 interface Show {
@@ -24,7 +25,7 @@ export default function Home(){
         try {
           const response = await fetch('https://podcast-api.netlify.app/');
           const data = await response.json();
-        //   console.log(data[0]); 
+          console.log(data); 
           setShows(data);
         } catch (error) {
           console.error('Error fetching shows:', error);
@@ -33,10 +34,18 @@ export default function Home(){
 
       fetchShows()
 
+
+
+
     return (
-        
-            <div>
-                This is the home page
+            <div className="home">
+                {shows.map( show => (
+                    <div key={show.id} className="show-container">
+                        <h1>{show.title}</h1>
+                        <p>{show.description}</p>
+                        <img src={show.image} alt={`${show.title} movie image`} />
+                    </div> 
+                )) }
             </div> 
     )
 }
