@@ -3,6 +3,7 @@ import Home from "./pages/Home/Home";
 import Shows from "./pages/Shows/Shows";
 import Genres from "./pages/Genres/Genres";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './main.css' // For global styling in future
 
 
 export default function App() {
