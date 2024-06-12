@@ -9,14 +9,14 @@ import './main.css' // For global styling in future
 
 export default function App() {
 
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
     const themeLink = document.getElementById('theme-link') as HTMLElement;
     if (theme === 'light') {
-      themeLink.setAttribute('href', '/themes/light-theme.css');
+      themeLink.setAttribute('href', './src/themes/light-theme.css');
     } else {
-      themeLink.setAttribute('href', '/themes/dark-theme.css');
+      themeLink.setAttribute('href', './src/themes/dark-theme.css');
     }
   }, [theme]);
 

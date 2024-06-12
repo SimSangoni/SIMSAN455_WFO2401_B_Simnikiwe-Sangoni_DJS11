@@ -16,7 +16,7 @@ import lightThemeIcon from '../../assets/theme-icons/light-theme-icon.svg'
 
 interface HeaderProps {
     toggleTheme: () => void;
-    theme: string;
+    theme: 'light' | 'dark';
   }
 
 
