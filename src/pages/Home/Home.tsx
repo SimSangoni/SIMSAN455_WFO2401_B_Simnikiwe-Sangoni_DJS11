@@ -8,9 +8,14 @@ interface Show {
     description: string;
     seasons: number;
     image: string;
-    genres: number[];
+    genresIds: number[];
     updated: string;
 }
+
+interface Genre {
+    id: number;
+    title: string;
+  }
 
 
 export default function Home(){
