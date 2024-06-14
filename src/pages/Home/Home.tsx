@@ -28,8 +28,14 @@ export default function Home(){
             throw new Error(`HTTP error! status: ${response.status}`);
           }
           const data = await response.json();
-          console.log(data[0]); 
-          setShows(data);
+
+          const sortedShows = data.sort(
+                (a: Show, b: Show) =>
+                     a.title.localeCompare(b.title)
+            );
+
+          setShows(sortedShows);
+        //   console.log(data[0]); 
         } catch (error) {
             if (error instanceof Error) {
                 console.error('Error fetching shows:', error.message);
