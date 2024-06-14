@@ -24,6 +24,8 @@ export default function Home(){
 
     const[shows, setShows] = useState<Show[]>([])
     const [genres, setGenres] = useState<Genre[]>([]);
+    const [sortMenuOpen, setSortMenuOpen] = useState(false);
+    const [filterMenuOpen, setFilterMenuOpen] = useState(false);
 
     useEffect(() => {
         fetchShows();
