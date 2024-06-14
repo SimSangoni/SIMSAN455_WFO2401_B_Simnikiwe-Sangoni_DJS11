@@ -8,19 +8,22 @@ interface Show {
     description: string;
     seasons: number;
     image: string;
-    genresIds: number[];
+    genres: number[];
     updated: string;
 }
 
 interface Genre {
     id: number;
     title: string;
+    description: string;
+    shows: string[];
   }
 
 
 export default function Home(){
 
     const[shows, setShows] = useState<Show[]>([])
+    const [genres, setGenres] = useState<Genre[]>([]);
 
     useEffect(() => {
         fetchShows();
@@ -28,19 +31,33 @@ export default function Home(){
 
     async function fetchShows() {
         try {
-          const response = await fetch('https://podcast-api.netlify.app/shows');
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            // Fetching shows for preview
+          const showsResponse = await fetch('https://podcast-api.netlify.app/shows');
+          if (!showsResponse.ok) {
+            throw new Error(`HTTP error! status: ${showsResponse.status}`);
           }
-          const data = await response.json();
+        const showsData = await showsResponse.json();
 
-          const sortedShows = data.sort(
+        // Get unique genre IDs from shows
+        const uniqueGenreIds = Array.from(new Set(
+            showsData.flatMap((show: Show) => show.genres)));
+            console.log(uniqueGenreIds)
+
+            // Fetch genres individually
+        const genrePromises = uniqueGenreIds.map((id) =>
+            fetch(`https://podcast-api.netlify.app/genre/${id}`).
+                then((res) => 
+                res.json())
+        );
+
+        const genresData = await Promise.all(genrePromises);
+
+          const sortedShows = showsData.sort(
                 (a: Show, b: Show) =>
                      a.title.localeCompare(b.title)
             );
 
           setShows(sortedShows);
-        //   console.log(data[0]); 
         } catch (error) {
             if (error instanceof Error) {
                 console.error('Error fetching shows:', error.message);
