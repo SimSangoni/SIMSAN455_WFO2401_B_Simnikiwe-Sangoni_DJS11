@@ -73,6 +73,8 @@ export default function Home(){
         }
       };
 
+
+
       function getGenreTitles(genreIds: number[]): string[] {
         return genreIds.map((id) => 
             genres.find((genre) => 
@@ -82,7 +84,14 @@ export default function Home(){
 
 
     return (
-            <div className="home">
+        <>
+        <div className="sort-filter-bar">
+            <button onClick={() => setSortMenuOpen(true)}>SORT</button>
+            <button onClick={() => setFilterMenuOpen(true)}>FILTER</button>
+        </div>
+
+        <div className="home">
+
                 {shows.map( show => (
                     <div key={show.id} className="show-container" 
                         style={{ backgroundImage: `url(${show.image})` }}>
@@ -99,6 +108,7 @@ export default function Home(){
                     </div> 
                 )) }
             </div> 
+        </>
     )
 }
 

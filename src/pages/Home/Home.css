@@ -5,6 +5,20 @@
     padding: 20px;
   }
 
+  .sort-filter-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    font-size: 2em;
+  }
+
+  .sort-filter-bar button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
 
   .show-container {
     position: relative;
