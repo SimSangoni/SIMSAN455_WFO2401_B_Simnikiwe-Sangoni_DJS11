@@ -58,6 +58,9 @@ export default function Home(){
             );
 
           setShows(sortedShows);
+          setGenres(genresData);
+
+
         } catch (error) {
             if (error instanceof Error) {
                 console.error('Error fetching shows:', error.message);
@@ -68,6 +71,13 @@ export default function Home(){
         }
       };
 
+      function getGenreTitles(genreIds: number[]): string[] {
+        return genreIds.map((id) => 
+            genres.find((genre) => 
+            genre.id === id)?.title).
+            filter(Boolean) as string[];
+      }
+
 
     return (
             <div className="home">
@@ -76,6 +86,7 @@ export default function Home(){
                         style={{ backgroundImage: `url(${show.image})` }}>
                         <div className="show-content">
                             <h1 className="show-title">{show.title}</h1>
+                            <p className="show-genres">{getGenreTitles(show.genres).join(', ')}</p>
                             {/* <p className="show-description">{show.description}</p> */}
                             
                         </div>
