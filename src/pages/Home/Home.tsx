@@ -90,6 +90,28 @@ export default function Home(){
             <button onClick={() => setFilterMenuOpen(true)}>FILTER</button>
         </div>
 
+        {sortMenuOpen && (
+        <div className="sort-menu">
+          <button>A-Z</button>
+          <button>Z-A</button>
+          <button>Newest</button>
+          <button>Oldest</button>
+        </div>
+      )}
+
+    {filterMenuOpen && (
+            <div className="filter-menu">
+            {genres.map(genre => (
+                <div key={genre.id}>
+                <input
+                    type="checkbox"
+                />
+                <label>{genre.title}</label>
+                </div>
+            ))}
+            </div>
+        )}
+
         <div className="home">
 
                 {shows.map( show => (
