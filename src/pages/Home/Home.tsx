@@ -41,7 +41,7 @@ export default function Home(){
         // Get unique genre IDs from shows
         const uniqueGenreIds = Array.from(new Set(
             showsData.flatMap((show: Show) => show.genres)));
-            console.log(uniqueGenreIds)
+            // console.log(uniqueGenreIds)
 
             // Fetch genres individually
         const genrePromises = uniqueGenreIds.map((id) =>
@@ -86,11 +86,14 @@ export default function Home(){
                         style={{ backgroundImage: `url(${show.image})` }}>
                         <div className="show-content">
                             <h1 className="show-title">{show.title}</h1>
-                            <p className="show-genres">{getGenreTitles(show.genres).join(', ')}</p>
                             {/* <p className="show-description">{show.description}</p> */}
                             
                         </div>
-                            <p className="show-seasons">Seasons: {show.seasons}</p>
+                            <p className="show-seasons">
+                            {getGenreTitles(show.genres).join(' • ')} 
+                            <br></br>
+                            {show.seasons} {show.seasons > 1 ? 'Seasons' : 'Season'}
+                            </p>
                     </div> 
                 )) }
             </div> 
