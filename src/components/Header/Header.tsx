@@ -70,8 +70,8 @@ export default function Header({toggleTheme, theme}: HeaderProps){
                         </li>
                     </ul>
                 </nav>
-                    <span className="menu-toggle">
-                    <img className= "icon nav-icon" onClick={toggleMenu} src={MenuIcon} alt="Menu" />
+                    <span className="menu-toggle" onClick={toggleMenu}>
+                    <img className= "icon nav-icon" src={MenuIcon} alt="Menu" />
                     Menu
                     </span>
                     
