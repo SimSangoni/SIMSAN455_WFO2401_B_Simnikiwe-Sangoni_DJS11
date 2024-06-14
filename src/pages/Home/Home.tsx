@@ -82,12 +82,22 @@ export default function Home(){
             filter(Boolean) as string[];
       }
 
+      function toggleSortMenu() {
+        setSortMenuOpen(!sortMenuOpen);
+        setFilterMenuOpen(false);
+      }
+    
+      function toggleFilterMenu() {
+        setFilterMenuOpen(!filterMenuOpen);
+        setSortMenuOpen(false);
+      }
+
 
     return (
         <>
         <div className="sort-filter-bar">
-            <button onClick={() => setSortMenuOpen(true)}>SORT</button>
-            <button onClick={() => setFilterMenuOpen(true)}>FILTER</button>
+            <button onClick={toggleSortMenu}>SORT</button>
+            <button onClick={toggleFilterMenu}>FILTER</button>
         </div>
 
         {sortMenuOpen && (
