@@ -30,6 +30,10 @@ export default function Header({toggleTheme, theme}: HeaderProps){
         setMenuOpen(!menuOpen)
     }
 
+    function closeMenu() {
+        setMenuOpen(false);
+      }
+
     return (
         <header className="header">
             <div className="header-content">
@@ -45,7 +49,7 @@ export default function Header({toggleTheme, theme}: HeaderProps){
 
                 <nav className={`nav ${menuOpen ? 'open' : ''}`}>
                     <ul className="nav-links">
-                        <li><Link to='/'>
+                        <li><Link to='/' onClick={closeMenu}>
                                 <span className="nav-item">
                                     <img src={HomeIcon} alt="Home" className="icon nav-icon" />
                                         Home
@@ -53,7 +57,7 @@ export default function Header({toggleTheme, theme}: HeaderProps){
                             </Link>
                         </li>
                         <li>
-                            <Link to='/shows'> 
+                            <Link to='/shows' onClick={closeMenu}> 
                                 <span className="nav-item">
                                     <img src={ShowsIcon} alt="Shows" className="icon nav-icon" />
                                         Shows
@@ -61,7 +65,7 @@ export default function Header({toggleTheme, theme}: HeaderProps){
                             </Link>
                         </li>
                         <li>
-                            <Link to='/genres'>
+                            <Link to='/genres' onClick={closeMenu}>
                                 <span className="nav-item">
                                     <img src={GenresIcon} alt="Genres" className="icon nav-icon" />
                                     Genres
