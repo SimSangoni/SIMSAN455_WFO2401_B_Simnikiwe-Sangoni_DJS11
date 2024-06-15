@@ -31,7 +31,6 @@ export default function Header({
     theme, 
     searchQuery, 
     setSearchQuery,
-    sortOption,
     sortMenuOpen,
     toggleSortMenu,
     handleSortOption
