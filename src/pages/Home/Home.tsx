@@ -28,6 +28,9 @@ export default function Home(){
     const [sortedShows, setSortedShows] = useState<Show[]>([]);
     const [sortOption, setSortOption] = useState('A-Z');
     const [loading, setLoading] = useState(true);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredShows, setFilteredShows] = useState<Show[]>([]);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
   
     useEffect(() => {
       fetchShows();

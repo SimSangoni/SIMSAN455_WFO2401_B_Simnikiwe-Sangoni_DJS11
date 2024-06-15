@@ -60,7 +60,7 @@ export default function Header({toggleTheme, theme}: HeaderProps){
                             <Link to='/shows' onClick={closeMenu}> 
                                 <span className="nav-item">
                                     <img src={ShowsIcon} alt="Shows" className="icon nav-icon" />
-                                        Shows
+                                        Favourites
                                 </span>
                             </Link>
                         </li>
