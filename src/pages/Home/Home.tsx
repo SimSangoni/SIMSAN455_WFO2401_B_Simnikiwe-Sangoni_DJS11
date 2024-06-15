@@ -164,6 +164,18 @@ export default function Home(){
       )}
 
 
+      {isSearchOpen && (
+              <div className="search-form">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search for shows..."
+                />
+              </div>
+            )}
+
+
         <div className="home">
 
                 {sortedShows.map( show => (
