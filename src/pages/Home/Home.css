@@ -1,9 +1,23 @@
+.search-form {
+  margin: 20px;
+  text-align: center;
+}
+
+.search-form input {
+  padding: 10px;
+  font-size: 1em;
+  width: 80%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 .home {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 20px;
-  }
+}
 
 
   .show-container {

@@ -28,9 +28,6 @@ export default function Home(){
     const [sortedShows, setSortedShows] = useState<Show[]>([]);
     const [sortOption, setSortOption] = useState('A-Z');
     const [loading, setLoading] = useState(true);
-    const [searchQuery, setSearchQuery] = useState('');
-    const [filteredShows, setFilteredShows] = useState<Show[]>([]);
-    const [isSearchOpen, setIsSearchOpen] = useState(false);
   
     useEffect(() => {
       fetchShows();
@@ -41,9 +38,6 @@ export default function Home(){
     }, [sortOption, shows]);
 
 
-    useEffect(() => {
-      handleSearch();
-    }, [searchQuery]);
 
     async function fetchShows() {
         try {
@@ -104,18 +98,6 @@ export default function Home(){
         setSortedShows(sorted);
       }
 
-      function handleSearch() {
-        if (searchQuery.trim() === '') {
-          setFilteredShows([]);
-        } else {
-          const filtered = shows.filter(show =>
-            show.title.toLowerCase().includes(searchQuery.toLowerCase())
-          );
-          setFilteredShows(filtered);
-        }
-      }
-
-
 
       function getGenreTitles(genreIds: number[]): string[] {
         return genreIds.map((id) => 
@@ -134,9 +116,6 @@ export default function Home(){
         setSortMenuOpen(false);
       }
 
-      function toggleSearch() {
-        setIsSearchOpen(!isSearchOpen);
-      }
 
       if (loading) {
         return (
@@ -162,19 +141,6 @@ export default function Home(){
           <button onClick={() => handleSortOption('Oldest')}>Oldest</button>
         </div>
       )}
-
-
-      {isSearchOpen && (
-              <div className="search-form">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search for shows..."
-                />
-              </div>
-            )}
-
 
         <div className="home">
 
