@@ -19,8 +19,12 @@ interface Genre {
     shows: string[];
   }
 
+  interface HomeProps {
+    searchQuery: string;
+  }
 
-export default function Home(){
+
+export default function Home({ searchQuery }: HomeProps){
 
     const[shows, setShows] = useState<Show[]>([])
     const [genres, setGenres] = useState<Genre[]>([]);
@@ -98,6 +102,11 @@ export default function Home(){
         setSortedShows(sorted);
       }
 
+      const filteredShows = searchQuery
+      ? sortedShows.filter(show => 
+        show.title.toLowerCase().includes(searchQuery.toLowerCase()))
+      : sortedShows;
+
 
       function getGenreTitles(genreIds: number[]): string[] {
         return genreIds.map((id) => 
@@ -144,7 +153,7 @@ export default function Home(){
 
         <div className="home">
 
-                {sortedShows.map( show => (
+                {filteredShows.map( show => (
                     <div key={show.id} className="show-container" 
                         style={{ backgroundImage: `url(${show.image})` }}>
                         <div className="show-content">

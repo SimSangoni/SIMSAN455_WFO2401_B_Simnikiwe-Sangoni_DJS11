@@ -17,12 +17,15 @@ import lightThemeIcon from '../../assets/theme-icons/light-theme-icon.svg'
 interface HeaderProps {
     toggleTheme: () => void;
     theme: 'light' | 'dark';
+    searchQuery: string;
+    setSearchQuery: (query: string) => void;
   }
 
 
-export default function Header({toggleTheme, theme}: HeaderProps){
+export default function Header({toggleTheme, theme, searchQuery, setSearchQuery}: HeaderProps){
 
     const [menuOpen, setMenuOpen] = useState(false);
+    const [searchOpen, setSearchOpen] = useState(false);
 
 
     function toggleMenu() {
@@ -32,6 +35,10 @@ export default function Header({toggleTheme, theme}: HeaderProps){
 
     function closeMenu() {
         setMenuOpen(false);
+    }
+
+    function toggleSearch() {
+        setSearchOpen(!searchOpen);
       }
 
     return (
@@ -81,9 +88,21 @@ export default function Header({toggleTheme, theme}: HeaderProps){
                     
               
                 <div className="user-actions">
-                    <span className="search-icon">
-                        <img src={SearchIcon} alt="Search" className="icon" />
-                    </span>
+                    <div className="search-container">
+                        {searchOpen && (
+                            <div className="search-form">
+                            <input
+                                type="text"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                placeholder="Search for shows..."
+                            /> 
+                            </div>
+                        )}
+                        <span className="search-icon" onClick={toggleSearch}>
+                                <img src={SearchIcon} alt="Search" className="icon" />
+                        </span>
+                    </div>  
                     <span>
                         <img src={UserIcon} alt="User" className="icon" />
                     </span>
@@ -96,6 +115,7 @@ export default function Header({toggleTheme, theme}: HeaderProps){
                     </button>
                 </div>
             </div>
+            
         </header>
     )
 }
