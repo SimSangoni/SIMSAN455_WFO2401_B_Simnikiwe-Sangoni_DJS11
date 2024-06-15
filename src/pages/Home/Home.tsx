@@ -27,10 +27,11 @@ export default function Home(){
     const [sortMenuOpen, setSortMenuOpen] = useState(false);
     const [sortedShows, setSortedShows] = useState<Show[]>([]);
     const [sortOption, setSortOption] = useState('A-Z');
+    const [loading, setLoading] = useState(true);
   
     useEffect(() => {
-        fetchShows();
-      }, []);
+      fetchShows();
+    }, []);
 
     useEffect(() => {
       sortShows(sortOption);
@@ -59,13 +60,9 @@ export default function Home(){
 
         const genresData = await Promise.all(genrePromises);
 
-          // const sortedShows = showsData.sort(
-          //       (a: Show, b: Show) =>
-          //            a.title.localeCompare(b.title)
-          //   );
-
           setShows(showsData);
           setGenres(genresData);
+          setLoading(false);
 
 
         } catch (error) {
@@ -74,7 +71,7 @@ export default function Home(){
             } else {
                 console.error('Error fetching shows:', error);
             }
-          
+          setLoading(false);
         }
       }
 
@@ -116,6 +113,15 @@ export default function Home(){
       function handleSortOption(option: string) {
         setSortOption(option);
         setSortMenuOpen(false);
+      }
+
+      if (loading) {
+        return (
+          <div className="loading-container">
+            {/* <img src="" alt="Loading" className="loading-image" /> */}
+            Please wait, loading...
+          </div>
+        );
       }
 
 
