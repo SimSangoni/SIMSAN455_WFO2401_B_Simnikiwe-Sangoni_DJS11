@@ -19,10 +19,23 @@ interface HeaderProps {
     theme: 'light' | 'dark';
     searchQuery: string;
     setSearchQuery: (query: string) => void;
+    sortOption: string;
+    sortMenuOpen: boolean;
+    toggleSortMenu: () => void;
+    handleSortOption: (option: string) => void;
   }
 
 
-export default function Header({toggleTheme, theme, searchQuery, setSearchQuery}: HeaderProps){
+export default function Header({
+    toggleTheme, 
+    theme, 
+    searchQuery, 
+    setSearchQuery,
+    sortOption,
+    sortMenuOpen,
+    toggleSortMenu,
+    handleSortOption
+}: HeaderProps){
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
@@ -89,6 +102,15 @@ export default function Header({toggleTheme, theme, searchQuery, setSearchQuery}
               
                 <div className="user-actions">
                     <div className="search-container">
+                        <button onClick={toggleSortMenu}>SORT</button>
+                        {sortMenuOpen && (
+                            <div className="sort-menu">
+                                <button onClick={() => handleSortOption('A-Z')}>A-Z</button>
+                                <button onClick={() => handleSortOption('Z-A')}>Z-A</button>
+                                <button onClick={() => handleSortOption('Newest')}>Newest</button>
+                                <button onClick={() => handleSortOption('Oldest')}>Oldest</button>
+                            </div>
+                            )}
                         {searchOpen && (
                             <div className="search-form">
                             <input

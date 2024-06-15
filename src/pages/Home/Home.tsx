@@ -21,16 +21,15 @@ interface Genre {
 
   interface HomeProps {
     searchQuery: string;
+    sortOption: string;
   }
 
 
-export default function Home({ searchQuery }: HomeProps){
+export default function Home({ searchQuery, sortOption }: HomeProps){
 
     const[shows, setShows] = useState<Show[]>([])
     const [genres, setGenres] = useState<Genre[]>([]);
-    const [sortMenuOpen, setSortMenuOpen] = useState(false);
     const [sortedShows, setSortedShows] = useState<Show[]>([]);
-    const [sortOption, setSortOption] = useState('A-Z');
     const [loading, setLoading] = useState(true);
   
     useEffect(() => {
@@ -115,16 +114,6 @@ export default function Home({ searchQuery }: HomeProps){
             filter(Boolean) as string[];
       }
 
-      function toggleSortMenu() {
-        setSortMenuOpen(!sortMenuOpen);
-      }
-
-
-      function handleSortOption(option: string) {
-        setSortOption(option);
-        setSortMenuOpen(false);
-      }
-
 
       if (loading) {
         return (
@@ -138,19 +127,6 @@ export default function Home({ searchQuery }: HomeProps){
 
     return (
         <>
-        <div className="sort-filter-bar">
-            <button onClick={toggleSortMenu}>SORT</button>
-        </div>
-
-        {sortMenuOpen && (
-        <div className="sort-menu">
-          <button onClick={() => handleSortOption('A-Z')}>A-Z</button>
-          <button onClick={() => handleSortOption('Z-A')}>Z-A</button>
-          <button onClick={() => handleSortOption('Newest')}>Newest</button>
-          <button onClick={() => handleSortOption('Oldest')}>Oldest</button>
-        </div>
-      )}
-
         <div className="home">
 
                 {filteredShows.map( show => (

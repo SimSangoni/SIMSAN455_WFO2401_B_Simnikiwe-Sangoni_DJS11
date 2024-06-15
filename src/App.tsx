@@ -13,6 +13,17 @@ export default function App() {
 
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [searchQuery, setSearchQuery] = useState('');
+  const [sortOption, setSortOption] = useState('A-Z');
+  const [sortMenuOpen, setSortMenuOpen] = useState(false);
+
+  const toggleSortMenu = () => {
+    setSortMenuOpen(!sortMenuOpen);
+  };
+
+  const handleSortOption = (option: string) => {
+    setSortOption(option);
+    setSortMenuOpen(false);
+  };
 
   useEffect(() => {
     document.body.classList.remove('light-theme', 'dark-theme');
@@ -32,10 +43,14 @@ export default function App() {
         theme={theme}
         searchQuery={searchQuery} 
         setSearchQuery={setSearchQuery}
+        sortOption={sortOption}
+        sortMenuOpen={sortMenuOpen}
+        toggleSortMenu={toggleSortMenu}
+        handleSortOption={handleSortOption}
       />
       <div className='body-content'>
         <Routes>
-          <Route path="/" element={<Home searchQuery={searchQuery}/>} />
+          <Route path="/" element={<Home searchQuery={searchQuery} sortOption={sortOption}/>} />
           <Route path="/shows" element={<Favourites/>} />
           <Route path="/genres" element={<Genres/>} />
         </Routes>
