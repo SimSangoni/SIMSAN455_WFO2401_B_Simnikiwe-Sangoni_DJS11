@@ -40,6 +40,11 @@ export default function Home(){
       sortShows(sortOption);
     }, [sortOption, shows]);
 
+
+    useEffect(() => {
+      handleSearch();
+    }, [searchQuery]);
+
     async function fetchShows() {
         try {
             // Fetching shows for preview
