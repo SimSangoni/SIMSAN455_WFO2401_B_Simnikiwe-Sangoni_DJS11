@@ -33,11 +33,14 @@ export default function App() {
         searchQuery={searchQuery} 
         setSearchQuery={setSearchQuery}
       />
-      <Routes>
-        <Route path="/" element={<Home searchQuery={searchQuery}/>} />
-        <Route path="/shows" element={<Favourites/>} />
-        <Route path="/genres" element={<Genres/>} />
-      </Routes>
+      <div className='body-content'>
+        <Routes>
+          <Route path="/" element={<Home searchQuery={searchQuery}/>} />
+          <Route path="/shows" element={<Favourites/>} />
+          <Route path="/genres" element={<Genres/>} />
+        </Routes>
+      </div>
+      
     </Router>  
    
   )
