@@ -25,7 +25,6 @@ export default function Home(){
     const[shows, setShows] = useState<Show[]>([])
     const [genres, setGenres] = useState<Genre[]>([]);
     const [sortMenuOpen, setSortMenuOpen] = useState(false);
-    const [filterMenuOpen, setFilterMenuOpen] = useState(false);
 
     useEffect(() => {
         fetchShows();
@@ -86,18 +85,12 @@ export default function Home(){
         setSortMenuOpen(!sortMenuOpen);
         setFilterMenuOpen(false);
       }
-    
-      function toggleFilterMenu() {
-        setFilterMenuOpen(!filterMenuOpen);
-        setSortMenuOpen(false);
-      }
 
 
     return (
         <>
         <div className="sort-filter-bar">
             <button onClick={toggleSortMenu}>SORT</button>
-            <button onClick={toggleFilterMenu}>FILTER</button>
         </div>
 
         {sortMenuOpen && (
@@ -109,18 +102,6 @@ export default function Home(){
         </div>
       )}
 
-    {filterMenuOpen && (
-            <div className="filter-menu">
-            {genres.map(genre => (
-                <div key={genre.id}>
-                <input
-                    type="checkbox"
-                />
-                <label>{genre.title}</label>
-                </div>
-            ))}
-            </div>
-        )}
 
         <div className="home">
 
