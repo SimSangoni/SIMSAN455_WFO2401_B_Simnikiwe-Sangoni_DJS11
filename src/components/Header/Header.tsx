@@ -56,7 +56,7 @@ export default function Header({
 
     return (
         <header className="header">
-            <div className="header-content">
+        <div className="header-content">
                 <div className="logo">
                     <Link to='/'>
                     <span className="nav-item"> 
@@ -101,30 +101,6 @@ export default function Header({
                     
               
                 <div className="user-actions">
-                    <div className="search-container">
-                        <button onClick={toggleSortMenu}>SORT</button>
-                        {sortMenuOpen && (
-                            <div className="sort-menu">
-                                <button onClick={() => handleSortOption('A-Z')}>A-Z</button>
-                                <button onClick={() => handleSortOption('Z-A')}>Z-A</button>
-                                <button onClick={() => handleSortOption('Newest')}>Newest</button>
-                                <button onClick={() => handleSortOption('Oldest')}>Oldest</button>
-                            </div>
-                            )}
-                        {searchOpen && (
-                            <div className="search-form">
-                            <input
-                                type="text"
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                placeholder="Search for shows..."
-                            /> 
-                            </div>
-                        )}
-                        <span className="search-icon" onClick={toggleSearch}>
-                                <img src={SearchIcon} alt="Search" className="icon" />
-                        </span>
-                    </div>  
                     <span>
                         <img src={UserIcon} alt="User" className="icon" />
                     </span>
@@ -136,7 +112,37 @@ export default function Header({
                         }
                     </button>
                 </div>
-            </div>
+   
+
+        </div>    
+
+        <div className="search-container">
+                        <span>
+                        <button onClick={toggleSortMenu}>SORT</button>
+                            {sortMenuOpen && (
+                                <div className="sort-menu">
+                                    <button onClick={() => handleSortOption('A-Z')}>A-Z</button>
+                                    <button onClick={() => handleSortOption('Z-A')}>Z-A</button>
+                                    <button onClick={() => handleSortOption('Newest')}>Newest</button>
+                                    <button onClick={() => handleSortOption('Oldest')}>Oldest</button>
+                                </div>
+                            )}
+                        </span>
+                            
+                            {searchOpen && (
+                                <div className="search-form">
+                                <input
+                                    type="text"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    placeholder="Search for shows..."
+                                /> 
+                                </div>
+                            )}
+                            <span className="search-icon" onClick={toggleSearch}>
+                                    <img src={SearchIcon} alt="Search" className="icon" />
+                            </span>
+                        </div>    
             
         </header>
     )
