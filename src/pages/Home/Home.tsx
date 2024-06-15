@@ -25,10 +25,16 @@ export default function Home(){
     const[shows, setShows] = useState<Show[]>([])
     const [genres, setGenres] = useState<Genre[]>([]);
     const [sortMenuOpen, setSortMenuOpen] = useState(false);
-
+    const [sortedShows, setSortedShows] = useState<Show[]>([]);
+    const [sortOption, setSortOption] = useState('A-Z');
+  
     useEffect(() => {
         fetchShows();
       }, []);
+
+    useEffect(() => {
+      sortShows(sortOption);
+    }, [sortOption, shows]);
 
     async function fetchShows() {
         try {
@@ -53,12 +59,12 @@ export default function Home(){
 
         const genresData = await Promise.all(genrePromises);
 
-          const sortedShows = showsData.sort(
-                (a: Show, b: Show) =>
-                     a.title.localeCompare(b.title)
-            );
+          // const sortedShows = showsData.sort(
+          //       (a: Show, b: Show) =>
+          //            a.title.localeCompare(b.title)
+          //   );
 
-          setShows(sortedShows);
+          setShows(showsData);
           setGenres(genresData);
 
 
@@ -70,7 +76,28 @@ export default function Home(){
             }
           
         }
-      };
+      }
+
+      function sortShows(option: string) {
+        let sorted = [...shows];
+        switch (option) {
+          case 'A-Z':
+            sorted = sorted.sort((a, b) => a.title.localeCompare(b.title));
+            break;
+          case 'Z-A':
+            sorted = sorted.sort((a, b) => b.title.localeCompare(a.title));
+            break;
+          case 'Newest':
+            sorted = sorted.sort((a, b) => new Date(b.updated).getTime() - new Date(a.updated).getTime());
+            break;
+          case 'Oldest':
+            sorted = sorted.sort((a, b) => new Date(a.updated).getTime() - new Date(b.updated).getTime());
+            break;
+          default:
+            break;
+        }
+        setSortedShows(sorted);
+      }
 
 
 
@@ -83,7 +110,12 @@ export default function Home(){
 
       function toggleSortMenu() {
         setSortMenuOpen(!sortMenuOpen);
-        setFilterMenuOpen(false);
+      }
+
+
+      function handleSortOption(option: string) {
+        setSortOption(option);
+        setSortMenuOpen(false);
       }
 
 
@@ -95,17 +127,17 @@ export default function Home(){
 
         {sortMenuOpen && (
         <div className="sort-menu">
-          <button>A-Z</button>
-          <button>Z-A</button>
-          <button>Newest</button>
-          <button>Oldest</button>
+          <button onClick={() => handleSortOption('A-Z')}>A-Z</button>
+          <button onClick={() => handleSortOption('Z-A')}>Z-A</button>
+          <button onClick={() => handleSortOption('Newest')}>Newest</button>
+          <button onClick={() => handleSortOption('Oldest')}>Oldest</button>
         </div>
       )}
 
 
         <div className="home">
 
-                {shows.map( show => (
+                {sortedShows.map( show => (
                     <div key={show.id} className="show-container" 
                         style={{ backgroundImage: `url(${show.image})` }}>
                         <div className="show-content">
