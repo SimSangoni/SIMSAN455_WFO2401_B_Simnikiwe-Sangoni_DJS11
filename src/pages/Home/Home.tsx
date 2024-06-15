@@ -99,6 +99,17 @@ export default function Home(){
         setSortedShows(sorted);
       }
 
+      function handleSearch() {
+        if (searchQuery.trim() === '') {
+          setFilteredShows([]);
+        } else {
+          const filtered = shows.filter(show =>
+            show.title.toLowerCase().includes(searchQuery.toLowerCase())
+          );
+          setFilteredShows(filtered);
+        }
+      }
+
 
 
       function getGenreTitles(genreIds: number[]): string[] {
