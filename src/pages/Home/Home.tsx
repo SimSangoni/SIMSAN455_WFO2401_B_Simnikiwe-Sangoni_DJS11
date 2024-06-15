@@ -129,6 +129,10 @@ export default function Home(){
         setSortMenuOpen(false);
       }
 
+      function toggleSearch() {
+        setIsSearchOpen(!isSearchOpen);
+      }
+
       if (loading) {
         return (
           <div className="loading-container">
