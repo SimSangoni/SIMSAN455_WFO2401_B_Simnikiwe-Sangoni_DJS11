@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import {Genre, Show} from '../../utils/Interfaces'
 import { fetchShowsAndGenres } from "../../utils/apiRequests";
 import './Genres.css'
+import {Outlet, useNavigate } from 'react-router-dom';
 
 
 
@@ -11,6 +12,7 @@ export default function Genres(){
   const [genres, setGenres] = useState<Genre[]>([]);
   const [shows, setShows] = useState<Show[]>([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
    
   useEffect(() => {
     fetchData();
@@ -35,14 +37,24 @@ export default function Genres(){
     return genreShow ? genreShow.image : '';
   }
 
+  function handleGenreClick(genre: Genre) {
+    const genreSlug = genre.title.toLowerCase().replace(/ /g, '-');
+    navigate(`/genres/${genreSlug}`);
+  }
+
     return (
       <div className="genres-page">
       {loading ? (
         <div className="loading">Loading...</div>
       ) : (
+      <>
         <div className="genres-list">
           {genres.map(genre => (
-            <div key={genre.id} className="genre-container" style={{ backgroundImage: `url(${getGenreImage(genre)})` }}>
+            <div key={genre.id} 
+            className="genre-container" 
+            style={{ backgroundImage: `url(${getGenreImage(genre)})` }}
+            onClick={() => handleGenreClick(genre)}
+            >
               <h2 className="genre-title">{genre.title}</h2>
               <div className="genre-content">
                 <p className="genre-description">{genre.description}</p>
@@ -50,6 +62,8 @@ export default function Genres(){
             </div>
           ))}
         </div>
+        <Outlet/>
+        </>
       )}
     </div>
     )
