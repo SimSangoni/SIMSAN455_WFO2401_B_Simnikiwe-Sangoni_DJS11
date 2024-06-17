@@ -51,7 +51,7 @@ export default function App() {
       <div className='body-content'>
         <Routes>
           <Route path="/" element={<Home searchQuery={searchQuery} sortOption={sortOption}/>} />
-          <Route path="/shows" element={<Favourites/>} />
+          <Route path="/favourites" element={<Favourites/>} />
           <Route path="/genres" element={<Genres/>} />
         </Routes>
       </div>

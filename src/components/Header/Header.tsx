@@ -76,9 +76,9 @@ export default function Header({
                             </Link>
                         </li>
                         <li>
-                            <Link to='/shows' onClick={closeMenu}> 
+                            <Link to='/favourites' onClick={closeMenu}> 
                                 <span className="nav-item">
-                                    <img src={ShowsIcon} alt="Shows" className="icon nav-icon" />
+                                    <img src={ShowsIcon} alt="Favourites" className="icon nav-icon" />
                                         Favourites
                                 </span>
                             </Link>

@@ -23,10 +23,23 @@ interface GenresProps {
 }
 
 
-export default function Genres(){
+export default function Genres({ shows }: GenresProps){
     
-
+  const genresMap = new Map<number, Genre>();
    
+  shows.forEach(show => {
+    show.genres.forEach(genreId => {
+      if (!genresMap.has(genreId)) {
+        genresMap.set(genreId, {
+          id: genreId,
+          title: `Genre ${genreId}`, // Placeholder, replace with actual genre titles if available
+          description: `Description for genre ${genreId}`, // Placeholder, replace with actual genre descriptions if available
+          shows: []
+        });
+      }
+      genresMap.get(genreId)?.shows.push(show.id);
+    });
+  });
 
 
 
