@@ -1,29 +1,8 @@
 import { useState, useEffect } from "react";
 import './Home.css'
+import { HomeProps, Show, Genre } from "../../utils/Interfaces";
+import { fetchShowsAndGenres } from "../../utils/apiRequests";
 
-
-interface Show {
-    id: string;
-    title: string;
-    description: string;
-    seasons: number;
-    image: string;
-    genres: number[];
-    updated: string;
-}
-
-interface Genre {
-    id: number;
-    title: string;
-    description: string;
-    shows: string[];
-  }
-
-  interface HomeProps {
-    searchQuery: string;
-    sortOption: string;
-    
-  }
 
 
 export default function Home({ searchQuery, sortOption }: HomeProps){
@@ -42,44 +21,17 @@ export default function Home({ searchQuery, sortOption }: HomeProps){
     }, [sortOption, shows]);
 
 
-
     async function fetchShows() {
-        try {
-            // Fetching shows for preview
-          const showsResponse = await fetch('https://podcast-api.netlify.app/shows');
-          if (!showsResponse.ok) {
-            throw new Error(`HTTP error! status: ${showsResponse.status}`);
-          }
-        const showsData = await showsResponse.json();
-
-        // Get unique genre IDs from shows
-        const uniqueGenreIds = Array.from(new Set(
-            showsData.flatMap((show: Show) => show.genres)));
-            // console.log(uniqueGenreIds)
-
-            // Fetch genres individually
-        const genrePromises = uniqueGenreIds.map((id) =>
-            fetch(`https://podcast-api.netlify.app/genre/${id}`).
-                then((res) => 
-                res.json())
-        );
-
-        const genresData = await Promise.all(genrePromises);
-
-          setShows(showsData);
-          setGenres(genresData);
-          setLoading(false);
-
-
-        } catch (error) {
-            if (error instanceof Error) {
-                console.error('Error fetching shows:', error.message);
-            } else {
-                console.error('Error fetching shows:', error);
-            }
-          setLoading(false);
-        }
+      try {
+        const { shows, genres } = await fetchShowsAndGenres();
+        setShows(shows);
+        setGenres(genres);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
       }
+    }
+    
 
       function sortShows(option: string) {
         let sorted = [...shows];

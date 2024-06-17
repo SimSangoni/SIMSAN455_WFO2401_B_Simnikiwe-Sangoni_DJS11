@@ -25,21 +25,12 @@ interface GenresProps {
 
 export default function Genres({ shows }: GenresProps){
     
-  const genresMap = new Map<number, Genre>();
+  const [genres, setGenres] = useState<Genre[]>([]);
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [genreShows, setGenreShows] = useState<Show[]>([]);
+  const [loading, setLoading] = useState(false);
    
-  shows.forEach(show => {
-    show.genres.forEach(genreId => {
-      if (!genresMap.has(genreId)) {
-        genresMap.set(genreId, {
-          id: genreId,
-          title: `Genre ${genreId}`, // Placeholder, replace with actual genre titles if available
-          description: `Description for genre ${genreId}`, // Placeholder, replace with actual genre descriptions if available
-          shows: []
-        });
-      }
-      genresMap.get(genreId)?.shows.push(show.id);
-    });
-  });
+  
 
 
 
