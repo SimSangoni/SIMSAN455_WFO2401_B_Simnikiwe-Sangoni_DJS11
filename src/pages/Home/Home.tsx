@@ -22,6 +22,7 @@ interface Genre {
   interface HomeProps {
     searchQuery: string;
     sortOption: string;
+    
   }
 
 
