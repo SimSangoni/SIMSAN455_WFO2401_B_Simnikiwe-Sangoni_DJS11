@@ -21,12 +21,13 @@
     background-position: center;
     border-radius: 10px;
     overflow: hidden;
-    transition: transform 0.3s;
+    transition: transform 0.3s, background-color 0.3s;;
     height: 600px;
   }
   
   .genre-container:hover {
     transform: scale(1.05);
+    background-color: rgba(0, 0, 0, 0.5);
   }
   
   .genre-content {
@@ -35,11 +36,24 @@
     width: 100%;
     background: rgba(0, 0, 0, 0.7);
     padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .genre-container:hover .genre-content {
+    opacity: 1;
   }
   
   .genre-title {
-    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
     margin: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    padding: 10px;
   }
   
   .genre-description {

@@ -29,7 +29,8 @@ export default function Genres(){
   }
 
   function getGenreImage(genre: Genre): string {
-    const genreShowId = genre.shows[0];
+    const randomIndex = Math.floor(Math.random() * genre.shows.length);
+    const genreShowId = genre.shows[randomIndex];
     const genreShow = shows.find(show => show.id === genreShowId);
     return genreShow ? genreShow.image : '';
   }
@@ -42,8 +43,8 @@ export default function Genres(){
         <div className="genres-list">
           {genres.map(genre => (
             <div key={genre.id} className="genre-container" style={{ backgroundImage: `url(${getGenreImage(genre)})` }}>
+              <h2 className="genre-title">{genre.title}</h2>
               <div className="genre-content">
-                <h2 className="genre-title">{genre.title}</h2>
                 <p className="genre-description">{genre.description}</p>
               </div>
             </div>
