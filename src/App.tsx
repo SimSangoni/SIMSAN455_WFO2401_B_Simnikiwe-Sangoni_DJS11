@@ -11,8 +11,7 @@ import GenreShows from './pages/Genres/GenreShows';
 import './main.css' // For global styling in future
 import './styles/themes.css'
 
-import { fetchShowsAndGenres } from './utils/apiRequests';
-import { Show, Genre } from './utils/Interfaces';
+
 
 export default function App() {
 
@@ -20,22 +19,9 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOption, setSortOption] = useState('A-Z');
   const [sortMenuOpen, setSortMenuOpen] = useState(false);
-  const [shows, setShows] = useState<Show[]>([]);
-  const [genres, setGenres] = useState<Genre[]>([]);
 
-  useEffect(() => {
-    fetchShowsAndGenresData();
-  }, []);
 
-  async function fetchShowsAndGenresData() {
-    try {
-      const { shows, genres } = await fetchShowsAndGenres();
-      setShows(shows);
-      setGenres(genres);
-    } catch (error) {
-      console.error('Error fetching shows and genres:', error);
-    }
-  }
+
 
   const toggleSortMenu = () => {
     setSortMenuOpen(!sortMenuOpen);
