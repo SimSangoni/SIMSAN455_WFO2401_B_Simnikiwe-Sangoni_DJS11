@@ -20,3 +20,8 @@ export interface HomeProps {
     sortOption: string;
     
   }
+
+export interface GenresProps {
+    shows: Show[];
+  }
+  
