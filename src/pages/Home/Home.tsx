@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import './Home.css'
 import { HomeProps, Show, Genre } from "../../utils/Interfaces";
 import { fetchShowsAndGenres } from "../../utils/apiRequests";
-
+import { Link } from "react-router-dom";
 
 
 export default function Home({ searchQuery, sortOption }: HomeProps){
@@ -11,7 +11,8 @@ export default function Home({ searchQuery, sortOption }: HomeProps){
     const [genres, setGenres] = useState<Genre[]>([]);
     const [sortedShows, setSortedShows] = useState<Show[]>([]);
     const [loading, setLoading] = useState(true);
-  
+
+
     useEffect(() => {
       fetchShows();
     }, []);
@@ -83,7 +84,8 @@ export default function Home({ searchQuery, sortOption }: HomeProps){
         <div className="home">
 
                 {filteredShows.map( show => (
-                    <div key={show.id} className="show-container" 
+                  <Link to={`/show/${show.id}`} key={show.id} >
+                      <div className="show-container" 
                         style={{ backgroundImage: `url(${show.image})` }}>
                         <div className="show-content">
                             <h1 className="show-title">{show.title}</h1>
@@ -95,7 +97,9 @@ export default function Home({ searchQuery, sortOption }: HomeProps){
                             <br></br>
                             {show.seasons} {show.seasons > 1 ? 'Seasons' : 'Season'}
                             </p>
-                    </div> 
+                      </div> 
+                  </Link>
+                    
                 )) }
             </div> 
         </>

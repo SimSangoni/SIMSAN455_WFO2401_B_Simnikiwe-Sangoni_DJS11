@@ -5,7 +5,6 @@ import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Favourites from "./pages/Favourites/Favourites";
 import Genres from "./pages/Genres/Genres";
-import GenreShows from './pages/Genres/GenreShows';
 
 
 import './main.css' // For global styling in future
@@ -59,9 +58,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home searchQuery={searchQuery} sortOption={sortOption}/>} />
           <Route path="/favourites" element={<Favourites/>} />
-          <Route path="/genres/*" element={<Genres />}>
-            <Route path=":genreSlug" element={<GenreShows />} />
-          </Route>
+          <Route path="/genres/*" element={<Genres />}/>
         </Routes>
       </div>
       
