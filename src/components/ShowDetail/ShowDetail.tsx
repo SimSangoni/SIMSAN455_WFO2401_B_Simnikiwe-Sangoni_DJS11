@@ -37,19 +37,22 @@ export default function ShowDetail(){
         return <div>Loading...</div>;
         }
 
+        const headerStyle = {
+            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url(${show.image})`
+          };
+
 
     return (
         
-            <div>
-                <div className="show-header">
-                    <img src={show.image} alt={show.title} />
+            <div className="show-details">
+                <div className="show-header" style={headerStyle}>
+                    {/* <img src={show.image} alt={show.title} /> */}
                     <h1>{show.title}</h1>
                     <p>{show.description}</p>
-                    <button>WATCH S1 E1</button>
                     <div>
                         <span>{show.seasons.length} {show.seasons.length > 1 ? 'Seasons' : 'Season'}</span>
                         <span>{show.genres && show.genres.join(', ')}</span>
-                        </div>
+                    </div>
                 </div>
             </div> 
     )
