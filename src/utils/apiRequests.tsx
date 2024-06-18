@@ -33,3 +33,21 @@ export async function fetchShowsAndGenres(): Promise<{ shows: Show[], genres: Ge
     throw error;
   }
 }
+
+export async function fetchShowDetails(id: string): Promise<Show> {
+  try {
+    const response = await fetch(`https://podcast-api.netlify.app/id/${id}`);
+    if (!response.ok) {
+      throw new Error(`Error fetching data: ${response.statusText}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('Error fetching show details:', error.message);
+    } else {
+      console.error('Error fetching show details:', error);
+    }
+    throw error;
+  }
+}

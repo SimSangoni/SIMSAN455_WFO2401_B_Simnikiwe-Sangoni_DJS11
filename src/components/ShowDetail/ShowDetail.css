@@ -1,0 +1,25 @@
+.show-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+.show-header h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+.show-header p {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.show-header button {
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
