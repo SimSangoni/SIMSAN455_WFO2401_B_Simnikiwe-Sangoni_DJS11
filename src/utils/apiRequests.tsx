@@ -1,4 +1,4 @@
-import {Show, Genre} from './Interfaces'
+import {Show, Genre, ShowDetails} from './Interfaces'
 
 export async function fetchShowsAndGenres(): Promise<{ shows: Show[], genres: Genre[] }> {
   try {
@@ -34,13 +34,14 @@ export async function fetchShowsAndGenres(): Promise<{ shows: Show[], genres: Ge
   }
 }
 
-export async function fetchShowDetails(id: string): Promise<Show> {
+export async function fetchShowDetails(id: string): Promise<ShowDetails> {
   try {
     const response = await fetch(`https://podcast-api.netlify.app/id/${id}`);
     if (!response.ok) {
       throw new Error(`Error fetching data: ${response.statusText}`);
     }
     const data = await response.json();
+    console.log(data)
     return data;
   } catch (error) {
     if (error instanceof Error) {

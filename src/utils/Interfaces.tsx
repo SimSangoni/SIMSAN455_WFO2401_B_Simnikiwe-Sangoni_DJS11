@@ -25,6 +25,7 @@ export interface GenresProps {
     shows: Show[];
   }
 
+
 export interface Episode {
   title: string;
   description: string;
@@ -37,5 +38,14 @@ export interface Season {
   title: string;
   image: string;
   episodes: Episode[];
+}
+
+export interface ShowDetails {
+  id: string;
+  title: string;
+  description: string;
+  seasons: Season[];
+  image: string;
+  genres: string[];
 }
   
