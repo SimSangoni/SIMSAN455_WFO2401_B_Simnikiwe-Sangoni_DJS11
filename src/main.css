@@ -1,5 +1,6 @@
 .body-content {
-    padding-top: 200px; 
+    margin-top: 180px;
+    padding-top: 20px; 
   }
 
 @media (min-width: 768px) {
