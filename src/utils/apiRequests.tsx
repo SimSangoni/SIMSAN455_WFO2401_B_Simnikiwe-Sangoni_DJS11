@@ -13,7 +13,7 @@ export async function fetchShowsAndGenres(): Promise<{ shows: Show[], genres: Ge
     const uniqueGenreIds = Array.from(new Set(
       showsData.flatMap((show: Show) => show.genres)
     ));
-    console.log(uniqueGenreIds);
+    // console.log(uniqueGenreIds);
 
     // Fetch genres individually
     const genrePromises = uniqueGenreIds.map(id =>
@@ -21,7 +21,7 @@ export async function fetchShowsAndGenres(): Promise<{ shows: Show[], genres: Ge
     );
 
     const genresData = await Promise.all(genrePromises);
-    console.log(genresData);
+    // console.log(genresData);
 
     return { shows: showsData, genres: genresData };
   } catch (error) {
