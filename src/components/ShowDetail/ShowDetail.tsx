@@ -74,7 +74,20 @@ export default function ShowDetail(){
                     </div>
                     ))}
                 </div>
+                {selectedSeason && (
+                <div className="episodes">
+                {selectedSeason.episodes.map(episode => (
+                    <div key={episode.episode}>
+                        <h3>{episode.title}</h3>
+                        <p>{episode.description}</p>
+                        <audio controls>
+                            <source src={episode.file} type="audio/mpeg" />
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                ))}
             </div> 
-            
+        )}
+    </div>    
     )
 }

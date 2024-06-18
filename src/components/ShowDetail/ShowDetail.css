@@ -112,3 +112,19 @@
     object-fit: cover;
     border-radius: 10px;
   }
+
+  .episodes {
+    margin-top: 20px;
+  }
+  
+  .episodes h3 {
+    margin: 10px 0;
+  }
+  
+  .episodes p {
+    margin: 5px 0 10px 0;
+  }
+  
+  .episodes audio {
+    width: 100%;
+  }
