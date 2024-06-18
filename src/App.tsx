@@ -5,6 +5,8 @@ import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Favourites from "./pages/Favourites/Favourites";
 import Genres from "./pages/Genres/Genres";
+import ShowDetail from './components/ShowDetail/ShowDetail';
+import Season from './pages/Season/Season';
 
 
 import './main.css' // For global styling in future
@@ -57,6 +59,10 @@ export default function App() {
       <div className='body-content'>
         <Routes>
           <Route path="/" element={<Home searchQuery={searchQuery} sortOption={sortOption}/>} />
+          <Route path="shows/:id" element={<ShowDetail />} >
+            {/* <Route index element={<Season />} /> */}
+            {/* <Route path=''/> */}
+          </Route>
           <Route path="/favourites" element={<Favourites/>} />
           <Route path="/genres/*" element={<Genres />}/>
         </Routes>

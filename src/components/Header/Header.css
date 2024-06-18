@@ -127,6 +127,14 @@
   
 
 @media (max-width: 768px) {
+    .header {
+        height: 10px;
+    }
+
+    .body-content {
+        margin-top: 50px; 
+    }
+
     .nav {
       display: none;
       position: absolute;

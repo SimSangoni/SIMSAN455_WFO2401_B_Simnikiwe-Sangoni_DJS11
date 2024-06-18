@@ -24,4 +24,18 @@ export interface HomeProps {
 export interface GenresProps {
     shows: Show[];
   }
+
+export interface Episode {
+  title: string;
+  description: string;
+  episode: number;
+  file: string;
+}
+
+export interface Season {
+  season: number;
+  title: string;
+  image: string;
+  episodes: Episode[];
+}
   
