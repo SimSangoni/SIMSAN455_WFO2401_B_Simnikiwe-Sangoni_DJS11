@@ -87,3 +87,28 @@
     cursor: pointer;
     z-index: 1;
   }
+
+  .seasons {
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .seasons div {
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .seasons div:hover {
+    transform: scale(1.05);
+  }
+  
+  .seasons img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
