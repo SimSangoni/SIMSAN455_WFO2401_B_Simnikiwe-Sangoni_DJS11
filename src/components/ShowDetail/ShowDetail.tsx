@@ -10,6 +10,7 @@ export default function ShowDetail(){
     const [show, setShow] = useState<ShowDetails | null>(null);
     const [selectedSeason, setSelectedSeason] = useState<Season | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [showMore, setShowMore] = useState(false);
 
 
 
@@ -41,6 +42,10 @@ export default function ShowDetail(){
             backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url(${show.image})`
           };
 
+          const description = show.description;
+          const shortDescription = description.split(' ').slice(0, 30).join(' ') + '...';
+        
+
 
     return (
         
@@ -48,12 +53,28 @@ export default function ShowDetail(){
                 <div className="show-header" style={headerStyle}>
                     {/* <img src={show.image} alt={show.title} /> */}
                     <h1>{show.title}</h1>
-                    <p>{show.description}</p>
+                    <div className={`show-description ${showMore ? 'full' : ''}`}>
+                        {showMore ? description : shortDescription}
+                        {description.split(' ').length > 30 && (
+                        <span className="show-more" onClick={() => setShowMore(!showMore)}>
+                            {showMore ? 'Show less' : 'Show more'}
+                        </span>
+                        )}
+                    </div>
                     <div>
                         <span>{show.seasons.length} {show.seasons.length > 1 ? 'Seasons' : 'Season'}</span>
                         <span>{show.genres && show.genres.join(', ')}</span>
                     </div>
                 </div>
+                <div className="seasons">
+                    {show.seasons.map(season => (
+                    <div key={season.season} onClick={() => setSelectedSeason(season)}>
+                        <h2>{season.title}</h2>
+                        <img src={season.image} alt={season.title} />
+                    </div>
+                    ))}
+                </div>
             </div> 
+            
     )
 }
