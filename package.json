@@ -13,7 +13,10 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "rollup": "^2.56.3", 
+    "@rollup/plugin-node-resolve": "^13.0.4", 
+    "@rollup/plugin-commonjs": "^20.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
