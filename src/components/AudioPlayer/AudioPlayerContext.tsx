@@ -16,9 +16,28 @@ export function AudioPlayerProvider({children}: { children: ReactNode }){
       }
     }, [episode]);
 
+  
+    function playNextEpisode()  {
+     
+    };
+  
+    function playPrevEpisode()  {
     
+    };
+  
+    function toggleShuffle ()  {
+      setIsShuffling((prev) => !prev);
+    };
+  
+    function toggleRepeat () {
+      setIsRepeating((prev) => !prev);
+    };
+  
+    function toggleFavorite ()  {
+      setIsFavorite((prev) => !prev);
+    };
 
-    const playEpisode = (episode: Episode) => {
+    function playEpisode(episode: Episode) {
         setEpisode(episode);
         console.log('Playing episode:', episode);
     }
