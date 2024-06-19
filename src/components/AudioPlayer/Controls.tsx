@@ -1,3 +1,8 @@
+import { useState, useEffect } from "react";
+import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
+import { FaPause, FaPlay } from "react-icons/fa";
+import { TbRewindBackward10, TbRewindForward10  } from "react-icons/tb";
+
 interface ControlsProps {
   audioRef: React.RefObject<HTMLAudioElement>;
   progressBarRef: React.RefObject<HTMLDivElement>;
@@ -15,12 +20,17 @@ const Controls: React.FC<ControlsProps> = ({
   handleNext,
   handlePrev,
 }) => {
+
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const handlePlayPause = () => {
     if (audioRef.current) {
       if (audioRef.current.paused) {
         audioRef.current.play();
+        setIsPlaying(true);
       } else {
         audioRef.current.pause();
+        setIsPlaying(false);
       }
     }
   };
@@ -45,14 +55,25 @@ const Controls: React.FC<ControlsProps> = ({
     }
   };
 
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.addEventListener("timeupdate", handleProgress);
+      return () => {
+        audioRef.current?.removeEventListener("timeupdate", handleProgress);
+      };
+    }
+  }, [audioRef, handleProgress]);
+
+
   return (
     <div className="controls">
-      <button onClick={handlePrev}>Prev</button>
-      <button onClick={handleRewind}>-10s</button>
-      <button onClick={handlePlayPause}>Play/Pause</button>
-      <button onClick={handleFastForward}>+10s</button>
-      <button onClick={handleNext}>Next</button>
-      <div ref={progressBarRef} className="progress-bar" onTimeUpdate={handleProgress} />
+      <button onClick={handlePrev}><MdSkipPrevious /></button>
+      <button onClick={handleRewind}><TbRewindBackward10 /></button>
+      <button onClick={handlePlayPause}>
+        {isPlaying ? <FaPause /> : <FaPlay />}
+      </button>
+      <button onClick={handleFastForward}><TbRewindForward10 /></button>
+      <button onClick={handleNext}><MdSkipNext /></button>
     </div>
   );
 };

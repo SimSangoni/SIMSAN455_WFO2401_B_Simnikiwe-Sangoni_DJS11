@@ -22,6 +22,7 @@ const AudioPlayer: React.FC = () => {
     useEffect(() => {
       setCurrentTrack(episode);
     }, [episode]);
+
   
     if (!currentTrack) return null;
   
@@ -51,6 +52,7 @@ const AudioPlayer: React.FC = () => {
               timeProgress={timeProgress}
               duration={duration}
             />
+      
           </div>
         </div>
       </>
