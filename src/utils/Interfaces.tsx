@@ -55,7 +55,7 @@ export interface LocationState {
 
 export interface AudioPlayerContextProps {
   episode: Episode | null;
-  seasonImage: string | null;
+  seasonImage: string | undefined;
   episodes: Episode[];
   playEpisode: (episode: Episode, seasonImage: string) => void;
   setEpisodes: (episodes: Episode[]) => void;

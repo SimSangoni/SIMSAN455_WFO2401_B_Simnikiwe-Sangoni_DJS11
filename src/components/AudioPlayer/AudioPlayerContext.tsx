@@ -5,7 +5,7 @@ const AudioPlayerContext = createContext<AudioPlayerContextProps | undefined>(un
 
 export function AudioPlayerProvider({children}: { children: ReactNode }){
     const [episode, setEpisode] = useState<Episode | null>(null);
-    const [seasonImage, setSeasonImage] = useState<string | null>(null);
+    const [seasonImage, setSeasonImage] = useState<string | undefined>(undefined);
     const [episodes, setEpisodes] = useState<Episode[]>([]);
     const [isShuffling, setIsShuffling] = useState(false);
     const [isRepeating, setIsRepeating] = useState(false);
