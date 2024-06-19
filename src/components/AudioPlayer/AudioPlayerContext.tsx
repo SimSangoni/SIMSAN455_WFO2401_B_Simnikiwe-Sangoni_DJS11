@@ -5,6 +5,10 @@ const AudioPlayerContext = createContext<AudioPlayerContextProps | undefined>(un
 
 export function AudioPlayerProvider({children}: { children: ReactNode }){
     const [episode, setEpisode] = useState<Episode | null>(null);
+    const [episodes, setEpisodes] = useState<Episode[]>([]);
+    const [isShuffling, setIsShuffling] = useState(false);
+    const [isRepeating, setIsRepeating] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
 
     const playEpisode = (episode: Episode) => {
         setEpisode(episode);
