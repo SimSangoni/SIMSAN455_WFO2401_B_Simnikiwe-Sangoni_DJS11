@@ -6,7 +6,6 @@ import Home from "./pages/Home/Home";
 import Favourites from "./pages/Favourites/Favourites";
 import Genres from "./pages/Genres/Genres";
 import ShowDetail from './pages/ShowDetail/ShowDetail';
-// import Season from './pages/Season/Season';
 
 
 import './main.css' // For global styling in future

@@ -1,5 +1,5 @@
 
-export default function Season(){
+export default function SeasonList(){
     return (
         
             <div>

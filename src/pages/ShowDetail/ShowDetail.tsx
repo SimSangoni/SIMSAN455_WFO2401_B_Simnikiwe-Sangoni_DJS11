@@ -2,6 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ShowDetails, Season } from "../../utils/Interfaces";
 import { fetchShowDetails } from "../../utils/apiRequests";
+
+
+// import SeasonList from '../SeasonList/SeasonList';
+// import EpisodeList from '../EpisodeList/EpisodeList';
+
+
 import './ShowDetail.css'
 
 export default function ShowDetail(){
