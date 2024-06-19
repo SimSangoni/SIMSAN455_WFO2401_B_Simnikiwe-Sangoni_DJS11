@@ -1,71 +1,61 @@
-import { useEffect, useRef } from 'react';
-import { useAudioPlayer } from "./AudioPlayerContext";
-import './AudioPlayer.css'
+import {useRef, useState, useEffect } from 'react';
+import { useAudioPlayer } from './AudioPlayerContext';
+import DisplayTrack from './DisplayTrack';
+import Controls from ',/Controls';
+import ProgressBar from './ProgressBar';
+import TopBar from './TopBar';
+import './AudioPlayer.css';
 
-export default function AudioPlayer(){
+const AudioPlayer: React.FC = () => {
+  const {
+    episode,
+    episodes,
+    playNextEpisode,
+    playPrevEpisode,
+  } = useAudioPlayer();
+  const [currentTrack, setCurrentTrack] = useState(episode);
+  const [timeProgress, setTimeProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
 
-    const {
-        episode,
-        seasonImage,
-        playNextEpisode,
-        playPrevEpisode,
-        toggleShuffle,
-        toggleRepeat,
-        toggleFavorite,
-        isShuffling,
-        isRepeating,
-        isFavorite
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const progressBarRef = useRef<HTMLDivElement | null>(null);
 
-    } = useAudioPlayer();
-    const audioRef = useRef<HTMLAudioElement | null>(null);
+  useEffect(() => {
+    setCurrentTrack(episode);
+  }, [episode]);
 
-    useEffect(() => {
-        if (audioRef.current && episode) {
-          audioRef.current.pause();
-          audioRef.current.src = episode.file;
-          audioRef.current.load();
-          audioRef.current.play();
-        }
-      }, [episode]);
+  if (!currentTrack) return null;
 
-    const handleFastForward = () => {
-    if (audioRef.current) {
-        audioRef.current.currentTime += 10;
-    }
-    };
-
-    const handleRewind = () => {
-        if (audioRef.current) {
-          audioRef.current.currentTime -= 10;
-        }
-      };
-
-    if (!episode) return null;
-
-    return (
-        <div className="audio-player">
-            <div className="audio-player-content">
-                <div className="audio-player-info">
-                <img src={seasonImage} alt={episode.title} className="episode-image" />
-                    <div className='episode-details'>
-                        <h3 className='episode-title'>{episode.title}</h3>
-                        <p className='episode-description'>{episode.description}</p>
-                    </div>
-                </div>
-                <audio ref={audioRef} controls>
-                    <source src={episode.file} type="audio/mpeg" />
-                    Your browser does not support the audio element.
-                </audio>
-                <div className="controls">
-                    <button onClick={playPrevEpisode}>Prev</button>
-                    <button onClick={handleRewind}>-10s</button>
-                    <button onClick={handleFastForward}>+10s</button>
-                    <button onClick={playNextEpisode}>Next</button>
-                    <button onClick={toggleShuffle}>{isShuffling ? 'Disable Shuffle' : 'Enable Shuffle'}</button>
-                    <button onClick={toggleRepeat}>{isRepeating ? 'Disable Repeat' : 'Enable Repeat'}</button>
-                    <button onClick={toggleFavorite}>{isFavorite ? 'Unfavorite' : 'Favorite'}</button>
-                </div>
-            </div>
+  return (
+    <>
+      <TopBar />
+      <div className="audio-player">
+        <div className="inner">
+          <DisplayTrack
+            currentTrack={currentTrack}
+            audioRef={audioRef}
+            setDuration={setDuration}
+            progressBarRef={progressBarRef}
+            handleNext={playNextEpisode}
+          />
+          <Controls
+            audioRef={audioRef}
+            progressBarRef={progressBarRef}
+            duration={duration}
+            setTimeProgress={setTimeProgress}
+            handleNext={playNextEpisode}
+            handlePrev={playPrevEpisode}
+          />
+          <ProgressBar
+            progressBarRef={progressBarRef}
+            audioRef={audioRef}
+            timeProgress={timeProgress}
+            duration={duration}
+          />
         </div>
-    )
-}
+      </div>
+    </>
+  );
+};
+
+export default AudioPlayer;

@@ -31,6 +31,7 @@ export interface Episode {
   description: string;
   episode: number;
   file: string;
+  image: string;
 }
 
 export interface Season {
@@ -67,4 +68,13 @@ export interface AudioPlayerContextProps {
   isShuffling: boolean;
   isRepeating: boolean;
   isFavorite: boolean;
+}
+
+
+export interface DisplayTrackProps {
+  currentTrack: Episode;
+  audioRef: React.RefObject<HTMLAudioElement>;
+  setDuration: (duration: number) => void;
+  progressBarRef: React.RefObject<HTMLDivElement>;
+  handleNext: () => void;
 }
