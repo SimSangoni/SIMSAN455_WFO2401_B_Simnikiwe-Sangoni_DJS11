@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Episode } from '../../utils/Interfaces';
 import { DisplayTrackProps } from '../../utils/Interfaces';
 
 const DisplayTrack: React.FC<DisplayTrackProps> = ({
