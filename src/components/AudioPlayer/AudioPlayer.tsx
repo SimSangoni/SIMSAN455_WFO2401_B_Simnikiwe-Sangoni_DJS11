@@ -4,7 +4,18 @@ import './AudioPlayer.css'
 
 export default function AudioPlayer(){
 
-    const {episode} = useAudioPlayer();
+    const {
+        episode,
+        playNextEpisode,
+        playPrevEpisode,
+        toggleShuffle,
+        toggleRepeat,
+        toggleFavorite,
+        isShuffling,
+        isRepeating,
+        isFavorite
+
+    } = useAudioPlayer();
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
