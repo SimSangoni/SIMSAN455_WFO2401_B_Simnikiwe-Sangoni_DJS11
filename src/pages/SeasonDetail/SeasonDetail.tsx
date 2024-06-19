@@ -10,7 +10,7 @@ export default function SeasonDetail(){
 
     const location = useLocation();
     const { season } = location.state as LocationState;
-    const {playEpisode} = useAudioPlayer();
+    const { playEpisode } = useAudioPlayer();
 
 
     if (!season) {

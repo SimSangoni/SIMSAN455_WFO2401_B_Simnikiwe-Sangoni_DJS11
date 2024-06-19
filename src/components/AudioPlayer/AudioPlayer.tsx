@@ -1,9 +1,20 @@
+import { useEffect, useRef } from 'react';
 import { useAudioPlayer } from "./AudioPlayerContext";
 import './AudioPlayer.css'
 
 export default function AudioPlayer(){
 
     const {episode} = useAudioPlayer();
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+
+    useEffect(() => {
+        if (audioRef.current && episode) {
+          audioRef.current.pause();
+          audioRef.current.src = episode.file;
+          audioRef.current.load();
+          audioRef.current.play();
+        }
+      }, [episode]);
 
     if (!episode) return null;
 
@@ -11,8 +22,8 @@ export default function AudioPlayer(){
         <div className="audio-player">
             <div className="audio-player-content">
                 <div className="audio-player-info">
-                    <h3>{episode.title}</h3>
-                    <p>{episode.description}</p>
+                    <h3 className='episode-title'>{episode.title}</h3>
+                    <p className='episode-description'>{episode.description}</p>
                 </div>
                 <audio controls autoPlay>
                     <source src={episode.file} type="audio/mpeg" />
