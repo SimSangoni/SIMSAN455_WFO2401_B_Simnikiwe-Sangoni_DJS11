@@ -16,31 +16,37 @@ export function AudioPlayerProvider({children}: { children: ReactNode }){
       }
     }, [episode]);
 
-  
+    function playEpisode(episode: Episode) {
+      setEpisode(episode);
+      console.log('Playing episode:', episode);
+  }
+
     function playNextEpisode()  {
-     
+      if (!episode || episodes.length === 0) return;
+      const currentIndex = episodes.findIndex((e) => e.episode === episode.episode);
+      const nextIndex = (currentIndex + 1) % episodes.length;
+      setEpisode(episodes[nextIndex]);
+      console.log('Playing next episode')
     };
   
     function playPrevEpisode()  {
-    
+      console.log('Playing previous episode')
     };
   
     function toggleShuffle ()  {
       setIsShuffling((prev) => !prev);
+      console.log('Toggling shuffle episodes')
     };
   
     function toggleRepeat () {
       setIsRepeating((prev) => !prev);
+      console.log('Toggling repeat episodes')
     };
   
     function toggleFavorite ()  {
       setIsFavorite((prev) => !prev);
+      console.log('Toggling repeat episodes')
     };
-
-    function playEpisode(episode: Episode) {
-        setEpisode(episode);
-        console.log('Playing episode:', episode);
-    }
 
     return (
     <AudioPlayerContext.Provider value={{ 
