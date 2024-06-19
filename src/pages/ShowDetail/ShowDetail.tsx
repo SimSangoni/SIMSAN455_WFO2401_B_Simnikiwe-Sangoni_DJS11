@@ -10,11 +10,14 @@ import './ShowDetail.css'
 export default function ShowDetail(){
 
     const { id } = useParams<{ id: string }>();
-    const navigate = useNavigate();
+   
     const [show, setShow] = useState<ShowDetails | null>(null);
-  
     const [error, setError] = useState<string | null>(null);
+
+    
     const [showMore, setShowMore] = useState(false);
+
+    const navigate = useNavigate();
 
 
     useEffect(() => {
