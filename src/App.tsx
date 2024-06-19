@@ -21,7 +21,7 @@ import './styles/themes.css'
 
 export default function App() {
 
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOption, setSortOption] = useState('A-Z');
   const [sortMenuOpen, setSortMenuOpen] = useState(false);
