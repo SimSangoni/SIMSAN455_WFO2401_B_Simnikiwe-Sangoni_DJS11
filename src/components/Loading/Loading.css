@@ -3,13 +3,11 @@
     justify-content: center;
     align-items: center;
     height: 100vh; 
-    background-color: #fff; 
   }
   
   .spinner {
     font-size: 3rem;
     animation: spin 1s linear infinite;
-    color: black; 
   }
   
   @keyframes spin {

@@ -3,6 +3,7 @@ import { useParams, useNavigate, Outlet, useLocation } from "react-router-dom";
 import { ShowDetails } from "../../utils/Interfaces";
 import { fetchShowDetails } from "../../utils/apiRequests";
 import Loading from "../../components/Loading/Loading";
+import Error from "../../components/Error/Error";
 
 import './ShowDetail.css'
 import { AiFillRightCircle, AiFillLeftCircle } from "react-icons/ai";
@@ -44,7 +45,7 @@ export default function ShowDetail(){
 
 
       if (error) {
-        return <div>Error: {error}</div>;
+        return <Error message={error} />;
       }
 
         if (!show) {
