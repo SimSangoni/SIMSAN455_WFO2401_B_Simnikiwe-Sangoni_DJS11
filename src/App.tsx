@@ -7,7 +7,6 @@ import Favourites from "./pages/Favourites/Favourites";
 import Genres from "./pages/Genres/Genres";
 import ShowDetail from './pages/ShowDetail/ShowDetail';
 import SeasonDetail from './pages/SeasonDetail/SeasonDetail';
-import EpisodeDetail from './pages/EpisodeDetail/EpisodeDetail';
 
 
 import './main.css' // For global styling in future
@@ -62,7 +61,7 @@ export default function App() {
           <Route path="/" element={<Home searchQuery={searchQuery} sortOption={sortOption}/>} />
           <Route path="show/:id" element={<ShowDetail />}>
             <Route path="season/:seasonId" element={<SeasonDetail />}>
-              <Route path="episode/:episodeId" element={<EpisodeDetail />} />
+            
             </Route>
           </Route>
           <Route path="/favourites" element={<Favourites/>} />
