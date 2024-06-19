@@ -27,6 +27,18 @@ export default function AudioPlayer(){
         }
       }, [episode]);
 
+    const handleFastForward = () => {
+    if (audioRef.current) {
+        audioRef.current.currentTime += 10;
+    }
+    };
+
+    const handleRewind = () => {
+        if (audioRef.current) {
+          audioRef.current.currentTime -= 10;
+        }
+      };
+
     if (!episode) return null;
 
     return (
@@ -40,6 +52,15 @@ export default function AudioPlayer(){
                     <source src={episode.file} type="audio/mpeg" />
                     Your browser does not support the audio element.
                 </audio>
+                <div className="controls">
+                    <button onClick={playPrevEpisode}>Previous</button>
+                    <button onClick={handleRewind}>Rewind 10s</button>
+                    <button onClick={handleFastForward}>Fast Forward 10s</button>
+                    <button onClick={playNextEpisode}>Next</button>
+                    <button onClick={toggleShuffle}>{isShuffling ? 'Disable Shuffle' : 'Enable Shuffle'}</button>
+                    <button onClick={toggleRepeat}>{isRepeating ? 'Disable Repeat' : 'Enable Repeat'}</button>
+                    <button onClick={toggleFavorite}>{isFavorite ? 'Unfavorite' : 'Favorite'}</button>
+                </div>
             </div>
         </div>
     )
