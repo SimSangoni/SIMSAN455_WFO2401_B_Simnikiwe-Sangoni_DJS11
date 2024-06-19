@@ -1,7 +1,7 @@
 import {useRef, useState, useEffect } from 'react';
 import { useAudioPlayer } from './AudioPlayerContext';
 import DisplayTrack from './DisplayTrack';
-import Controls from ',/Controls';
+import Controls from './Controls';
 import ProgressBar from './ProgressBar';
 import TopBar from './TopBar';
 import './AudioPlayer.css';
