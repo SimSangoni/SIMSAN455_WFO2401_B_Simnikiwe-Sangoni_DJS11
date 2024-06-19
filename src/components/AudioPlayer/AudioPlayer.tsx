@@ -52,7 +52,8 @@ export default function AudioPlayer(){
                     <source src={episode.file} type="audio/mpeg" />
                     Your browser does not support the audio element.
                 </audio>
-                <div className="controls">
+            </div>
+            <div className="controls">
                     <button onClick={playPrevEpisode}>Previous</button>
                     <button onClick={handleRewind}>Rewind 10s</button>
                     <button onClick={handleFastForward}>Fast Forward 10s</button>
@@ -61,7 +62,6 @@ export default function AudioPlayer(){
                     <button onClick={toggleRepeat}>{isRepeating ? 'Disable Repeat' : 'Enable Repeat'}</button>
                     <button onClick={toggleFavorite}>{isFavorite ? 'Unfavorite' : 'Favorite'}</button>
                 </div>
-            </div>
         </div>
     )
 }
