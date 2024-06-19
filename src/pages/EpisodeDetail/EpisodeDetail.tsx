@@ -1,5 +1,5 @@
 
-export default function EpisodeList(){
+export default function EpisodeDetail(){
     return (
         
             <div>
