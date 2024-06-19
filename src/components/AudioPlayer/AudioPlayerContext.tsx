@@ -4,67 +4,63 @@ import { AudioPlayerContextProps, Episode } from "../../utils/Interfaces";
 const AudioPlayerContext = createContext<AudioPlayerContextProps | undefined>(undefined)
 
 export function AudioPlayerProvider({children}: { children: ReactNode }){
-    const [episode, setEpisode] = useState<Episode | null>(null);
-    const [seasonImage, setSeasonImage] = useState<string | undefined>(undefined);
-    const [episodes, setEpisodes] = useState<Episode[]>([]);
-    const [isShuffling, setIsShuffling] = useState(false);
-    const [isRepeating, setIsRepeating] = useState(false);
-    const [isFavorite, setIsFavorite] = useState(false);
+  const [episode, setEpisode] = useState<Episode | null>(null);
+  const [seasonImage, setSeasonImage] = useState<string | undefined>(undefined);
+  const [episodes, setEpisodes] = useState<Episode[]>([]);
+  const [isShuffling, setIsShuffling] = useState(false);
+  const [isRepeating, setIsRepeating] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
+  const playEpisode = (episode: Episode, seasonImage: string) => {
+    setEpisode(episode);
+    setSeasonImage(seasonImage);
+  };
 
-    function playEpisode(episode: Episode, seasonImage: string) {
-      setEpisode(episode);
-      setSeasonImage(seasonImage);
-      console.log('Playing episode:', episode);
-  }
+  const playNextEpisode = () => {
+    if (!episode || episodes.length === 0) return;
+    const currentIndex = episodes.findIndex((e) => e.episode === episode.episode);
+    const nextIndex = (currentIndex + 1) % episodes.length;
+    setEpisode(episodes[nextIndex]);
+  };
 
-    function playNextEpisode()  {
-      if (!episode || episodes.length === 0) return;
-      const currentIndex = episodes.findIndex((e) => e.episode === episode.episode);
-      const nextIndex = (currentIndex + 1) % episodes.length;
-      setEpisode(episodes[nextIndex]);
-      console.log('Playing next episode')
-    };
-  
-    function playPrevEpisode()  {
-      console.log('Playing previous episode')
-    };
-  
-    function toggleShuffle ()  {
-      setIsShuffling((prev) => !prev);
-      console.log('Toggling shuffle episodes')
-    };
-  
-    function toggleRepeat () {
-      setIsRepeating((prev) => !prev);
-      console.log('Toggling repeat episodes')
-    };
-  
-    function toggleFavorite ()  {
-      setIsFavorite((prev) => !prev);
-      console.log('Toggling repeat episodes')
-    };
+  const playPrevEpisode = () => {
+    if (!episode || episodes.length === 0) return;
+    const currentIndex = episodes.findIndex((e) => e.episode === episode.episode);
+    const prevIndex = (currentIndex - 1 + episodes.length) % episodes.length;
+    setEpisode(episodes[prevIndex]);
+  };
 
-    return (
-    <AudioPlayerContext.Provider value={{ 
-        episode, 
-        seasonImage,
-        episodes,
-        playEpisode,
-        setEpisodes,
-        playNextEpisode,
-        playPrevEpisode,
-        toggleShuffle,
-        toggleRepeat,
-        toggleFavorite,
-        isShuffling,
-        isRepeating,
-        isFavorite
-        }}>
+  const toggleShuffle = () => {
+    setIsShuffling((prev) => !prev);
+  };
 
-        {children}
+  const toggleRepeat = () => {
+    setIsRepeating((prev) => !prev);
+  };
+
+  const toggleFavorite = () => {
+    setIsFavorite((prev) => !prev);
+  };
+
+  return (
+    <AudioPlayerContext.Provider value={{
+      episode,
+      seasonImage,
+      episodes,
+      playEpisode,
+      setEpisodes,
+      playNextEpisode,
+      playPrevEpisode,
+      toggleShuffle,
+      toggleRepeat,
+      toggleFavorite,
+      isShuffling,
+      isRepeating,
+      isFavorite
+    }}>
+      {children}
     </AudioPlayerContext.Provider>
-    )
+  );
 }
 
 export function useAudioPlayer(){

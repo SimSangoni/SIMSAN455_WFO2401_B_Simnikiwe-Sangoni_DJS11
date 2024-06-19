@@ -8,8 +8,10 @@ import './AudioPlayer.css';
 const AudioPlayer: React.FC = () => {
     const {
       episode,
+      episodes,
       playNextEpisode,
       playPrevEpisode,
+      seasonImage
     } = useAudioPlayer();
     const [currentTrack, setCurrentTrack] = useState(episode);
     const [timeProgress, setTimeProgress] = useState(0);
@@ -34,6 +36,7 @@ const AudioPlayer: React.FC = () => {
               setDuration={setDuration}
               progressBarRef={progressBarRef}
               handleNext={playNextEpisode}
+              seasonImage={seasonImage}
             />
             <Controls
               audioRef={audioRef}

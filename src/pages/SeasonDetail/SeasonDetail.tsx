@@ -17,11 +17,8 @@ export default function SeasonDetail(){
         if (season) {
           setEpisodes(season.episodes);
         }
-      }, [season, setEpisodes]);
+      }, [season.episodes, setEpisodes]);
 
-    if (!season) {
-        return <div>Error: Season details not available.</div>;
-    }
 
     return (
         

@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react';
+
 interface ProgressBarProps {
   progressBarRef: React.RefObject<HTMLDivElement>;
   audioRef: React.RefObject<HTMLAudioElement>;
@@ -11,17 +13,27 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   timeProgress,
   duration,
 }) => {
-  const handleProgressClick = (event: React.MouseEvent) => {
-    if (progressBarRef.current && audioRef.current) {
-      const progressBarWidth = progressBarRef.current.offsetWidth;
-      const clickPosition = event.nativeEvent.offsetX;
-      const clickTime = (clickPosition / progressBarWidth) * duration;
-      audioRef.current.currentTime = clickTime;
+  useEffect(() => {
+    if (audioRef.current) {
+      const handleTimeUpdate = () => {
+        if (audioRef.current && progressBarRef.current) {
+          const percent = (audioRef.current.currentTime / audioRef.current.duration) * 100;
+          progressBarRef.current.style.width = `${percent}%`;
+        }
+      };
+
+      audioRef.current.addEventListener('timeupdate', handleTimeUpdate);
+
+      return () => {
+        if (audioRef.current) {
+          audioRef.current.removeEventListener('timeupdate', handleTimeUpdate);
+        }
+      };
     }
-  };
+  }, [audioRef, progressBarRef]);
 
   return (
-    <div className="progress-container" onClick={handleProgressClick}>
+    <div className="progress-container">
       <div className="progress-bar" ref={progressBarRef} style={{ width: `${(timeProgress / duration) * 100}%` }} />
     </div>
   );
