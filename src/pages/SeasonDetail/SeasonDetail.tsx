@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import {  LocationState, Episode } from '../../utils/Interfaces';
 import { useAudioPlayer } from '../../components/AudioPlayer/AudioPlayerContext';
 import './SeasonDetail.css'
@@ -10,8 +11,13 @@ export default function SeasonDetail(){
 
     const location = useLocation();
     const { season } = location.state as LocationState;
-    const { playEpisode } = useAudioPlayer();
+    const { playEpisode, setEpisodes } = useAudioPlayer();
 
+    useEffect(() => {
+        if (season) {
+          setEpisodes(season.episodes);
+        }
+      }, [season, setEpisodes]);
 
     if (!season) {
         return <div>Error: Season details not available.</div>;
@@ -29,7 +35,7 @@ export default function SeasonDetail(){
                         key={episode.episode} 
                         className="episode-item"
                         onClick={() => {
-                            playEpisode(episode)
+                            playEpisode(episode, season.image)
                         }}
                     >
                         <div className="episode-number">{episode.episode}</div>

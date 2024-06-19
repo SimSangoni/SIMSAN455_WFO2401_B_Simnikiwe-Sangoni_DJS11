@@ -6,6 +6,7 @@ export default function AudioPlayer(){
 
     const {
         episode,
+        seasonImage,
         playNextEpisode,
         playPrevEpisode,
         toggleShuffle,
@@ -45,6 +46,7 @@ export default function AudioPlayer(){
         <div className="audio-player">
             <div className="audio-player-content">
                 <div className="audio-player-info">
+                <img src={seasonImage} alt={episode.title} className="episode-image" />
                     <div className='episode-details'>
                         <h3 className='episode-title'>{episode.title}</h3>
                         <p className='episode-description'>{episode.description}</p>

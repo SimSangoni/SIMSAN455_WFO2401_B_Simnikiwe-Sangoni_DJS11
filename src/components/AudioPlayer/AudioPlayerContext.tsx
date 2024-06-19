@@ -1,23 +1,20 @@
-import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
 import { AudioPlayerContextProps, Episode } from "../../utils/Interfaces";
 
 const AudioPlayerContext = createContext<AudioPlayerContextProps | undefined>(undefined)
 
 export function AudioPlayerProvider({children}: { children: ReactNode }){
     const [episode, setEpisode] = useState<Episode | null>(null);
+    const [seasonImage, setSeasonImage] = useState<string | null>(null);
     const [episodes, setEpisodes] = useState<Episode[]>([]);
     const [isShuffling, setIsShuffling] = useState(false);
     const [isRepeating, setIsRepeating] = useState(false);
     const [isFavorite, setIsFavorite] = useState(false);
 
-    useEffect(() => {
-      if (episode) {
-        setEpisodes((prevEpisodes) => [...prevEpisodes, episode]);
-      }
-    }, [episode]);
 
-    function playEpisode(episode: Episode) {
+    function playEpisode(episode: Episode, seasonImage: string) {
       setEpisode(episode);
+      setSeasonImage(seasonImage);
       console.log('Playing episode:', episode);
   }
 
@@ -51,8 +48,10 @@ export function AudioPlayerProvider({children}: { children: ReactNode }){
     return (
     <AudioPlayerContext.Provider value={{ 
         episode, 
+        seasonImage,
         episodes,
         playEpisode,
+        setEpisodes,
         playNextEpisode,
         playPrevEpisode,
         toggleShuffle,
@@ -62,6 +61,7 @@ export function AudioPlayerProvider({children}: { children: ReactNode }){
         isRepeating,
         isFavorite
         }}>
+
         {children}
     </AudioPlayerContext.Provider>
     )
