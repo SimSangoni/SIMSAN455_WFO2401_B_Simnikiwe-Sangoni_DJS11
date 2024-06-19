@@ -7,15 +7,17 @@ export default function AudioPlayer(){
     if (!episode) return null;
 
     return (
-        <div>
-            <div className="audio-player-info">
-                <h3>{episode.title}</h3>
-                <p>{episode.description}</p>
+        <div className="audio-player">
+            <div className="audio-player-content">
+                <div className="audio-player-info">
+                    <h3>{episode.title}</h3>
+                    <p>{episode.description}</p>
+                </div>
+                <audio controls autoPlay>
+                    <source src={episode.file} type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                </audio>
             </div>
-            <audio controls autoPlay>
-                <source src={episode.file} type="audio/mpeg" />
-                Your browser does not support the audio element.
-            </audio>
         </div>
     )
 }
