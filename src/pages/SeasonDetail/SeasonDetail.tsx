@@ -1,5 +1,5 @@
-import { useLocation, useNavigate } from 'react-router-dom';
-import {  LocationState } from '../../utils/Interfaces';
+import { useLocation, useNavigate, Outlet } from 'react-router-dom';
+import {  LocationState, Episode } from '../../utils/Interfaces';
 import './SeasonDetail.css'
 
 
@@ -9,28 +9,36 @@ export default function SeasonDetail(){
 
     const location = useLocation();
     const navigate = useNavigate();
-    const { season } = location.state as LocationState;
+    const locationState = location.state as LocationState;
+
+
+    const { season } = locationState;
 
     return (
         
-            <div className='season-detail'>
-                <h1 className="season-title">{season.title}</h1>
-                <div className='episode-list'>
-                {season.episodes.map(episode => (
-                    <div key={episode.episode} 
+        <div className='season-detail'>
+            <h1 className="season-title">{season.title}</h1>
+
+            <div className='episode-list'>
+
+                {season.episodes.map((episode: Episode) => (
+                    <div 
+                        key={episode.episode} 
                         className="episode-item"
                         onClick={() => navigate(`episode/${episode.episode}`, 
                         { state: { episode } })}
                     >
-                        <div className="episode-number"> {episode.episode}</div>
+                        <div className="episode-number">{episode.episode}</div>
+
                         <div className="episode-info">
                             <h2 className="episode-title">{episode.title}</h2>
                             <p className="episode-description">{episode.description}</p>
                         </div>      
                     </div>
                     ))}
-                </div>
-            </div> 
+            </div>
+                <Outlet />
+        </div> 
     )
 }
 

@@ -59,17 +59,29 @@
   - List of episodes for the season
 - **File**: `src/pages/Season.tsx`
 - **Description**: Displays detailed information about a specific season, including its episodes.
+![Alt text](src/assets/inspo_Images/podcast-lists.png)
+
 - **Implementation Plan**:
   1. Create `Season.tsx` with season details.
   2. Fetch and display episodes related to the season.
 
 ## 5. Episode Page
+
+
+
 - **Purpose**: Provides playback for a specific episode.
 - **Contents**:
   - Episode details (title, description, etc.)
   - Audio player with playback controls
 - **File**: `src/pages/Episode.tsx`
 - **Description**: Provides playback for a specific episode, including an audio player with controls.
+
+![Alt text](src/assets/inspo_Images/audio-player-compressed.png)
+
+<br><br>
+
+![Alt text](src/assets/inspo_Images/full-audio-player.png)
+
 - **Implementation Plan**:
   1. Create `Episode.tsx` with episode details.
   2. Implement audio playback controls.
