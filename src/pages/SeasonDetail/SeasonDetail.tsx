@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import {  LocationState } from '../../utils/Interfaces';
+import './SeasonDetsil.css'
 
 
 
