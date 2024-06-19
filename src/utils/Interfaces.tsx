@@ -55,5 +55,14 @@ export interface LocationState {
 
 export interface AudioPlayerContextProps {
   episode: Episode | null;
+  episodes: Episode[];
   playEpisode: (episode: Episode) => void;
+  playNextEpisode: () => void;
+  playPrevEpisode: () => void;
+  toggleShuffle: () => void;
+  toggleRepeat: () => void;
+  toggleFavorite: () => void;
+  isShuffling: boolean;
+  isRepeating: boolean;
+  isFavorite: boolean;
 }
