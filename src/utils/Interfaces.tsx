@@ -49,3 +49,6 @@ export interface ShowDetails {
   genres: string[];
 }
   
+export interface LocationState {
+  season: Season;
+}

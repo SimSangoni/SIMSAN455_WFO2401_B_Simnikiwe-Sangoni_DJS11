@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Outlet } from "react-router-dom";
-import { ShowDetails, Season, Episode } from "../../utils/Interfaces";
+import { ShowDetails } from "../../utils/Interfaces";
 import { fetchShowDetails } from "../../utils/apiRequests";
 
-
-// import SeasonList from '../SeasonList/SeasonList';
-// import EpisodeList from '../EpisodeList/EpisodeList';
 
 
 import './ShowDetail.css'
@@ -18,10 +15,6 @@ export default function ShowDetail(){
   
     const [error, setError] = useState<string | null>(null);
     const [showMore, setShowMore] = useState(false);
-
-    const [selectedSeason, setSelectedSeason] = useState<Season | null>(null);
-    const [selectedEpisode, setSelectedEpisode] = useState<Episode | null>(null);
-
 
 
     useEffect(() => {
@@ -77,7 +70,7 @@ export default function ShowDetail(){
                 </div>
                 <div className="seasons">
                     {show.seasons.map(season => (
-                    <div key={season.season} onClick={() => navigate(`season/${season.season}`)}>
+                    <div key={season.season} onClick={() => navigate(`season/${season.season}`, { state: { season } })}>
                         <h2>{season.title}</h2>
                         <img src={season.image} alt={season.title} />
                     </div>
