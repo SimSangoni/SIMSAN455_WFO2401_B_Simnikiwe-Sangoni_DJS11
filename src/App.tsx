@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Header from "./components/Header/Header";
-import Home from "./pages/Home/Home";
+import Shows from "./pages/Shows/Shows";
 import Favourites from "./pages/Favourites/Favourites";
 import Genres from "./pages/Genres/Genres";
 import ShowDetail from './pages/ShowDetail/ShowDetail';
@@ -58,7 +58,7 @@ export default function App() {
       />
       <div className='body-content'>
         <Routes>
-          <Route path="/" element={<Home searchQuery={searchQuery} sortOption={sortOption}/>} />
+          <Route path="/" element={<Shows searchQuery={searchQuery} sortOption={sortOption}/>} />
           <Route path="show/:id" element={<ShowDetail />}>
             <Route path="season/:seasonId" element={<SeasonDetail />}>
             
