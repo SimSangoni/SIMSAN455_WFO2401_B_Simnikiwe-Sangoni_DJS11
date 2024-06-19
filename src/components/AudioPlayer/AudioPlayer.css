@@ -41,7 +41,7 @@
   }
   
 
-  .episode-description {
+  .audio-player > .episode-description {
     display: none;
   }
   
