@@ -4,6 +4,8 @@ import { ShowProps, Show, Genre } from "../../utils/Interfaces";
 import { fetchShowsAndGenres } from "../../utils/apiRequests";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
+import Error from "../../components/Error/Error";
+import { isErrorWithMessage } from "../../utils/funstionsUtils";
 
 
 export default function Shows({ searchQuery, sortOption }: ShowProps){
@@ -12,6 +14,7 @@ export default function Shows({ searchQuery, sortOption }: ShowProps){
     const [genres, setGenres] = useState<Genre[]>([]);
     const [sortedShows, setSortedShows] = useState<Show[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
 
     useEffect(() => {
@@ -29,10 +32,16 @@ export default function Shows({ searchQuery, sortOption }: ShowProps){
         setShows(shows);
         setGenres(genres);
         setLoading(false);
-      } catch (error) {
+      } catch (error: unknown) {
+        if  (isErrorWithMessage(error)) {
+          setError(error.message);
+        } else {
+          setError('An unknown error occurred');
+        }
+      } finally {
         setLoading(false);
       }
-    }
+    };
     
 
       function sortShows(option: string) {
@@ -74,6 +83,10 @@ export default function Shows({ searchQuery, sortOption }: ShowProps){
         return (
           <Loading />
         );
+      }
+
+      if (error) {
+        return <Error message={error} />;
       }
 
 

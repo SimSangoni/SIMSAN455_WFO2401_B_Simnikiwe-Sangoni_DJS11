@@ -30,7 +30,7 @@ export async function fetchShowsAndGenres(): Promise<{ shows: Show[], genres: Ge
     } else {
       console.error('Error fetching shows and genres:', error);
     }
-    throw error;
+    throw new Error('Error fetching shows and genres');
   }
 }
 
