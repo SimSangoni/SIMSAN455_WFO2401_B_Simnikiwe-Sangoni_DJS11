@@ -87,16 +87,26 @@ export default function ShowDetail(){
                         <span>{show.genres && show.genres.join(', ')}</span>
                     </div>
                 </div>
-                <div className="seasons">
-                    {show.seasons.map(season => (
-                    <div key={season.season} onClick={() => 
-                      navigate(`season/${season.season}`, 
-                      { state: { season } })}>
-                        <h2>{season.title}</h2>
-                        <img src={season.image} alt={season.title} />
-                    </div>
+                <div className="season-container">
+                  <button className="scroll-button left" 
+                    onClick={() => scroll('left')}>{'<'}
+                  </button>
+                  <div className="seasons" ref={seasonListRef}>
+                        {show.seasons.map((season, index) => (
+                         <div key={season.season} 
+                          className="season-item" 
+                          onClick={() => navigate(`season/${index}`, 
+                          { state: { season } })}>
+                            <h2>{season.title}</h2>
+                            <img src={season.image} alt={season.title} />
+                      </div>
                     ))}
+                  </div>
+                <button className="scroll-button right" 
+                  onClick={() => scroll('right')}>{'>'}
+                </button>
                 </div>
+                
                 <Outlet />
     </div>    
     )
