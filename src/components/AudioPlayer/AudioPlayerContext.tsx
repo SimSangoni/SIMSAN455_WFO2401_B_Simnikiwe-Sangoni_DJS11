@@ -10,13 +10,33 @@ export function AudioPlayerProvider({children}: { children: ReactNode }){
     const [isRepeating, setIsRepeating] = useState(false);
     const [isFavorite, setIsFavorite] = useState(false);
 
+    useEffect(() => {
+      if (episode) {
+        setEpisodes((prevEpisodes) => [...prevEpisodes, episode]);
+      }
+    }, [episode]);
+
+    
+
     const playEpisode = (episode: Episode) => {
         setEpisode(episode);
         console.log('Playing episode:', episode);
     }
 
     return (
-    <AudioPlayerContext.Provider value={{ episode, playEpisode }}>
+    <AudioPlayerContext.Provider value={{ 
+        episode, 
+        episodes,
+        playEpisode,
+        playNextEpisode,
+        playPrevEpisode,
+        toggleShuffle,
+        toggleRepeat,
+        toggleFavorite,
+        isShuffling,
+        isRepeating,
+        isFavorite
+        }}>
         {children}
     </AudioPlayerContext.Provider>
     )
