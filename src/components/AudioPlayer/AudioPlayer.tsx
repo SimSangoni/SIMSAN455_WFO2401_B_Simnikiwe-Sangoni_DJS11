@@ -23,7 +23,7 @@ export default function AudioPlayer(){
             <div className="audio-player-content">
                 <div className="audio-player-info">
                     <h3 className='episode-title'>{episode.title}</h3>
-                    <p className='episode-description'>{episode.description}</p>
+                    {/* <p className='episode-description'>{episode.description}</p> */}
                 </div>
                 <audio ref={audioRef} controls>
                     <source src={episode.file} type="audio/mpeg" />
