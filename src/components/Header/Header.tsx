@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom";
 import './Header.css';
 import { useState } from "react";
+import { MdOutlineLightMode, MdDarkMode} from "react-icons/md";
+import { TbMusicSearch, TbFileLike } from "react-icons/tb";
+import { BsMenuUp, BsMenuDown } from "react-icons/bs";
+import { ImPodcast } from "react-icons/im";
+import { GiDramaMasks } from "react-icons/gi";
 
 // Import Icons for header page
-import HomeIcon from './header-icons/home-icon.svg'
-import ShowsIcon from './header-icons/show-icon.svg'
-import GenresIcon from './header-icons/genre-icon.svg'
-import SearchIcon from './header-icons/search-icon.svg'
-import MenuIcon from './header-icons/menu-icon.svg'
+
 import PodcastIcon from '../../../public/favicon.svg'
-import darkThemeIcon from '../../assets/theme-icons/dark-theme-icon.svg'
-import lightThemeIcon from '../../assets/theme-icons/light-theme-icon.svg'
 
 
 interface HeaderProps {
@@ -40,7 +39,6 @@ export default function Header({
 
 
     function toggleMenu() {
-        console.log("Menu Toggled")
         setMenuOpen(!menuOpen)
     }
 
@@ -69,7 +67,7 @@ export default function Header({
                     <ul className="nav-links">
                         <li><Link to='/' onClick={closeMenu}>
                                 <span className="nav-item">
-                                    <img src={HomeIcon} alt="Home" className="icon nav-icon" />
+                                    <ImPodcast className="icon nav-icon" />
                                         Shows
                                 </span>   
                             </Link>
@@ -77,7 +75,7 @@ export default function Header({
                         <li>
                             <Link to='/favourites' onClick={closeMenu}> 
                                 <span className="nav-item">
-                                    <img src={ShowsIcon} alt="Favourites" className="icon nav-icon" />
+                                    <TbFileLike  className="icon nav-icon" />
                                         Favourites
                                 </span>
                             </Link>
@@ -85,7 +83,7 @@ export default function Header({
                         <li>
                             <Link to='/genres' onClick={closeMenu}>
                                 <span className="nav-item">
-                                    <img src={GenresIcon} alt="Genres" className="icon nav-icon" />
+                                    <GiDramaMasks className="icon nav-icon" />
                                     Genres
                                 </span>              
                             </Link>
@@ -93,8 +91,9 @@ export default function Header({
                     </ul>
                 </nav>
                     <span className="menu-toggle" onClick={toggleMenu}>
-                    <img className= "icon nav-icon" src={MenuIcon} alt="Menu" />
-                    Menu
+                    {menuOpen ? 
+                    <BsMenuUp className="icon nav-icon"/> : 
+                    <BsMenuDown className="icon nav-icon"/>}
                     </span>
                     
               
@@ -102,8 +101,8 @@ export default function Header({
                     <button onClick={toggleTheme}>
                         {
                             theme === 'dark' 
-                            ? (<img src={lightThemeIcon} alt="Light Mode" className="icon" />)
-                            : (<img src={darkThemeIcon} alt="Dark Mode" className="icon" />)
+                            ? <MdOutlineLightMode className="icon" />
+                            : <MdDarkMode className="icon" />
                         }
                     </button>
                 </div>
@@ -135,7 +134,7 @@ export default function Header({
                                 </div>
                             )}
                             <span className="search-icon" onClick={toggleSearch}>
-                                    <img src={SearchIcon} alt="Search" className="icon" />
+                                    <TbMusicSearch className="icon" />
                             </span>
                         </div>    
             
