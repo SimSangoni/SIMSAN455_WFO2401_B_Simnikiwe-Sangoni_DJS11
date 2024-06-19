@@ -14,7 +14,7 @@ import Genres from "./pages/Genres/Genres";
 
 
 
-import './main.css' // For global styling in future
+import './App.css' // For global styling in future
 import './styles/themes.css'
 
 
