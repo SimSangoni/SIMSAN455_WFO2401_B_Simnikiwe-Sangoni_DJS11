@@ -76,47 +76,47 @@ export default function ShowDetail(){
 
     return (
         
-            <div className="show-details">
-                <div className="show-header" style={headerStyle}>
-                    <h1>{show.title}</h1>
-                    <div className={`show-description ${showMore ? 'full' : ''}`}>
-                        {showMore ? description : shortDescription}
-                        {description.split(' ').length > 30 && (
-                        <span className="show-more" onClick={() => 
-                            setShowMore(!showMore)}>
-                            {showMore ? 'Show less' : 'Show more'}
-                        </span>
-                        )}
-                    </div>
-                    <div>
-                        <span>{show.seasons.length} {show.seasons.length > 1 
-                        ? 'Seasons' : 'Season'}</span>
-                        <span>{show.genres && show.genres.join(', ')}</span>
-                    </div>
-                </div>
-                <div className="season-container">
-                  <button className="scroll-button left" 
-                    onClick={() => scroll('left')}>
-                      <AiFillLeftCircle />
-                  </button>
-                  <div className="seasons" ref={seasonListRef}>
-                        {show.seasons.map((season, index) => (
-                         <div key={season.season} 
-                          className="season-item" 
-                          onClick={() => navigate(`season/${index}`, 
-                          { state: { season } })}>
-                            <h2>{season.title}</h2>
-                            <img src={season.image} alt={season.title} />
-                      </div>
-                    ))}
-                  </div>
-                <button className="scroll-button right" 
-                  onClick={() => scroll('right')}>
-                    <AiFillRightCircle />
-                </button>
-                </div>
-                
-                <Outlet />
+    <div className="show-details">
+        <div className="show-header" style={headerStyle}>
+            <h1>{show.title}</h1>
+            <div>
+                <span>{show.seasons.length} {show.seasons.length > 1 
+                ? 'Seasons' : 'Season'}</span>
+                <span>{show.genres && show.genres.join(', ')}</span>
+            </div>
+        </div>
+        <div className={`show-description ${showMore ? 'full' : ''}`}>
+                {showMore ? description : shortDescription}
+                {description.split(' ').length > 30 && (
+                <span className="show-more" onClick={() => 
+                    setShowMore(!showMore)}>
+                    {showMore ? 'Show less' : 'Show more'}
+                </span>
+                )}
+            </div>
+        <div className="season-container">
+          <button className="scroll-button left" 
+            onClick={() => scroll('left')}>
+              <AiFillLeftCircle />
+          </button>
+          <div className="seasons" ref={seasonListRef}>
+                {show.seasons.map((season, index) => (
+                  <div key={season.season} 
+                  className="season-item" 
+                  onClick={() => navigate(`season/${index}`, 
+                  { state: { season } })}>
+                    <h2>{season.title}</h2>
+                    <img src={season.image} alt={season.title} />
+              </div>
+            ))}
+          </div>
+        <button className="scroll-button right" 
+          onClick={() => scroll('right')}>
+            <AiFillRightCircle />
+        </button>
+        </div>
+        
+        <Outlet />
     </div>    
     )
 }
