@@ -100,9 +100,6 @@ export default function Header({
                     
               
                 <div className="user-actions">
-                    <span>
-                        <img src={UserIcon} alt="User" className="icon" />
-                    </span>
                     <button onClick={toggleTheme}>
                         {
                             theme === 'dark' 
