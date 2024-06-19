@@ -3,13 +3,11 @@ import { useAudioPlayer } from './AudioPlayerContext';
 import DisplayTrack from './DisplayTrack';
 import Controls from './Controls';
 import ProgressBar from './ProgressBar';
-import TopBar from './TopBar';
 import './AudioPlayer.css';
 
 const AudioPlayer: React.FC = () => {
   const {
     episode,
-    episodes,
     playNextEpisode,
     playPrevEpisode,
   } = useAudioPlayer();
@@ -28,7 +26,6 @@ const AudioPlayer: React.FC = () => {
 
   return (
     <>
-      <TopBar />
       <div className="audio-player">
         <div className="inner">
           <DisplayTrack
