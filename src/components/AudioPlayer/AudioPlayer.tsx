@@ -12,6 +12,10 @@ export default function AudioPlayer(){
                 <h3>{episode.title}</h3>
                 <p>{episode.description}</p>
             </div>
+            <audio controls autoPlay>
+                <source src={episode.file} type="audio/mpeg" />
+                Your browser does not support the audio element.
+            </audio>
         </div>
     )
 }
