@@ -3,7 +3,7 @@ import { AudioPlayerContextProps, Episode } from "../../utils/Interfaces";
 
 const AudioPlayerContext = createContext<AudioPlayerContextProps | undefined>(undefined)
 
-export function AudioPlayerProvider(children: ReactNode){
+export function AudioPlayerProvider({children}: { children: ReactNode }){
     const [episode, setEpisode] = useState<Episode | null>(null);
 
     const playEpisode = (episode: Episode) => {

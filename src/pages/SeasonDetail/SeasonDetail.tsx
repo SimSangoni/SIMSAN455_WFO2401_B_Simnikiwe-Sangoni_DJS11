@@ -1,5 +1,6 @@
 import { useLocation, useNavigate, Outlet } from 'react-router-dom';
 import {  LocationState, Episode } from '../../utils/Interfaces';
+import { useAudioPlayer } from '../../components/AudioPlayer/AudioPlayerContext';
 import './SeasonDetail.css'
 
 
@@ -9,10 +10,13 @@ export default function SeasonDetail(){
 
     const location = useLocation();
     const navigate = useNavigate();
-    const locationState = location.state as LocationState;
+    const { season } = location.state as LocationState;
+    const {playEpisode} = useAudioPlayer();
 
 
-    const { season } = locationState;
+    if (!season) {
+        return <div>Error: Season details not available.</div>;
+    }
 
     return (
         
@@ -25,8 +29,10 @@ export default function SeasonDetail(){
                     <div 
                         key={episode.episode} 
                         className="episode-item"
-                        onClick={() => navigate(`episode/${episode.episode}`, 
-                        { state: { episode } })}
+                        onClick={() => {
+                            playEpisode(episode)
+                            navigate(`episode/${episode.episode}`, 
+                            { state: { episode } })}}
                     >
                         <div className="episode-number">{episode.episode}</div>
 

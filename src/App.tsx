@@ -2,11 +2,16 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Header from "./components/Header/Header";
+
 import Shows from "./pages/Shows/Shows";
-import Favourites from "./pages/Favourites/Favourites";
-import Genres from "./pages/Genres/Genres";
 import ShowDetail from './pages/ShowDetail/ShowDetail';
 import SeasonDetail from './pages/SeasonDetail/SeasonDetail';
+import { AudioPlayerProvider } from './components/AudioPlayer/AudioPlayerContext';
+import AudioPlayer from './components/AudioPlayer/AudioPlayer';
+
+import Favourites from "./pages/Favourites/Favourites";
+import Genres from "./pages/Genres/Genres";
+
 
 
 import './main.css' // For global styling in future
@@ -44,7 +49,7 @@ export default function App() {
   };
 
   return (
-    
+  <AudioPlayerProvider> 
     <Router>
       <Header 
         toggleTheme={toggleTheme} 
@@ -67,9 +72,9 @@ export default function App() {
           <Route path="/genres/*" element={<Genres />}/>
         </Routes>
       </div>
-      
+      <AudioPlayer />
     </Router>  
-   
+  </AudioPlayerProvider>
   )
 }
 
