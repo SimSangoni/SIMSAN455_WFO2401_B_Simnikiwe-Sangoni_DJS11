@@ -14,11 +14,19 @@ export default function SeasonDetail(){
     return (
         
             <div className='season-detail'>
-                <h1>{season.title}</h1>
+                <h1 className="season-title">{season.title}</h1>
                 <div className='episode-list'>
                 {season.episodes.map(episode => (
-                    <div key={episode.episode} onClick={() => navigate(`/show/${season.season}/episode/${episode.episode}`, { state: { episode } })}>
-                        <h2>{episode.title}</h2>
+                    <div key={episode.episode} 
+                        className="episode-item"
+                        onClick={() => navigate(`/show/${season.season}/episode/${episode.episode}`, 
+                        { state: { episode } })}
+                    >
+                        <div className="episode-number">Episode {episode.episode}</div>
+                        <div className="episode-info">
+                            <h2 className="episode-title">{episode.title}</h2>
+                            <p className="episode-description">{episode.description}</p>
+                        </div>      
                     </div>
                     ))}
                 </div>
