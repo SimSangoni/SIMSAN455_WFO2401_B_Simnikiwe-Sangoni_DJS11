@@ -4,6 +4,7 @@ import { ShowDetails } from "../../utils/Interfaces";
 import { fetchShowDetails } from "../../utils/apiRequests";
 
 import './ShowDetail.css'
+import { AiFillRightCircle, AiFillLeftCircle } from "react-icons/ai";
 
 export default function ShowDetail(){
 
@@ -95,7 +96,8 @@ export default function ShowDetail(){
                 </div>
                 <div className="season-container">
                   <button className="scroll-button left" 
-                    onClick={() => scroll('left')}>{'<'}
+                    onClick={() => scroll('left')}>
+                      <AiFillLeftCircle />
                   </button>
                   <div className="seasons" ref={seasonListRef}>
                         {show.seasons.map((season, index) => (
@@ -109,7 +111,8 @@ export default function ShowDetail(){
                     ))}
                   </div>
                 <button className="scroll-button right" 
-                  onClick={() => scroll('right')}>{'>'}
+                  onClick={() => scroll('right')}>
+                    <AiFillRightCircle />
                 </button>
                 </div>
                 
