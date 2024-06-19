@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface ProgressBarProps {
   progressBarRef: React.RefObject<HTMLDivElement>;
   audioRef: React.RefObject<HTMLAudioElement>;
