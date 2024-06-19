@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { ShowDetails, Season } from "../../utils/Interfaces";
+import { ShowDetails, Season, Episode } from "../../utils/Interfaces";
 import { fetchShowDetails } from "../../utils/apiRequests";
 
 
@@ -14,9 +14,12 @@ export default function ShowDetail(){
 
     const { id } = useParams<{ id: string }>();
     const [show, setShow] = useState<ShowDetails | null>(null);
-    const [selectedSeason, setSelectedSeason] = useState<Season | null>(null);
+  
     const [error, setError] = useState<string | null>(null);
     const [showMore, setShowMore] = useState(false);
+
+    const [selectedSeason, setSelectedSeason] = useState<Season | null>(null);
+    const [selectedEpisode, setSelectedEpisode] = useState<Episode | null>(null);
 
 
 
