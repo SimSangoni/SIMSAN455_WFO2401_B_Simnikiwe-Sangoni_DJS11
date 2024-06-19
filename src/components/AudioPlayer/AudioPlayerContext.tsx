@@ -8,6 +8,7 @@ export function AudioPlayerProvider({children}: { children: ReactNode }){
 
     const playEpisode = (episode: Episode) => {
         setEpisode(episode);
+        console.log('Playing episode:', episode);
     }
 
     return (
