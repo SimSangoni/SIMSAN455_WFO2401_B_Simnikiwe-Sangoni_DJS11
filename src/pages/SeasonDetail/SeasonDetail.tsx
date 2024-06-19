@@ -1,10 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchShowDetails } from './api'; // 
-import './SeasonDetail.css';
 
 
-export default function SeasonList(){
+
+export default function SeasonDetail(){
+
+    const { seasonId } = useParams();
+    const [season, setSeason] = useState(null);
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
+
     return (
         
             <div>
