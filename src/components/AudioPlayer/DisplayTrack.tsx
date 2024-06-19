@@ -1,11 +1,10 @@
-import { DisplayTrackProps, Episode } from "../../utils/Interfaces";
+import { DisplayTrackProps } from "../../utils/Interfaces";
 import { useEffect } from "react";
 
 const DisplayTrack: React.FC<DisplayTrackProps> = ({
     currentTrack,
     audioRef,
     setDuration,
-    progressBarRef,
     handleNext,
   }) => {
     useEffect(() => {
