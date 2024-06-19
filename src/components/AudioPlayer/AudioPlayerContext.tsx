@@ -7,8 +7,6 @@ export function AudioPlayerProvider({children}: { children: ReactNode }){
   const [episode, setEpisode] = useState<Episode | null>(null);
   const [seasonImage, setSeasonImage] = useState<string | undefined>(undefined);
   const [episodes, setEpisodes] = useState<Episode[]>([]);
-  const [isShuffling, setIsShuffling] = useState(false);
-  const [isRepeating, setIsRepeating] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
   const playEpisode = (episode: Episode, seasonImage: string) => {
@@ -30,13 +28,6 @@ export function AudioPlayerProvider({children}: { children: ReactNode }){
     setEpisode(episodes[prevIndex]);
   };
 
-  const toggleShuffle = () => {
-    setIsShuffling((prev) => !prev);
-  };
-
-  const toggleRepeat = () => {
-    setIsRepeating((prev) => !prev);
-  };
 
   const toggleFavorite = () => {
     setIsFavorite((prev) => !prev);
@@ -51,11 +42,7 @@ export function AudioPlayerProvider({children}: { children: ReactNode }){
       setEpisodes,
       playNextEpisode,
       playPrevEpisode,
-      toggleShuffle,
-      toggleRepeat,
       toggleFavorite,
-      isShuffling,
-      isRepeating,
       isFavorite
     }}>
       {children}

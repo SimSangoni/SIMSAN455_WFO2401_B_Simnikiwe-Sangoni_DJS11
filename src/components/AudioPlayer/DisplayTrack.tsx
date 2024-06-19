@@ -14,7 +14,6 @@ const DisplayTrack: React.FC<DisplayTrackProps> = ({
   currentTrack,
   audioRef,
   setDuration,
-  progressBarRef,
   handleNext,
   seasonImage,
 }) => {

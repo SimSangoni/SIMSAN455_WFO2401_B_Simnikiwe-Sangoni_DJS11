@@ -62,11 +62,7 @@ export interface AudioPlayerContextProps {
   setEpisodes: (episodes: Episode[]) => void;
   playNextEpisode: () => void;
   playPrevEpisode: () => void;
-  toggleShuffle: () => void;
-  toggleRepeat: () => void;
   toggleFavorite: () => void;
-  isShuffling: boolean;
-  isRepeating: boolean;
   isFavorite: boolean;
 }
 

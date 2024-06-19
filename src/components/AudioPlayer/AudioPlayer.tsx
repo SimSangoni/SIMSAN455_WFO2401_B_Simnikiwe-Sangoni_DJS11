@@ -8,7 +8,6 @@ import './AudioPlayer.css';
 const AudioPlayer: React.FC = () => {
     const {
       episode,
-      episodes,
       playNextEpisode,
       playPrevEpisode,
       seasonImage
