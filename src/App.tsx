@@ -59,8 +59,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home searchQuery={searchQuery} sortOption={sortOption}/>} />
           <Route path="show/:id" element={<ShowDetail />} >
-            {/* <Route index element={<Season />} /> */}
-            {/* <Route path=''/> */}
+            {/* <Route path="season/:seasonId" element={<SeasonDetail />}>
+              <Route path="episode/:episodeId" element={<AudioPlayer />} /> */}
+            {/* </Route> */}
           </Route>
           <Route path="/favourites" element={<Favourites/>} />
           <Route path="/genres/*" element={<Genres />}/>

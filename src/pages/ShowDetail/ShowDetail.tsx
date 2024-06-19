@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, Outlet } from "react-router-dom";
 import { ShowDetails, Season, Episode } from "../../utils/Interfaces";
 import { fetchShowDetails } from "../../utils/apiRequests";
 
@@ -13,6 +13,7 @@ import './ShowDetail.css'
 export default function ShowDetail(){
 
     const { id } = useParams<{ id: string }>();
+    const navigate = useNavigate();
     const [show, setShow] = useState<ShowDetails | null>(null);
   
     const [error, setError] = useState<string | null>(null);
@@ -37,16 +38,6 @@ export default function ShowDetail(){
     
         getShowDetails();
       }, [id]);
-
-
-      const handleSeasonSelect = (season: Season) => {
-        setSelectedSeason(season);
-        setSelectedEpisode(null);
-      };
-    
-      const handleEpisodeSelect = (episode: Episode) => {
-        setSelectedEpisode(episode);
-      };
 
 
       if (error) {
@@ -86,26 +77,13 @@ export default function ShowDetail(){
                 </div>
                 <div className="seasons">
                     {show.seasons.map(season => (
-                    <div key={season.season} onClick={() => setSelectedSeason(season)}>
+                    <div key={season.season} onClick={() => navigate(`season/${season.season}`)}>
                         <h2>{season.title}</h2>
                         <img src={season.image} alt={season.title} />
                     </div>
                     ))}
                 </div>
-                {selectedSeason && (
-                <div className="episodes">
-                {selectedSeason.episodes.map(episode => (
-                    <div key={episode.episode}>
-                        <h3>{episode.title}</h3>
-                        <p>{episode.description}</p>
-                        <audio controls>
-                            <source src={episode.file} type="audio/mpeg" />
-                            Your browser does not support the audio element.
-                        </audio>
-                    </div>
-                ))}
-            </div> 
-        )}
+                <Outlet />
     </div>    
     )
 }
