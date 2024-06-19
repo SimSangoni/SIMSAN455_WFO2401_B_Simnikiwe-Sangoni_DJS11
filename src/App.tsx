@@ -5,7 +5,7 @@ import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Favourites from "./pages/Favourites/Favourites";
 import Genres from "./pages/Genres/Genres";
-import ShowDetail from './components/ShowDetail/ShowDetail';
+import ShowDetail from './pages/ShowDetail/ShowDetail';
 // import Season from './pages/Season/Season';
 
 
