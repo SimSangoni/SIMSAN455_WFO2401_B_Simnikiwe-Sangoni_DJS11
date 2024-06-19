@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import {  LocationState } from '../../utils/Interfaces';
-import './SeasonDetsil.css'
+import './SeasonDetail.css'
 
 
 
@@ -22,7 +22,7 @@ export default function SeasonDetail(){
                         onClick={() => navigate(`/show/${season.season}/episode/${episode.episode}`, 
                         { state: { episode } })}
                     >
-                        <div className="episode-number">Episode {episode.episode}</div>
+                        <div className="episode-number"> {episode.episode}</div>
                         <div className="episode-info">
                             <h2 className="episode-title">{episode.title}</h2>
                             <p className="episode-description">{episode.description}</p>
