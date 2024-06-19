@@ -70,7 +70,7 @@ export default function Header({
                         <li><Link to='/' onClick={closeMenu}>
                                 <span className="nav-item">
                                     <img src={HomeIcon} alt="Home" className="icon nav-icon" />
-                                        Home
+                                        Shows
                                 </span>   
                             </Link>
                         </li>
