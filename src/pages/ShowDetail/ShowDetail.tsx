@@ -3,8 +3,6 @@ import { useParams, useNavigate, Outlet } from "react-router-dom";
 import { ShowDetails } from "../../utils/Interfaces";
 import { fetchShowDetails } from "../../utils/apiRequests";
 
-
-
 import './ShowDetail.css'
 
 export default function ShowDetail(){
@@ -14,7 +12,7 @@ export default function ShowDetail(){
     const [show, setShow] = useState<ShowDetails | null>(null);
     const [error, setError] = useState<string | null>(null);
 
-    
+
     const [showMore, setShowMore] = useState(false);
 
     const navigate = useNavigate();

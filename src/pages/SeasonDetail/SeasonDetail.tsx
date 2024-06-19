@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import {  LocationState, Episode } from '../../utils/Interfaces';
+import {  LocationState } from '../../utils/Interfaces';
 
 
 
