@@ -52,3 +52,8 @@ export interface ShowDetails {
 export interface LocationState {
   season: Season;
 }
+
+export interface AudioPlayerContextProps {
+  episode: Episode | null;
+  playEpisode: (episode: Episode) => void;
+}
