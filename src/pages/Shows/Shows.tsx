@@ -3,6 +3,7 @@ import './Shows.css'
 import { ShowProps, Show, Genre } from "../../utils/Interfaces";
 import { fetchShowsAndGenres } from "../../utils/apiRequests";
 import { Link } from "react-router-dom";
+import Loading from "../../components/Loading/Loading";
 
 
 export default function Shows({ searchQuery, sortOption }: ShowProps){
@@ -71,10 +72,7 @@ export default function Shows({ searchQuery, sortOption }: ShowProps){
 
       if (loading) {
         return (
-          <div className="loading-container">
-            {/* <img src="" alt="Loading" className="loading-image" /> */}
-            Please wait, loading...
-          </div>
+          <Loading />
         );
       }
 
