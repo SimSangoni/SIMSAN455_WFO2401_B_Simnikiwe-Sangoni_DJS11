@@ -30,6 +30,13 @@
     z-index: 1;
   }
 
+  .season-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+  }
+
   .seasons {
     display: flex;
     gap: 30px;
