@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useParams, useNavigate, Outlet } from "react-router-dom";
+import { useParams, useNavigate, Outlet, useLocation } from "react-router-dom";
 import { ShowDetails } from "../../utils/Interfaces";
 import { fetchShowDetails } from "../../utils/apiRequests";
 
@@ -16,6 +16,7 @@ export default function ShowDetail(){
     const [showMore, setShowMore] = useState(false);
 
     const navigate = useNavigate();
+    const location = useLocation();
     const seasonListRef = useRef<HTMLDivElement>(null);
 
 
@@ -25,6 +26,11 @@ export default function ShowDetail(){
             try {
               const data = await fetchShowDetails(id);
               setShow(data);
+
+              if (!location.pathname.includes('season')) {
+                navigate(`season/0`, { state: { season: data.seasons[0] } });
+              }
+
             } catch (err) {
               setError((err as Error).message);
             }
@@ -32,7 +38,7 @@ export default function ShowDetail(){
         };
     
         getShowDetails();
-      }, [id]);
+      }, [id, location.pathname, navigate]);
 
 
       if (error) {

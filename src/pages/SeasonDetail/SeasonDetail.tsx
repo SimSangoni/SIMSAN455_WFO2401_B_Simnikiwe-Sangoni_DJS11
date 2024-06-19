@@ -19,7 +19,7 @@ export default function SeasonDetail(){
                 {season.episodes.map(episode => (
                     <div key={episode.episode} 
                         className="episode-item"
-                        onClick={() => navigate(`/show/${season.season}/episode/${episode.episode}`, 
+                        onClick={() => navigate(`episode/${episode.episode}`, 
                         { state: { episode } })}
                     >
                         <div className="episode-number"> {episode.episode}</div>
