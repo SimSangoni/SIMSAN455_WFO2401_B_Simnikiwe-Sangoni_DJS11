@@ -1,17 +1,7 @@
 import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { TbRewindBackward10, TbRewindForward10  } from "react-icons/tb";
-
-interface ControlsProps {
-  audioRef: React.RefObject<HTMLAudioElement>;
-  progressBarRef: React.RefObject<HTMLDivElement>;
-  duration: number;
-  setTimeProgress: (time: number) => void;
-  handleNext: () => void;
-  handlePrev: () => void;
-  isPlaying: boolean;
-  handlePlayPause: () => void;
-}
+import { ControlsProps } from "../../utils/Interfaces";
 
 const Controls: React.FC<ControlsProps> = ({
   audioRef,

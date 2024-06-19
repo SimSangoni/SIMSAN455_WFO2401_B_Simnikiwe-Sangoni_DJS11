@@ -1,10 +1,9 @@
 import React from 'react';
+import { ErrorProps } from '../../utils/Interfaces';
 import { MdOutlineRunningWithErrors } from 'react-icons/md';
 import './Error.css';
 
-interface ErrorProps {
-  message: string;
-}
+
 
 const Error: React.FC<ErrorProps> = ({ message }) => {
   return (

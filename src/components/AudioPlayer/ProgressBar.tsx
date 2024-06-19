@@ -1,11 +1,6 @@
 import { useEffect } from 'react';
+import { ProgressBarProps } from '../../utils/Interfaces';
 
-interface ProgressBarProps {
-  progressBarRef: React.RefObject<HTMLDivElement>;
-  audioRef: React.RefObject<HTMLAudioElement>;
-  timeProgress: number;
-  duration: number;
-}
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
   progressBarRef,

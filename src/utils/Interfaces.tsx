@@ -1,3 +1,15 @@
+export interface HeaderProps {
+  toggleTheme: () => void;
+  theme: 'light' | 'dark';
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+  sortOption: string;
+  sortMenuOpen: boolean;
+  toggleSortMenu: () => void;
+  handleSortOption: (option: string) => void;
+}
+
+
 export interface Show {
     id: string;
     title: string;
@@ -15,7 +27,7 @@ export interface Genre {
     shows: string[];
   }
 
-export interface HomeProps {
+export interface ShowProps {
     searchQuery: string;
     sortOption: string;
     
@@ -73,4 +85,27 @@ export interface DisplayTrackProps {
   setDuration: (duration: number) => void;
   progressBarRef: React.RefObject<HTMLDivElement>;
   handleNext: () => void;
+  seasonImage: string | undefined; 
+}
+
+export interface ControlsProps {
+  audioRef: React.RefObject<HTMLAudioElement>;
+  progressBarRef: React.RefObject<HTMLDivElement>;
+  duration: number;
+  setTimeProgress: (time: number) => void;
+  handleNext: () => void;
+  handlePrev: () => void;
+  isPlaying: boolean;
+  handlePlayPause: () => void;
+}
+
+export interface ProgressBarProps {
+  progressBarRef: React.RefObject<HTMLDivElement>;
+  audioRef: React.RefObject<HTMLAudioElement>;
+  timeProgress: number;
+  duration: number;
+}
+
+export interface ErrorProps {
+  message: string;
 }

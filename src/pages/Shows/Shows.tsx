@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import './Shows.css'
-import { HomeProps, Show, Genre } from "../../utils/Interfaces";
+import { ShowProps, Show, Genre } from "../../utils/Interfaces";
 import { fetchShowsAndGenres } from "../../utils/apiRequests";
 import { Link } from "react-router-dom";
 
 
-export default function Shows({ searchQuery, sortOption }: HomeProps){
+export default function Shows({ searchQuery, sortOption }: ShowProps){
 
     const[shows, setShows] = useState<Show[]>([])
     const [genres, setGenres] = useState<Genre[]>([]);

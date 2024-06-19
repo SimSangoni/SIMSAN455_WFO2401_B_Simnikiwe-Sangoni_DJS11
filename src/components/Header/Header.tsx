@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import './Header.css';
 import { useState } from "react";
+import { HeaderProps } from "../../utils/Interfaces";
 
-
+import './Header.css';
 // Import Icons for header page
 import { MdOutlineLightMode, MdDarkMode} from "react-icons/md";
 import { TbMusicSearch, TbFileLike } from "react-icons/tb";
@@ -11,17 +11,6 @@ import { ImPodcast } from "react-icons/im";
 import { GiDramaMasks } from "react-icons/gi";
 import PodcastIcon from '../../../public/favicon.svg'
 
-
-interface HeaderProps {
-    toggleTheme: () => void;
-    theme: 'light' | 'dark';
-    searchQuery: string;
-    setSearchQuery: (query: string) => void;
-    sortOption: string;
-    sortMenuOpen: boolean;
-    toggleSortMenu: () => void;
-    handleSortOption: (option: string) => void;
-  }
 
 
 export default function Header({

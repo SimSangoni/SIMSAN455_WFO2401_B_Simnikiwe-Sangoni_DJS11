@@ -1,14 +1,6 @@
 import React, { useEffect } from 'react';
 import { Episode } from '../../utils/Interfaces';
-
-interface DisplayTrackProps {
-  currentTrack: Episode;
-  audioRef: React.RefObject<HTMLAudioElement>;
-  setDuration: (duration: number) => void;
-  progressBarRef: React.RefObject<HTMLDivElement>;
-  handleNext: () => void;
-  seasonImage: string | undefined; 
-}
+import { DisplayTrackProps } from '../../utils/Interfaces';
 
 const DisplayTrack: React.FC<DisplayTrackProps> = ({
   currentTrack,
