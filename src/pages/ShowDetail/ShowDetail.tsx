@@ -39,6 +39,16 @@ export default function ShowDetail(){
       }, [id]);
 
 
+      const handleSeasonSelect = (season: Season) => {
+        setSelectedSeason(season);
+        setSelectedEpisode(null);
+      };
+    
+      const handleEpisodeSelect = (episode: Episode) => {
+        setSelectedEpisode(episode);
+      };
+
+
       if (error) {
         return <div>Error: {error}</div>;
       }
@@ -60,7 +70,6 @@ export default function ShowDetail(){
         
             <div className="show-details">
                 <div className="show-header" style={headerStyle}>
-                    {/* <img src={show.image} alt={show.title} /> */}
                     <h1>{show.title}</h1>
                     <div className={`show-description ${showMore ? 'full' : ''}`}>
                         {showMore ? description : shortDescription}
