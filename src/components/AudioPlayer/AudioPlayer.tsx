@@ -1,4 +1,5 @@
 import { useAudioPlayer } from "./AudioPlayerContext";
+import './AudioPlayer.css'
 
 export default function AudioPlayer(){
 

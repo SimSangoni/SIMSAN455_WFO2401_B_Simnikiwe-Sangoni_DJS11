@@ -1,0 +1,26 @@
+.audio-player {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    background: #222;
+    color: white;
+  }
+
+  .audio-player-content {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    max-width: 1200px;
+  }
+
+  .audio-player-info {
+    margin-right: 20px;
+  }
+  
+  audio {
+    width: 100%;
+  }
