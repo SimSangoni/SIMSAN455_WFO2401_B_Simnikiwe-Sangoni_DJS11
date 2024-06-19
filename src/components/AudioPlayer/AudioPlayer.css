@@ -2,14 +2,12 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+    background: #222;
+    color: white;
     padding: 10px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
     display: flex;
-    flex-direction: column;
-    gap: 10px;
     justify-content: center;
-    background: #222;
-    color: white;
   }
 
   .audio-player-content {
@@ -20,23 +18,40 @@
   }
 
   .audio-player-info {
+    display: flex;
+    align-items: center;
     margin-right: 20px;
+  }
+
+  .episode-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .episode-title {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+
+  .episode-description {
+    display: none;
   }
   
   audio {
-    width: 100%;
+    width: 300px;
+    margin-right: 20px;
   }
 
   .controls {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    align-items: center;
   }
 
   .controls button {
     border: none; 
     padding: 10px;
-    margin: 5px 0;
+    margin: 0 5px;
     cursor: pointer;
   }
 
