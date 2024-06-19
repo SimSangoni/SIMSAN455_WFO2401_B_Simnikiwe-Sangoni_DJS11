@@ -3,6 +3,7 @@ import {Genre, Show} from '../../utils/Interfaces'
 import { fetchShowsAndGenres } from "../../utils/apiRequests";
 import './Genres.css'
 import {Outlet, useNavigate } from 'react-router-dom';
+import Loading from "../../components/Loading/Loading";
 
 
 
@@ -45,7 +46,7 @@ export default function Genres(){
     return (
       <div className="genres-page">
       {loading ? (
-        <div className="loading">Loading...</div>
+        <Loading />
       ) : (
       <>
         <div className="genres-list">

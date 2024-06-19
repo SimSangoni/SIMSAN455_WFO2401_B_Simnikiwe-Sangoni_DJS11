@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate, Outlet, useLocation } from "react-router-dom";
 import { ShowDetails } from "../../utils/Interfaces";
 import { fetchShowDetails } from "../../utils/apiRequests";
+import Loading from "../../components/Loading/Loading";
 
 import './ShowDetail.css'
 import { AiFillRightCircle, AiFillLeftCircle } from "react-icons/ai";
@@ -47,7 +48,7 @@ export default function ShowDetail(){
       }
 
         if (!show) {
-        return <div>Loading...</div>;
+        return <Loading />;
         }
 
         const headerStyle = {
