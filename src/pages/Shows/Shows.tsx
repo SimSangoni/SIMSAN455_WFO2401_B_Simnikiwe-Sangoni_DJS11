@@ -8,6 +8,7 @@ import Error from "../../components/Error/Error";
 import { isErrorWithMessage } from "../../utils/funstionsUtils";
 import SortButton from "../../components/SortButton/SortButton";
 import SearchQuery from "../../components/SearchQuery/SearchQuery";
+import { format } from 'date-fns';
 
 
 export default function Shows({ searchQuery }: ShowProps){
