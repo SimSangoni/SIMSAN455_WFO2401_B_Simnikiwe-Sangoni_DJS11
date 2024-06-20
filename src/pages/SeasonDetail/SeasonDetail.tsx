@@ -21,9 +21,11 @@ export default function SeasonDetail(){
 
 
     return (
-        
+
         <div className='season-detail'>
-            <h1 className="season-title">{season.title}</h1>
+            <h1 className="season-title">{season.title}
+            <span className="episode-count"> : {season.episodes.length} episodes</span>
+            </h1>
 
             <div className='episode-list'>
 
@@ -45,6 +47,7 @@ export default function SeasonDetail(){
                     ))}
             </div>
         </div> 
+    
     )
 }
 
