@@ -12,19 +12,13 @@ import { GiDramaMasks } from "react-icons/gi";
 import PodcastIcon from '../../../public/favicon.svg'
 
 
-import SearchQuery from "../SearchQuery/SearchQuery";
-
 
 export default function Header({
     toggleTheme, 
     theme, 
-    searchQuery, 
-    setSearchQuery,
 }: HeaderProps){
 
     const [menuOpen, setMenuOpen] = useState(false);
-    // const [searchOpen, setSearchOpen] = useState(false);
-
 
 
     function toggleMenu() {
@@ -35,9 +29,6 @@ export default function Header({
         setMenuOpen(false);
     }
 
-    // function toggleSearch() {
-    //     setSearchOpen(!searchOpen);
-    //   }
 
     return (
         <header className="header">
@@ -99,8 +90,6 @@ export default function Header({
 
         </div>    
 
-        <SearchQuery searchQuery={searchQuery} setSearchQuery={setSearchQuery} /> 
-            
         </header>
     )
 }
