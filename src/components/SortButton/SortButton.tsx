@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AiFillDownCircle } from "react-icons/ai";
 import { SortButtonProps } from '../../utils/Interfaces';
+import './SortButton.css'
 
 
 const SortButton: React.FC<SortButtonProps> = ({ shows, setSortedShows }) => {
     const [sortMenuOpen, setSortMenuOpen] = useState(false);
-    const [selectedSortOption, setSelectedSortOption] = useState('Sort By:');
+    const [selectedSortOption, setSelectedSortOption] = useState('Sort By: A-Z');
+
+    useEffect(() => {
+        sortShows('A-Z');
+    }, []);
 
     function handleSort(option: string) {
         setSelectedSortOption(`Sort By: ${option}`);
