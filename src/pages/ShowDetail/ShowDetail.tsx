@@ -76,7 +76,7 @@ export default function ShowDetail(){
             };   
 
         const handleBack = () => {
-          navigate(-2); 
+          navigate('/'); 
         };
         
 
