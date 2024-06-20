@@ -81,7 +81,11 @@ export interface AudioPlayerContextProps {
   playPrevEpisode: () => void;
   toggleFavorite: () => void;
   isFavorite: boolean;
+  addFavorite: (episode: Episode, seasonTitle: string, showTitle: string) => void;
+  removeFavorite: (file: string) => void;
+  favorites: any[]; 
 }
+
 
 
 export interface DisplayTrackProps {
@@ -118,4 +122,14 @@ export interface ErrorProps {
 export interface SortButtonProps {
   shows: Show[];
   setSortedShows: (shows: Show[]) => void;
+}
+
+export interface FavoriteEpisode {
+  file: string;
+  title: string;
+  description: string;
+  showTitle: string;
+  seasonTitle: string;
+  seasonImage: string;
+  addedAt: string;
 }

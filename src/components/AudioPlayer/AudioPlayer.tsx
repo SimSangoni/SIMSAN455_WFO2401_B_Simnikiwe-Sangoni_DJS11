@@ -1,4 +1,4 @@
-import {useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useAudioPlayer } from './AudioPlayerContext';
 import DisplayTrack from './DisplayTrack';
 import Controls from './Controls';
@@ -7,22 +7,21 @@ import { FaHeart, FaRegHeart, FaTimes } from 'react-icons/fa';
 import './AudioPlayer.css';
 
 const AudioPlayer: React.FC = () => {
-    const {
-      episode,
-      playNextEpisode,
-      playPrevEpisode,
-      seasonImage,
-      // toggleFavorite,
-      isFavorite
-    } = useAudioPlayer();
+  const {
+    episode,
+    playNextEpisode,
+    playPrevEpisode,
+    seasonImage,
+    toggleFavorite,
+    isFavorite
+  } = useAudioPlayer();
+  const [currentTrack, setCurrentTrack] = useState(episode);
+  const [timeProgress, setTimeProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-    const [currentTrack, setCurrentTrack] = useState(episode);
-    const [timeProgress, setTimeProgress] = useState(0);
-    const [duration, setDuration] = useState(0);
-    const [isPlaying, setIsPlaying] = useState(false);
-  
-    const audioRef = useRef<HTMLAudioElement | null>(null);
-    const progressBarRef = useRef<HTMLDivElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const progressBarRef = useRef<HTMLDivElement | null>(null);
 
   
     useEffect(() => {
@@ -56,21 +55,6 @@ const AudioPlayer: React.FC = () => {
       }
     };
 
-    const handleFavorite = () => {
-      if (currentTrack) {
-        const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-        const index = favorites.findIndex((fav: any) => fav.file === currentTrack.file);
-        if (index === -1) {
-          favorites.push({
-            ...currentTrack,
-            seasonImage,
-            addedAt: new Date().toISOString(),
-          });
-          localStorage.setItem('favorites', JSON.stringify(favorites));
-        }
-      }
-    };
-  
 
   
     if (!currentTrack) return null;
@@ -90,7 +74,7 @@ const AudioPlayer: React.FC = () => {
                 seasonImage={seasonImage}
               />
             
-              <button className="favorite-button" onClick={handleFavorite}>
+              <button className="favorite-button" onClick={toggleFavorite}>
                 {isFavorite ? <FaHeart /> : <FaRegHeart />}
               </button>
           </div>
