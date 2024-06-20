@@ -87,7 +87,11 @@ export default function Shows({ searchQuery }: ShowProps){
                             {getGenreTitles(show.genres).join(' • ')} 
                             <br></br>
                             {show.seasons} {show.seasons > 1 ? 'Seasons' : 'Season'}
+                            <br></br>
+                            Last updated: {format(new Date(show.updated), 'PPP')}
                             </p>
+                           
+                            
                       </div> 
                   </Link>
                     

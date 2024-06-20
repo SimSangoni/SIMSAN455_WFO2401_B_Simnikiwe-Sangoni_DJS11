@@ -77,6 +77,13 @@
     border-radius: 5px;
   }
 
+  .show-updated {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 10px;
+  }
+  
+
   @media (min-width: 768px) {
     .home {
       grid-template-columns: 1fr 1fr;
