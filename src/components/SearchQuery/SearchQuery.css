@@ -1,0 +1,24 @@
+.search-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-form {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    margin-right: 1rem;
+  }
+  
+  .search-icon {
+    cursor: pointer;
+    margin-right: 1rem;
+  }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+  

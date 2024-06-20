@@ -9,6 +9,11 @@ export interface HeaderProps {
   handleSortOption: (option: string) => void;
 }
 
+export interface SearchQueryProps {
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+}
+
 
 export interface Show {
     id: string;
