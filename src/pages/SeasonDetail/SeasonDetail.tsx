@@ -13,7 +13,7 @@ export default function SeasonDetail(){
 
     const { id: showId } = useParams<{ id: string }>();
     const location = useLocation();
-    const { season } = location.state as LocationState 
+    const { season, showTitle } = location.state as LocationState 
     const { playEpisode, setEpisodes } = useAudioPlayer();
     const [favorites, setFavorites] = useState<{[key: string]: boolean}>({});
 
@@ -60,6 +60,7 @@ export default function SeasonDetail(){
           // Add to favorites if not already there
           storedFavorites.push({
             showId,
+            showTitle,
             season: season.title,
             season_image: season.image,
             episode: {

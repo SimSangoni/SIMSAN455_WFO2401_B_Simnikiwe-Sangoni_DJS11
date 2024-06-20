@@ -32,7 +32,8 @@ export default function ShowDetail(){
             setShow(data);
   
             if (!location.pathname.includes('season')) {
-              navigate(`season/0`, { state: { season: data.seasons[0]}});
+              navigate(`season/0`, { state: 
+                { season: data.seasons[0], showTitle: data.title}});
             }
           } catch (err) {
             setError((err as Error).message);
@@ -115,7 +116,7 @@ export default function ShowDetail(){
             <div key={season.season} className="season-item" 
               onClick={() => 
                 navigate(`/show/${id}/season/${index}`, 
-              { state: { season } })}>
+              { state: { season, showTitle: show.title }  })}>
               <h2>{season.title}</h2>
               <img src={season.image} alt={season.title} />
             </div>

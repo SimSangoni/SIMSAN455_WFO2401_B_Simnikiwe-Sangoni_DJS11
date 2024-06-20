@@ -48,7 +48,7 @@ export default function Favourites() {
                 <div className="favourite-info">
                   <img src={fav.season_image} alt="Show" className="show-image" />
                   <div className="episode-details">
-                    <h2>Show ID: {fav.showId}</h2>
+                    <h2>{fav.showTitle}</h2>
                     <h3>{fav.season}</h3>
                     <h4>Episode {fav.episode.episode_number}: {fav.episode.title}</h4>
                     <p>{fav.episode.description || 'No description available.'}</p>

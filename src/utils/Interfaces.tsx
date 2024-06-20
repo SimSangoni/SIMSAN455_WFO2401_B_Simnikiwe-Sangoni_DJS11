@@ -69,6 +69,7 @@ export interface ShowDetails {
   
 export interface LocationState {
   season: Season;
+  showTitle: string;
 }
 
 export interface AudioPlayerContextProps {
