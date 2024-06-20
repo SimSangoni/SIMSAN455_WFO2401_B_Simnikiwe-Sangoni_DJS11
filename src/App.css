@@ -3,3 +3,11 @@
     padding-top: 20px; 
     margin-bottom: 180px;
   }
+
+
+body {
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: light 300;
+  font-style: normal;
+}
