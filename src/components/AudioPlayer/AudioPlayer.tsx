@@ -60,10 +60,8 @@ const AudioPlayer: React.FC = () => {
     if (!currentTrack) return null;
   
     return (
-      <>
-        <div className="audio-player" 
-        style={{ position: 'fixed', bottom: 0, width: '100%', zIndex: 999 }}
-        >
+      <div className='player'>
+        <div className="audio-player">
           <div className="inner">
           <button className="close-button" onClick={handleClosePlayer}><FaTimes /></button>
           <div className="track-info-section">
@@ -100,7 +98,7 @@ const AudioPlayer: React.FC = () => {
       
           </div>
         </div>
-      </>
+      </div>
     );
   };
   
