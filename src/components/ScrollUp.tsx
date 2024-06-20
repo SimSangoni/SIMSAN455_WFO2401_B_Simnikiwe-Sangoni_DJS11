@@ -6,7 +6,8 @@ const ScrollToTop: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const outlet = useOutlet();
 
   useEffect(() => {
-    if (!outlet) {
+    const isSeasonPath = pathname.match(/\/season\/\d+$/);
+    if (!outlet && !isSeasonPath) {
       window.scrollTo(0, 0);
     }
   }, [pathname, outlet]);
