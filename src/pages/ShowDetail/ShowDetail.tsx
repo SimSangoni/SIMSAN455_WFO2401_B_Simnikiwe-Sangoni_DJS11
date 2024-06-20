@@ -78,6 +78,11 @@ export default function ShowDetail(){
         const handleBack = () => {
           navigate('/'); 
         };
+
+        const getFilteredGenres = (genres: string[]) => {
+          const excludedGenres = ['All', 'Featured'];
+          return genres.filter(genre => !excludedGenres.includes(genre));
+      };
         
 
 
@@ -92,7 +97,10 @@ export default function ShowDetail(){
             <div>
                 <span>{show.seasons.length} {show.seasons.length > 1 
                 ? 'Seasons' : 'Season'}</span>
-                <span>{show.genres && show.genres.join(', ')}</span>
+                <br></br>
+                <span>{show.genres && 
+                  getFilteredGenres(show.genres)
+                  .join(', ')}</span>
             </div>
         </div>
         <div className={`show-description ${showMore ? 'full' : ''}`}>
