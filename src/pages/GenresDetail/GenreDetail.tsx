@@ -1,3 +1,5 @@
+import './GenreDetail.css'
+
 export default function GenresDetail(){
     return (
         <div>

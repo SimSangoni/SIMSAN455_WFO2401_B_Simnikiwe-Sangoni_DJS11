@@ -11,6 +11,7 @@ import AudioPlayer from './components/AudioPlayer/AudioPlayer';
 
 import Favourites from "./pages/Favourites/Favourites";
 import Genres from "./pages/Genres/Genres";
+import GenreDetail from './pages/GenresDetail/GenreDetail';
 
 
 
@@ -69,7 +70,8 @@ export default function App() {
             </Route>
           </Route>
           <Route path="/favourites" element={<Favourites/>} />
-          <Route path="/genres/*" element={<Genres />}/>
+          <Route path="/genres" element={<Genres />}/>
+          <Route path="/genre/:genreSlug" element={<GenreDetail />} />
         </Routes>
       </div>
       <AudioPlayer />

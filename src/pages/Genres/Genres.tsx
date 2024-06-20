@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import {Genre, Show} from '../../utils/Interfaces'
 import { fetchShowsAndGenres } from "../../utils/apiRequests";
 import './Genres.css'
-import {Outlet, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import Loading from "../../components/Loading/Loading";
 
 
@@ -40,7 +40,7 @@ export default function Genres(){
 
   function handleGenreClick(genre: Genre) {
     const genreSlug = genre.title.toLowerCase().replace(/ /g, '-');
-    navigate(`/genres/${genreSlug}`);
+    navigate(`/genre/${genreSlug}`);
   }
 
     return (
@@ -63,7 +63,7 @@ export default function Genres(){
             </div>
           ))}
         </div>
-        <Outlet/>
+  
         </>
       )}
     </div>
