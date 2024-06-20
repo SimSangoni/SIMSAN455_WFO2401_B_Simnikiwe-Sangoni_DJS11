@@ -111,7 +111,6 @@ export interface ErrorProps {
 }
 
 export interface SortButtonProps {
-  sortMenuOpen: boolean;
-  toggleSortMenu: () => void;
-  handleSortOption: (option: string) => void;
+  shows: Show[];
+  setSortedShows: (shows: Show[]) => void;
 }

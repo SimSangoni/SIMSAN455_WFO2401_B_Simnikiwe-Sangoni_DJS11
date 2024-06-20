@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { HeaderProps } from "../../utils/Interfaces";
-import SortButton from "../Sort-Filter_Button/SortButton";
 import './Header.css';
 
 // Import Icons for header page
@@ -19,9 +18,6 @@ export default function Header({
     theme, 
     searchQuery, 
     setSearchQuery,
-    sortMenuOpen,
-    toggleSortMenu,
-    handleSortOption
 }: HeaderProps){
 
     const [menuOpen, setMenuOpen] = useState(false);
@@ -101,13 +97,7 @@ export default function Header({
 
         </div>    
 
-        <div className="search-container">
-                <SortButton 
-                    sortMenuOpen={sortMenuOpen}
-                    toggleSortMenu={toggleSortMenu}
-                    handleSortOption={handleSortOption}
-                />
-                            
+        <div className="search-container">                            
                             {searchOpen && (
                                 <div className="search-form">
                                 <input

@@ -6,9 +6,10 @@ import { Link } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
 import Error from "../../components/Error/Error";
 import { isErrorWithMessage } from "../../utils/funstionsUtils";
+import SortButton from "../../components/SortButton/SortButton";
 
 
-export default function Shows({ searchQuery, sortOption }: ShowProps){
+export default function Shows({ searchQuery }: ShowProps){
 
     const[shows, setShows] = useState<Show[]>([])
     const [genres, setGenres] = useState<Genre[]>([]);
@@ -22,8 +23,8 @@ export default function Shows({ searchQuery, sortOption }: ShowProps){
     }, []);
 
     useEffect(() => {
-      sortShows(sortOption);
-    }, [sortOption, shows]);
+      setSortedShows(shows);
+    }, [shows]);
 
 
     async function fetchShows() {
@@ -42,28 +43,6 @@ export default function Shows({ searchQuery, sortOption }: ShowProps){
         setLoading(false);
       }
     };
-    
-
-      function sortShows(option: string) {
-        let sorted = [...shows];
-        switch (option) {
-          case 'A-Z':
-            sorted = sorted.sort((a, b) => a.title.localeCompare(b.title));
-            break;
-          case 'Z-A':
-            sorted = sorted.sort((a, b) => b.title.localeCompare(a.title));
-            break;
-          case 'Newest':
-            sorted = sorted.sort((a, b) => new Date(b.updated).getTime() - new Date(a.updated).getTime());
-            break;
-          case 'Oldest':
-            sorted = sorted.sort((a, b) => new Date(a.updated).getTime() - new Date(b.updated).getTime());
-            break;
-          default:
-            break;
-        }
-        setSortedShows(sorted);
-      }
 
       const filteredShows = searchQuery
       ? sortedShows.filter(show => 
@@ -92,6 +71,7 @@ export default function Shows({ searchQuery, sortOption }: ShowProps){
 
     return (
         <>
+         <SortButton shows={shows} setSortedShows={setSortedShows} />
         <div className="home">
 
                 {filteredShows.map( show => (
