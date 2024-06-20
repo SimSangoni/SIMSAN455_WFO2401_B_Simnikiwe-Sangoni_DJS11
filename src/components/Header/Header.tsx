@@ -5,12 +5,14 @@ import './Header.css';
 
 // Import Icons for header page
 import { MdOutlineLightMode, MdDarkMode} from "react-icons/md";
-import { TbMusicSearch, TbFileLike } from "react-icons/tb";
+import {  TbFileLike } from "react-icons/tb";
 import { BsMenuUp, BsMenuDown } from "react-icons/bs";
 import { ImPodcast } from "react-icons/im";
 import { GiDramaMasks } from "react-icons/gi";
 import PodcastIcon from '../../../public/favicon.svg'
 
+
+import SearchQuery from "../SearchQuery/SearchQuery";
 
 
 export default function Header({
@@ -21,7 +23,7 @@ export default function Header({
 }: HeaderProps){
 
     const [menuOpen, setMenuOpen] = useState(false);
-    const [searchOpen, setSearchOpen] = useState(false);
+    // const [searchOpen, setSearchOpen] = useState(false);
 
 
 
@@ -33,9 +35,9 @@ export default function Header({
         setMenuOpen(false);
     }
 
-    function toggleSearch() {
-        setSearchOpen(!searchOpen);
-      }
+    // function toggleSearch() {
+    //     setSearchOpen(!searchOpen);
+    //   }
 
     return (
         <header className="header">
@@ -97,21 +99,7 @@ export default function Header({
 
         </div>    
 
-        <div className="search-container">                            
-                            {searchOpen && (
-                                <div className="search-form">
-                                <input
-                                    type="text"
-                                    value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                    placeholder="Search for shows..."
-                                /> 
-                                </div>
-                            )}
-                            <span className="search-icon" onClick={toggleSearch}>
-                                    <TbMusicSearch className="icon" />
-                            </span>
-                        </div>    
+        <SearchQuery searchQuery={searchQuery} setSearchQuery={setSearchQuery} /> 
             
         </header>
     )
