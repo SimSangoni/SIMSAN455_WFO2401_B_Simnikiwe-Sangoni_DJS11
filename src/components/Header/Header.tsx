@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { HeaderProps } from "../../utils/Interfaces";
-
 import './Header.css';
+
 // Import Icons for header page
 import { MdOutlineLightMode, MdDarkMode} from "react-icons/md";
 import { TbMusicSearch, TbFileLike } from "react-icons/tb";
@@ -25,6 +25,7 @@ export default function Header({
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
+
 
 
     function toggleMenu() {
