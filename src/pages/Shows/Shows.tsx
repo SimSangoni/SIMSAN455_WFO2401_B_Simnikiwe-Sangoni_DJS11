@@ -81,7 +81,7 @@ export default function Shows({ searchQuery }: ShowProps){
                         style={{ backgroundImage: `url(${show.image})` }}>
                         <div className="show-content">
                             <h1 className="show-title">{show.title}</h1>
-                            {/* <p className="show-description">{show.description}</p> */}
+                           
                             
                         </div>
                             <p className="show-seasons">
