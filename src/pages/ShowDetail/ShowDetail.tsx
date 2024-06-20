@@ -25,21 +25,20 @@ export default function ShowDetail(){
 
 
     useEffect(() => {
-        const getShowDetails = async () => {
-          if (id) {
-            try {
-              const data = await fetchShowDetails(id);
-              setShow(data);
-
-              if (!location.pathname.includes('season')) {
-                navigate(`season/0`, { state: { season: data.seasons[0] } });
-              }
-
-            } catch (err) {
-              setError((err as Error).message);
+      const getShowDetails = async () => {
+        if (id) {
+          try {
+            const data = await fetchShowDetails(id);
+            setShow(data);
+  
+            if (!location.pathname.includes('season')) {
+              navigate(`season/0`, { state: { season: data.seasons[0]}});
             }
+          } catch (err) {
+            setError((err as Error).message);
           }
-        };
+        }
+      };
     
         getShowDetails();
       }, [id, location.pathname, navigate]);
@@ -76,7 +75,7 @@ export default function ShowDetail(){
             };   
 
         const handleBack = () => {
-          navigate('/'); 
+          navigate(-1); 
         };
 
         const getFilteredGenres = (genres: string[]) => {
@@ -87,54 +86,46 @@ export default function ShowDetail(){
 
 
     return (
-        
     <div className="show-details">
       <button className="back-button" onClick={handleBack}>
         <IoArrowBack />
       </button>
-        <div className="show-header" style={headerStyle}>
-            <h1>{show.title}</h1>
-            <div>
-                <span>{show.seasons.length} {show.seasons.length > 1 
-                ? 'Seasons' : 'Season'}</span>
-                <br></br>
-                <span>{show.genres && 
-                  getFilteredGenres(show.genres)
-                  .join(', ')}</span>
-            </div>
+      <div className="show-header" style={headerStyle}>
+        <h1>{show.title}</h1>
+        <div>
+          <span>{show.seasons.length} {show.seasons.length > 1 ? 'Seasons' : 'Season'}</span>
+          <br></br>
+          <span>{show.genres && getFilteredGenres(show.genres).join(', ')}</span>
         </div>
-        <div className={`show-description ${showMore ? 'full' : ''}`}>
-                {showMore ? description : shortDescription}
-                {description.split(' ').length > 30 && (
-                <span className="show-more" onClick={() => 
-                    setShowMore(!showMore)}>
-                    {showMore ? 'Show less' : 'Show more'}
-                </span>
-                )}
-            </div>
-        <div className="season-container">
-          <button className="scroll-button left" 
-            onClick={() => scroll('left')}>
-              <AiFillLeftCircle />
-          </button>
-          <div className="seasons" ref={seasonListRef}>
-                {show.seasons.map((season, index) => (
-                  <div key={season.season} 
-                  className="season-item" 
-                  onClick={() => navigate(`season/${index}`, 
-                  { state: { season } })}>
-                    <h2>{season.title}</h2>
-                    <img src={season.image} alt={season.title} />
-              </div>
-            ))}
-          </div>
-        <button className="scroll-button right" 
-          onClick={() => scroll('right')}>
-            <AiFillRightCircle />
+      </div>
+      <div className={`show-description ${showMore ? 'full' : ''}`}>
+        {showMore ? description : shortDescription}
+        {description.split(' ').length > 30 && (
+          <span className="show-more" onClick={() => setShowMore(!showMore)}>
+            {showMore ? 'Show less' : 'Show more'}
+          </span>
+        )}
+      </div>
+      <div className="season-container">
+        <button className="scroll-button left" onClick={() => scroll('left')}>
+          <AiFillLeftCircle />
         </button>
+        <div className="seasons" ref={seasonListRef}>
+          {show.seasons.map((season, index) => (
+            <div key={season.season} className="season-item" 
+              onClick={() => 
+                navigate(`/show/${id}/season/${index}`, 
+              { state: { season } })}>
+              <h2>{season.title}</h2>
+              <img src={season.image} alt={season.title} />
+            </div>
+          ))}
         </div>
-        
-        <Outlet />
-    </div>    
+        <button className="scroll-button right" onClick={() => scroll('right')}>
+          <AiFillRightCircle />
+        </button>
+      </div>
+      <Outlet />
+    </div>   
     )
 }

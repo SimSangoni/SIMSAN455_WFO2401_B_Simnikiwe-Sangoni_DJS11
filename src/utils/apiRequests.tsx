@@ -41,7 +41,7 @@ export async function fetchShowDetails(id: string): Promise<ShowDetails> {
       throw new Error(`Error fetching data: ${response.statusText}`);
     }
     const data = await response.json();
-    // console.log(data)
+    console.log(data)
     return data;
   } catch (error) {
     if (error instanceof Error) {

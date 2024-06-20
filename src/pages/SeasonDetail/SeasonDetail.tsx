@@ -1,7 +1,9 @@
-import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import {  LocationState, Episode } from '../../utils/Interfaces';
 import { useAudioPlayer } from '../../components/AudioPlayer/AudioPlayerContext';
+
+import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import './SeasonDetail.css'
 
 
@@ -9,47 +11,105 @@ import './SeasonDetail.css'
 
 export default function SeasonDetail(){
 
+    const { id: showId } = useParams<{ id: string }>();
     const location = useLocation();
-    const { season } = location.state as LocationState;
+    const { season } = location.state as LocationState 
     const { playEpisode, setEpisodes } = useAudioPlayer();
+    const [favorites, setFavorites] = useState<{[key: string]: boolean}>({});
+
+    
 
     useEffect(() => {
         if (season) {
           setEpisodes(season.episodes);
-        }
-      }, [season.episodes, setEpisodes]);
-
-
-    return (
-
-        <div className='season-detail'>
-            <h1 className="season-title">{season.title}
-            <span className="episode-count"> : {season.episodes.length} episodes</span>
-            </h1>
-
-            <div className='episode-list'>
-
-                {season.episodes.map((episode: Episode) => (
-                    <div 
-                        key={episode.episode} 
-                        className="episode-item"
-                        onClick={() => {
-                            playEpisode(episode, season.image)
-                        }}
-                    >
-                        <div className="episode-number">{episode.episode}</div>
-
-                        <div className="episode-info">
-                            <h2 className="episode-title">{episode.title}</h2>
-                            <p className="episode-description">{episode.description}</p>
-                        </div>      
-                    </div>
-                    ))}
-            </div>
-        </div> 
     
-    )
-}
+          // Load favorites from localStorage and update the state
+          const storedFavorites = JSON.parse(localStorage.getItem('favoriteDetails') || '[]');
+          const favoriteMap: { [key: string]: boolean } = {};
+    
+          storedFavorites.forEach((fav: any) => {
+            if (fav.showId === showId && fav.season === season.title) {
+              favoriteMap[`${season.title}-${fav.episode.episode_number}`] = true;
+            }
+          });
+    
+          setFavorites(favoriteMap);
+        }
+      }, [season.episodes, setEpisodes, showId]);
+    
+      const handleFavoriteToggle = (episode: Episode) => {
+        const episodeKey = `${season.title}-${episode.episode}`;
+        const updatedFavorites = { ...favorites, [episodeKey]: !favorites[episodeKey] };
+    
+        // Update state and localStorage
+        setFavorites(updatedFavorites);
+    
+        // Check if favoriteDetails exists in localStorage, if not initialize it
+        let storedFavorites = JSON.parse(localStorage.getItem('favoriteDetails') || '[]');
+        if (!Array.isArray(storedFavorites)) {
+          storedFavorites = [];
+        }
+    
+        const favoriteExists = storedFavorites.some((fav: any) =>
+          fav.showId === showId &&
+          fav.season === season.title &&
+          fav.episode.episode_number === episode.episode
+        );
+    
+        if (updatedFavorites[episodeKey] && !favoriteExists) {
+          // Add to favorites if not already there
+          storedFavorites.push({
+            showId,
+            season: season.title,
+            episode: {
+              title: episode.title,
+              description: episode.description,
+              episode_number: episode.episode,
+            },
+          });
+        } else if (!updatedFavorites[episodeKey]) {
+          // Remove from favorites
+          storedFavorites = storedFavorites.filter((fav: any) =>
+            !(fav.showId === showId && fav.season === season.title && fav.episode.episode_number === episode.episode)
+          );
+        }
+        
+        console.log(storedFavorites)
+        localStorage.setItem('favoriteDetails', JSON.stringify(storedFavorites));
+      };
+    
+      return (
+        <div className='season-detail'>
+          <h1 className="season-title">{season.title}
+            <span className="episode-count"> : {season.episodes.length} episodes</span>
+          </h1>
+          <div className='episode-list'>
+            {season.episodes.map((episode: Episode) => {
+              const episodeKey = `${season.title}-${episode.episode}`;
+              return (
+                <div
+                  key={episode.episode}
+                  className="episode-item"
+                  onClick={() => playEpisode(episode, season.image)}
+                >
+                  <div className="episode-number">{episode.episode}</div>
+                  <div className="episode-info">
+                    <h2 className="episode-title">{episode.title}</h2>
+                    <p className="episode-description">{episode.description}</p>
+                  </div>
+                  <div className="favorite-button-container" onClick={(e) => {
+                    e.stopPropagation();
+                    handleFavoriteToggle(episode);
+                  }}>
+                    <FavoriteButton isFavorite={favorites[episodeKey]} toggleFavorite={() => handleFavoriteToggle(episode)} />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
 
 
 /*

@@ -3,7 +3,7 @@ import { useAudioPlayer } from './AudioPlayerContext';
 import DisplayTrack from './DisplayTrack';
 import Controls from './Controls';
 import ProgressBar from './ProgressBar';
-import { FaHeart, FaRegHeart, FaTimes } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
 import './AudioPlayer.css';
 
 const AudioPlayer: React.FC = () => {
@@ -12,8 +12,6 @@ const AudioPlayer: React.FC = () => {
       playNextEpisode,
       playPrevEpisode,
       seasonImage,
-      toggleFavorite,
-      isFavorite
     } = useAudioPlayer();
 
     const [currentTrack, setCurrentTrack] = useState(episode);
@@ -74,9 +72,6 @@ const AudioPlayer: React.FC = () => {
                 seasonImage={seasonImage}
               />
             
-              <button className="favorite-button" onClick={toggleFavorite}>
-                {isFavorite ? <FaHeart /> : <FaRegHeart />}
-              </button>
           </div>
             
             <Controls

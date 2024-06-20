@@ -27,6 +27,7 @@
   border-radius: 5px;
   transition: background-color 0.3s;
   cursor: pointer;
+  justify-content: space-between;
 }
 
 .episode-number {
@@ -38,6 +39,7 @@
 .episode-info {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .episode-title {
@@ -48,5 +50,10 @@
 .episode-description {
   margin: 5px 0 0;
   color: #666;
+}
+
+.favorite-button-container {
+  margin-left: auto;
+  padding-left: 10px;
 }
 

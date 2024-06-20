@@ -119,3 +119,8 @@ export interface SortButtonProps {
   shows: Show[];
   setSortedShows: (shows: Show[]) => void;
 }
+
+export interface FavoriteButtonProps {
+  isFavorite: boolean;
+  toggleFavorite: () => void;
+}
