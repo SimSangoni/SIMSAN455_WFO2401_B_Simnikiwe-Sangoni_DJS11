@@ -117,7 +117,7 @@ export interface ErrorProps {
 }
 
 export interface SortButtonProps {
-  shows: Show[];
+  shows: Show[] ;
   setSortedShows: (shows: Show[]) => void;
 }
 

@@ -1,49 +1,54 @@
 import { useEffect, useState } from 'react';
 import { FavouriteDetail } from '../../utils/Interfaces';
+import FavouriteSortButton from '../../components/SortButton/FavourtieSortButton';
 import './Favourites.css';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 
 
 export default function Favourites() {
     const [favouriteEpisodes, setFavouriteEpisodes] = useState<FavouriteDetail[]>([]);
-  
+    const [sortedFavourites, setSortedFavourites] = useState<FavouriteDetail[]>([]);
+
     useEffect(() => {
-        try {
-          const storedFavourites = JSON.parse(localStorage.getItem('favoriteDetails') || '[]');
-          if (Array.isArray(storedFavourites)) {
-            setFavouriteEpisodes(storedFavourites);
-            console.log('Favourites loaded from localStorage:', storedFavourites);
-          } else {
-            console.warn('Stored favourites is not an array:', storedFavourites);
-          }
-        } catch (error) {
-          console.error('Error loading favourites from localStorage:', error);
+      try {
+        const storedFavourites = JSON.parse(localStorage.getItem('favoriteDetails') || '[]');
+        if (Array.isArray(storedFavourites)) {
+          setFavouriteEpisodes(storedFavourites);
+          setSortedFavourites(storedFavourites);
+          console.log('Favourites loaded from localStorage:', storedFavourites);
+        } else {
+          console.warn('Stored favourites is not an array:', storedFavourites);
         }
-      }, []);
-
-      const handleDelete = (showId: string, season: string, episodeNumber: number) => {
-        const updatedFavourites = favouriteEpisodes.filter(fav =>
-          !(fav.showId === showId && fav.season === season && fav.episode.episode_number === episodeNumber)
-        );
-        setFavouriteEpisodes(updatedFavourites);
-        console.log(updatedFavourites)
-        localStorage.setItem('favoriteDetails', JSON.stringify(updatedFavourites));
-      };
-
-    const formatDate = (timestamp: string) => {
-    const date = new Date(timestamp);
-    return date.toLocaleString();
+      } catch (error) {
+        console.error('Error loading favourites from localStorage:', error);
+      }
+    }, []);
+  
+    const handleDelete = (showId: string, season: string, episodeNumber: number) => {
+      const updatedFavourites = favouriteEpisodes.filter(fav =>
+        !(fav.showId === showId && fav.season === season && fav.episode.episode_number === episodeNumber)
+      );
+      setFavouriteEpisodes(updatedFavourites);
+      setSortedFavourites(updatedFavourites);
+      localStorage.setItem('favoriteDetails', JSON.stringify(updatedFavourites));
     };
   
-    if (favouriteEpisodes.length === 0) {
+    const formatDate = (timestamp: string) => {
+      const date = new Date(timestamp);
+      return date.toLocaleString();
+    };
+  
+    if (sortedFavourites.length === 0) {
       return <div className="favourites">No favourite episodes yet.</div>;
     }
+  
   
     return (
         <div className="favourites">
           <h1>Your Favourite Episodes</h1>
+          <FavouriteSortButton shows={favouriteEpisodes} setSortedShows={setSortedFavourites} />
           <div className="favourite-list">
-            {favouriteEpisodes.map((fav) => (
+            {sortedFavourites.map((fav) => (
               <div key={`${fav.showId}-${fav.season}-${fav.episode.episode_number}`} className="favourite-item">
                 <div className="favourite-info">
                   <img src={fav.season_image} alt="Show" className="show-image" />
