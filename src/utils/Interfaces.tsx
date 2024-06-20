@@ -109,3 +109,9 @@ export interface ProgressBarProps {
 export interface ErrorProps {
   message: string;
 }
+
+export interface SortButtonProps {
+  sortMenuOpen: boolean;
+  toggleSortMenu: () => void;
+  handleSortOption: (option: string) => void;
+}
