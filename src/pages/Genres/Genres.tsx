@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import {Genre, Show} from '../../utils/Interfaces'
 import { fetchShowsAndGenres } from "../../utils/apiRequests";
-import './Genres.css'
-import {useNavigate } from 'react-router-dom';
+
+import { Link } from 'react-router-dom';
 import Loading from "../../components/Loading/Loading";
 
 
+import './Genres.css'
 
 
 export default function Genres(){
@@ -13,7 +14,7 @@ export default function Genres(){
   const [genres, setGenres] = useState<Genre[]>([]);
   const [shows, setShows] = useState<Show[]>([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+
    
   useEffect(() => {
     fetchData();
@@ -38,36 +39,38 @@ export default function Genres(){
     return genreShow ? genreShow.image : '';
   }
 
-  function handleGenreClick(genre: Genre) {
-    const genreSlug = genre.title.toLowerCase().replace(/ /g, '-');
-    navigate(`/genre/${genreSlug}`, {state: {genre }});
-  }
 
-    return (
-      <div className="genres-page">
+
+  return (
+    <div className="genres-page">
       {loading ? (
         <Loading />
       ) : (
-      <>
         <div className="genres-list">
-          {genres.map(genre => (
-            <div key={genre.id} 
-              className="genre-container" 
-              style={{ backgroundImage: 
-                `linear-gradient(to bottom, rgba(0, 0, 0, 0.8), 
-                rgba(0, 0, 0, 0.5)),
-                url(${getGenreImage(genre)})` }}
-              onClick={() => handleGenreClick(genre)}
+          {genres.map(genre => {
+            const genreSlug = genre.title.toLowerCase().replace(/ /g, '-');
+            return (
+              <Link
+                key={genre.id}
+                to={`/genre/${genreSlug}`}
+                state={{ genre }}
+                className="genre-link"
               >
-              <h2 className="genre-title">{genre.title}</h2>
-            </div>
-          ))}
+                <div
+                  className="genre-container"
+                  style={{
+                    backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url(${getGenreImage(genre)})`
+                  }}
+                >
+                  <h2 className="genre-title">{genre.title}</h2>
+                </div>
+              </Link>
+            );
+          })}
         </div>
-  
-        </>
       )}
     </div>
-    )
+  );
 }
 
 
