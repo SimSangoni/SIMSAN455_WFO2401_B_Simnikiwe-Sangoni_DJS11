@@ -52,14 +52,14 @@ export default function Genres(){
         <div className="genres-list">
           {genres.map(genre => (
             <div key={genre.id} 
-            className="genre-container" 
-            style={{ backgroundImage: `url(${getGenreImage(genre)})` }}
-            onClick={() => handleGenreClick(genre)}
-            >
+              className="genre-container" 
+              style={{ backgroundImage: 
+                `linear-gradient(to bottom, rgba(0, 0, 0, 0.8), 
+                rgba(0, 0, 0, 0.5)),
+                url(${getGenreImage(genre)})` }}
+              onClick={() => handleGenreClick(genre)}
+              >
               <h2 className="genre-title">{genre.title}</h2>
-              <div className="genre-content">
-                <p className="genre-description">{genre.description}</p>
-              </div>
             </div>
           ))}
         </div>

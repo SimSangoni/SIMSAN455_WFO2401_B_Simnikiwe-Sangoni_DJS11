@@ -34,7 +34,6 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  
 }
 
 .show-header {
@@ -42,6 +41,7 @@
   background-position: center;
   padding: 20px;
   border-radius: 5px;
+  height: 350px;
 }
 
   .show-header h1 {
