@@ -1,16 +1,20 @@
-.search-form {
-  margin: 20px;
-  text-align: center;
+.user-input {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
 }
 
-.search-form input {
-  padding: 10px;
-  font-size: 1em;
-  width: 80%;
-  /* max-width: 300px; */
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.search-container {
+  flex: 1;
+  justify-content: flex-end;
 }
+
+.sort-button-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
 
 .home {
     display: grid;

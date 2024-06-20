@@ -7,6 +7,7 @@ import Loading from "../../components/Loading/Loading";
 import Error from "../../components/Error/Error";
 import { isErrorWithMessage } from "../../utils/funstionsUtils";
 import SortButton from "../../components/SortButton/SortButton";
+import SearchQuery from "../../components/SearchQuery/SearchQuery";
 
 
 export default function Shows({ searchQuery }: ShowProps){
@@ -16,6 +17,7 @@ export default function Shows({ searchQuery }: ShowProps){
     const [sortedShows, setSortedShows] = useState<Show[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [searchTerm, setSearchTerm] = useState(searchQuery);
 
 
     useEffect(() => {
@@ -39,9 +41,9 @@ export default function Shows({ searchQuery }: ShowProps){
       }
     };
 
-      const filteredShows = searchQuery
+      const filteredShows = searchTerm
       ? sortedShows.filter(show => 
-        show.title.toLowerCase().includes(searchQuery.toLowerCase()))
+        show.title.toLowerCase().includes(searchTerm.toLowerCase()))
       : sortedShows;
 
 
@@ -66,7 +68,11 @@ export default function Shows({ searchQuery }: ShowProps){
 
     return (
         <>
-         <SortButton shows={shows} setSortedShows={setSortedShows} />
+        <div className="user-input">
+          <SortButton shows={shows} setSortedShows={setSortedShows} />
+          <SearchQuery searchQuery={searchTerm} setSearchQuery={setSearchTerm} />
+        </div>
+         
         <div className="home">
 
                 {filteredShows.map( show => (

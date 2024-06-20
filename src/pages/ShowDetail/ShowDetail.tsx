@@ -7,6 +7,7 @@ import Error from "../../components/Error/Error";
 
 import './ShowDetail.css'
 import { AiFillRightCircle, AiFillLeftCircle } from "react-icons/ai";
+import { IoArrowBack } from "react-icons/io5";
 
 export default function ShowDetail(){
 
@@ -73,12 +74,19 @@ export default function ShowDetail(){
                 seasonListRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
               }
             };   
+
+        const handleBack = () => {
+          navigate(-2); 
+        };
         
 
 
     return (
         
     <div className="show-details">
+      <button className="back-button" onClick={handleBack}>
+        <IoArrowBack />
+      </button>
         <div className="show-header" style={headerStyle}>
             <h1>{show.title}</h1>
             <div>

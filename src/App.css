@@ -1,6 +1,5 @@
 .body-content {
     margin-top: 180px;
-    padding-top: 20px; 
     margin-bottom: 180px;
   }
 
@@ -10,4 +9,10 @@ body {
   font-optical-sizing: auto;
   font-weight: light 300;
   font-style: normal;
+}
+
+@media (max-width: 768px) {
+  .body-content {
+    margin-top: 80px;
+  }
 }
