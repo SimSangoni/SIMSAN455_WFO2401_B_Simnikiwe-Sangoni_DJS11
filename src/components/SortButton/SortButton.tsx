@@ -9,7 +9,7 @@ const SortButton: React.FC<SortButtonProps> = ({ shows, setSortedShows }) => {
     const [selectedSortOption, setSelectedSortOption] = useState('Sort By: A-Z');
 
     useEffect(() => {
-        sortShows('A-Z');
+        handleSort('A-Z');
     }, []);
 
     function handleSort(option: string) {

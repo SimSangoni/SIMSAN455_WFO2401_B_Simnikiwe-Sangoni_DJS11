@@ -22,11 +22,6 @@ export default function Shows({ searchQuery }: ShowProps){
       fetchShows();
     }, []);
 
-    useEffect(() => {
-      setSortedShows(shows);
-    }, [shows]);
-
-
     async function fetchShows() {
       try {
         const { shows, genres } = await fetchShowsAndGenres();
