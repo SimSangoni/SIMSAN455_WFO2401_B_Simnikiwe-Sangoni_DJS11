@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TbMusicSearch } from "react-icons/tb";
+import { FaSearch } from "react-icons/fa";
 import './SearchQuery.css';
 import { SearchQueryProps } from '../../utils/Interfaces';
 
@@ -19,12 +19,12 @@ const SearchQuery: React.FC<SearchQueryProps> = ({ searchQuery, setSearchQuery }
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search for shows..."
+            placeholder="Search for podcasts..."
           />
         </div>
       )}
       <span className="search-icon" onClick={toggleSearch}>
-        <TbMusicSearch className="icon" />
+        <FaSearch className="icon" />
       </span>
     </div>
   );
