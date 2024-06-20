@@ -135,4 +135,5 @@ export interface FavouriteDetail {
     description?: string;
     episode_number: number;
   };
+  timestamp: string;
 }

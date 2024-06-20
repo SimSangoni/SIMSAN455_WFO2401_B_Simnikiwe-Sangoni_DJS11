@@ -67,6 +67,7 @@ export default function SeasonDetail(){
               description: episode.description,
               episode_number: episode.episode,
             },
+            timestamp: new Date().toISOString()
           });
         } else if (!updatedFavorites[episodeKey]) {
           // Remove from favorites

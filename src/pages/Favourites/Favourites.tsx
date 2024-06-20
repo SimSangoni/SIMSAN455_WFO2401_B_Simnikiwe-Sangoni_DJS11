@@ -29,6 +29,11 @@ export default function Favourites() {
         console.log(updatedFavourites)
         localStorage.setItem('favoriteDetails', JSON.stringify(updatedFavourites));
       };
+
+    const formatDate = (timestamp: string) => {
+    const date = new Date(timestamp);
+    return date.toLocaleString();
+    };
   
     if (favouriteEpisodes.length === 0) {
       return <div className="favourites">No favourite episodes yet.</div>;
@@ -47,6 +52,7 @@ export default function Favourites() {
                     <h3>{fav.season}</h3>
                     <h4>Episode {fav.episode.episode_number}: {fav.episode.title}</h4>
                     <p>{fav.episode.description || 'No description available.'}</p>
+                    <p className="timestamp">Added on: {formatDate(fav.timestamp)}</p>
                   </div>
                   <button onClick={() => handleDelete(fav.showId, fav.season, fav.episode.episode_number)} className="delete-button">
                     <RiDeleteBin2Fill />
