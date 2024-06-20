@@ -1,69 +1,120 @@
 .favourites {
-    padding: 20px;
-  }
-  
-  .favourite-list {
-    margin-top: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .favourite-item {
-    display: flex;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    cursor: pointer;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .favourite-info {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex: 1; /* Make the container take up available space */
-  }
-  
-  .show-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 5px;
-    flex-shrink: 0; /* Prevent the image from shrinking */
-  }
-  
-  .episode-details {
-    display: flex;
-    flex-direction: column;
-    flex: 1; /* Make the details take up available space */
-  }
-  
-  .episode-details h2,
-  .episode-details h3,
-  .episode-details h4,
-  .episode-details p {
-    margin: 0;
-    word-wrap: break-word; /* Ensure text wraps properly */
-  }
-  
-  .timestamp {
-    color: #aaa;
-    font-size: 0.9em;
-  }
-  
-  .delete-button {
-    background: none;
-    border: none;
-    color: red;
-    cursor: pointer;
-    font-size: 1.5em;
-    flex-shrink: 0; /* Prevent the button from shrinking */
-  }
-  
-  .delete-button:hover {
-    color: darkred;
-  }
-  
+  padding: 20px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.sort-button-container,
+.filter-button-container {
+  position: relative;
+}
+
+.sort-button {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+  background-color: #333; 
+  color: #fff;
+}
+
+.sort-button:hover,
+.filter-button:hover {
+  background-color: #444;  
+}
+
+.sort-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  z-index: 1000;
+  background-color: #333; 
+  color: #fff; 
+}
+
+.sort-menu button {
+  border: none;
+  padding: 10px 20px;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  background-color: #333; 
+  color: #fff;
+}
+
+
+.sort-menu button:hover {
+  background-color: #444; 
+}
+
+.favourite-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.favourite-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.favourite-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.show-image {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.episode-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.timestamp {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: red;
+  font-size: 1.5em;
+  margin-left: auto;
+  padding: 10px;
+}
+
+.show-group {
+  margin-bottom: 20px;
+}
+
+.season-group {
+  margin-left: 20px;
+}
