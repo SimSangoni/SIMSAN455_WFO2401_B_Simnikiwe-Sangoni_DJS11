@@ -65,16 +65,15 @@ export default function App() {
       />
       <div className='body-content'>
       <ScrollToTop>
-        <Routes>
-          <Route path="/" element={<Shows searchQuery={searchQuery} sortOption={sortOption}/>} />
-          <Route path="show/:id" element={<ShowDetail />}>
-            <Route path="season/:seasonId" element={<SeasonDetail />}>
-            </Route>
-          </Route>
-          <Route path="/favourites" element={<Favourites/>} />
-          <Route path="/genres" element={<Genres />}/>
-          <Route path="/genre/:genreSlug" element={<GenreDetail />} />
-        </Routes>
+      <Routes>
+              <Route path="/" element={<Shows searchQuery={searchQuery} sortOption={sortOption} />} />
+              <Route path="show/:id" element={<ShowDetail />}>
+                <Route path="season/:seasonId" element={<SeasonDetail />} />
+              </Route>
+              <Route path="/favourites" element={<Favourites />} />
+              <Route path="/genres" element={<Genres />} />
+              <Route path="/genre/:genreSlug" element={<GenreDetail />} />
+            </Routes>
         </ScrollToTop>
       </div>
       <AudioPlayer />

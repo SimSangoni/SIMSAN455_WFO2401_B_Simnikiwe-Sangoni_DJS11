@@ -61,6 +61,7 @@ export default function SeasonDetail(){
           storedFavorites.push({
             showId,
             season: season.title,
+            season_image: season.image,
             episode: {
               title: episode.title,
               description: episode.description,

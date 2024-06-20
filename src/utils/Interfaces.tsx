@@ -124,3 +124,15 @@ export interface FavoriteButtonProps {
   isFavorite: boolean;
   toggleFavorite: () => void;
 }
+
+export interface FavouriteDetail {
+  showId: string;
+  showTitle: string;
+  season: string;
+  season_image: string;
+  episode: {
+    title: string;
+    description?: string;
+    episode_number: number;
+  };
+}
