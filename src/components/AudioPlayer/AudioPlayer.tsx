@@ -12,7 +12,7 @@ const AudioPlayer: React.FC = () => {
       playNextEpisode,
       playPrevEpisode,
       seasonImage,
-      toggleFavorite,
+      // toggleFavorite,
       isFavorite
     } = useAudioPlayer();
 
@@ -56,6 +56,22 @@ const AudioPlayer: React.FC = () => {
       }
     };
 
+    const handleFavorite = () => {
+      if (currentTrack) {
+        const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+        const index = favorites.findIndex((fav: any) => fav.file === currentTrack.file);
+        if (index === -1) {
+          favorites.push({
+            ...currentTrack,
+            seasonImage,
+            addedAt: new Date().toISOString(),
+          });
+          localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+      }
+    };
+  
+
   
     if (!currentTrack) return null;
   
@@ -74,7 +90,7 @@ const AudioPlayer: React.FC = () => {
                 seasonImage={seasonImage}
               />
             
-              <button className="favorite-button" onClick={toggleFavorite}>
+              <button className="favorite-button" onClick={handleFavorite}>
                 {isFavorite ? <FaHeart /> : <FaRegHeart />}
               </button>
           </div>
