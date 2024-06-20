@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ScrollToTop from './components/ScrollUp';
 
 import Header from "./components/Header/Header";
 
@@ -63,6 +64,7 @@ export default function App() {
         handleSortOption={handleSortOption}
       />
       <div className='body-content'>
+      <ScrollToTop>
         <Routes>
           <Route path="/" element={<Shows searchQuery={searchQuery} sortOption={sortOption}/>} />
           <Route path="show/:id" element={<ShowDetail />}>
@@ -73,6 +75,7 @@ export default function App() {
           <Route path="/genres" element={<Genres />}/>
           <Route path="/genre/:genreSlug" element={<GenreDetail />} />
         </Routes>
+        </ScrollToTop>
       </div>
       <AudioPlayer />
     </Router>  
