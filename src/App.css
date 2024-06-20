@@ -1,6 +1,8 @@
 .body-content {
     margin-top: 180px;
     margin-bottom: 180px;
+    padding-left: 20px;  
+    padding-right: 20px;
   }
 
 
@@ -14,5 +16,7 @@ body {
 @media (max-width: 768px) {
   .body-content {
     margin-top: 80px;
+    padding-left: 10px; 
+    padding-right: 10px;
   }
 }
