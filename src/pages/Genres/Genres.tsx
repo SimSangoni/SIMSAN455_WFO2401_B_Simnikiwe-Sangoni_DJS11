@@ -40,7 +40,7 @@ export default function Genres(){
 
   function handleGenreClick(genre: Genre) {
     const genreSlug = genre.title.toLowerCase().replace(/ /g, '-');
-    navigate(`/genre/${genreSlug}`);
+    navigate(`/genre/${genreSlug}`, {state: {genre }});
   }
 
     return (
