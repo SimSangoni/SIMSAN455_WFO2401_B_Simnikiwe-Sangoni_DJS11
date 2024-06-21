@@ -54,6 +54,16 @@ const AudioPlayer: React.FC = () => {
     }
   };
 
+  const handleNext = () => {
+    playNextEpisode();
+    setIsPlaying(true);
+  };
+
+  const handlePrev = () => {
+    playPrevEpisode();
+    setIsPlaying(true);
+  };
+
   if (!currentTrack) return null;
 
   return (
@@ -76,8 +86,8 @@ const AudioPlayer: React.FC = () => {
             progressBarRef={progressBarRef}
             duration={duration}
             setTimeProgress={setTimeProgress}
-            handleNext={playNextEpisode}
-            handlePrev={playPrevEpisode}
+            handleNext={handleNext}
+            handlePrev={handlePrev}
             isPlaying={isPlaying}
             handlePlayPause={handlePlayPause}
           />
