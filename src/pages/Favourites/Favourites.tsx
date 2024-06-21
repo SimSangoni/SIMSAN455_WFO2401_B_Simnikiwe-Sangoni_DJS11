@@ -19,7 +19,7 @@ export default function Favourites() {
       if (Array.isArray(storedFavourites)) {
         setFavouriteEpisodes(storedFavourites);
         setSortedFavourites(storedFavourites);
-        console.log('Favourites loaded from localStorage:', storedFavourites);
+        // console.log('Favourites loaded from localStorage:', storedFavourites);
       } else {
         console.warn('Stored favourites is not an array:', storedFavourites);
       }
