@@ -86,6 +86,8 @@ const AudioPlayer: React.FC = () => {
             audioRef={audioRef}
             timeProgress={timeProgress}
             duration={duration}
+            setTimeProgress={setTimeProgress}
+            setIsPlaying={setIsPlaying}
           />
         </div>
       </div>

@@ -100,6 +100,11 @@ export interface ProgressBarProps {
   audioRef: React.RefObject<HTMLAudioElement>;
   timeProgress: number;
   duration: number;
+  setTimeProgress: (time: number) => void;
+}
+
+export interface UpdatedProgressBarProps extends ProgressBarProps {
+  setIsPlaying: (isPlaying: boolean) => void;
 }
 
 export interface ErrorProps {

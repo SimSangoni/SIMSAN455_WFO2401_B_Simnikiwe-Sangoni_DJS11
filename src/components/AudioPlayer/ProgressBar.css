@@ -1,8 +1,10 @@
-.progress-container {
+ .progress-container {
     width: 100%; 
-    height: 5px; 
-    background-color: #ccc; 
+    height: 10px; 
+    background-color: #444; 
     position: relative; 
+    cursor: pointer;
+    margin-top: 10px;
   }
   
   .progress-bar {
@@ -13,5 +15,13 @@
     position: absolute; 
     top: 0;
     left: 0;
+  }
+  
+  .time-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.875rem;
+    margin-top: 5px; 
   }
   
