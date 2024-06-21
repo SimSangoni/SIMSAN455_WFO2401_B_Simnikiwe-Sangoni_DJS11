@@ -12,8 +12,7 @@ const AudioPlayer: React.FC = () => {
   const [currentTrack, setCurrentTrack] = useState(episode);
   const [timeProgress, setTimeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-
+  const [isPlaying, setIsPlaying] = useState(true);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const progressBarRef = useRef<HTMLDivElement | null>(null);
@@ -23,16 +22,18 @@ const AudioPlayer: React.FC = () => {
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.load();
-      audioRef.current.play().catch((e) => console.log(e)); // Handle play errors
-      setIsPlaying(true);
+      audioRef.current.play()
+        .then(() => setIsPlaying(true)) 
+        .catch((e) => console.log(e));
     }
   }, [episode]);
 
   const handlePlayPause = () => {
     if (audioRef.current) {
       if (audioRef.current.paused) {
-        audioRef.current.play().catch((e) => console.log(e)); // Handle play errors
-        setIsPlaying(true);
+        audioRef.current.play()
+          .then(() => setIsPlaying(true))
+          .catch((e) => console.log(e));
       } else {
         audioRef.current.pause();
         setIsPlaying(false);
@@ -41,11 +42,8 @@ const AudioPlayer: React.FC = () => {
   };
 
   const handleClosePlayer = () => {
-    if (isPlaying) {
-     
-    } else {
-      closePlayer();
-    }
+    closePlayer();
+    setIsPlaying(true);
   };
 
   const closePlayer = () => {
@@ -56,10 +54,7 @@ const AudioPlayer: React.FC = () => {
     }
   };
 
-
   if (!currentTrack) return null;
-
-
 
   return (
     <div className='player'>

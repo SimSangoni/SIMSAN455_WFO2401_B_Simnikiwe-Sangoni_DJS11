@@ -16,13 +16,28 @@ const DisplayTrack: React.FC<DisplayTrackProps> = ({
         }
       };
 
+      const playAudio = () => {
+        if (audioRef.current) {
+          audioRef.current.play().catch(error => console.error("Error playing the audio:", error));
+        }
+      };
+
       audioRef.current.addEventListener('loadeddata', handleLoadedData);
+
+      // Pause the audio only if it's not already paused
+      if (!audioRef.current.paused) {
+        audioRef.current.pause();
+      }
+
       audioRef.current.src = currentTrack.file;
-      audioRef.current.play();
+      audioRef.current.load();
+
+      audioRef.current.addEventListener('canplaythrough', playAudio);
 
       return () => {
         if (audioRef.current) {
           audioRef.current.removeEventListener('loadeddata', handleLoadedData);
+          audioRef.current.removeEventListener('canplaythrough', playAudio);
         }
       };
     }
@@ -35,7 +50,7 @@ const DisplayTrack: React.FC<DisplayTrackProps> = ({
         <h3 className="track-title">{currentTrack.title}</h3>
         {/* <p className="track-description">{currentTrack.description}</p> */}
       </div>
-      <audio ref={audioRef} src={currentTrack.file} onEnded={handleNext} />
+      <audio ref={audioRef} onEnded={handleNext} />
     </div>
   );
 };
