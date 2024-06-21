@@ -1,27 +1,32 @@
-import React from 'react';
+import Modal from 'react-modal';
 import './Modal.css';
 
-interface ModalProps {
+interface ConfirmModalProps {
   isOpen: boolean;
-  onClose: () => void;
+  onRequestClose: () => void;
   onConfirm: () => void;
+  message: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onConfirm }) => {
-  if (!isOpen) return null;
+Modal.setAppElement('#root'); // This is important for accessibility
 
+const ConfirmModal: React.FC<ConfirmModalProps> = ({ isOpen, onRequestClose, onConfirm, message }) => {
   return (
-    <div className="modal-overlay">
-      <div className="modal">
-        <h2>Close Player</h2>
-        <p>Audio is playing. Are you sure you want to close the player?</p>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      className="modal"
+      overlayClassName="overlay"
+    >
+      <div className="modal-content">
+        <p>{message}</p>
         <div className="modal-buttons">
-          <button onClick={onConfirm}>Yes</button>
-          <button onClick={onClose}>No</button>
+          <button onClick={onConfirm}>OK</button>
+          <button onClick={onRequestClose}>Cancel</button>
         </div>
       </div>
-    </div>
+    </Modal>
   );
 };
 
-export default Modal;
+export default ConfirmModal;

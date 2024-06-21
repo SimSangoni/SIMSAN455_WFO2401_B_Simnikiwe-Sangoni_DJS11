@@ -5,6 +5,7 @@ import Controls from './Controls';
 import ProgressBar from './ProgressBar';
 import { FaTimes } from 'react-icons/fa';
 import './AudioPlayer.css';
+import ConfirmModal from '../Modal/Modal';
 
 const AudioPlayer: React.FC = () => {
   const { episode, playNextEpisode, playPrevEpisode, seasonImage } = useAudioPlayer();
@@ -13,6 +14,7 @@ const AudioPlayer: React.FC = () => {
   const [timeProgress, setTimeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const progressBarRef = useRef<HTMLDivElement | null>(null);
@@ -42,9 +44,14 @@ const AudioPlayer: React.FC = () => {
   };
 
   const handleClosePlayer = () => {
-    closePlayer();
-    setIsPlaying(true);
+    if (isPlaying) {
+      setShowConfirmModal(true);
+    } else {
+      closePlayer();
+      setIsPlaying(true);
+    }
   };
+
 
   const closePlayer = () => {
     setCurrentTrack(null);
@@ -52,6 +59,7 @@ const AudioPlayer: React.FC = () => {
       audioRef.current.pause();
       setIsPlaying(false);
     }
+    setShowConfirmModal(false);
   };
 
   const handleNext = () => {
@@ -101,6 +109,15 @@ const AudioPlayer: React.FC = () => {
           />
         </div>
       </div>
+      <ConfirmModal
+        isOpen={showConfirmModal}
+        onRequestClose={() => setShowConfirmModal(false)}
+        onConfirm={closePlayer}
+        message=
+        {`Audio is still playing. 
+          \nAre you sure you want to close the player?`}
+      />
+      
     </div>
   );
 };
