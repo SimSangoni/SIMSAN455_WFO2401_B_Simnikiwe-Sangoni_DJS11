@@ -2,6 +2,10 @@ import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { TbRewindBackward10, TbRewindForward10  } from "react-icons/tb";
 import { ControlsProps } from "../../utils/Interfaces";
+import { useState } from "react";
+import { IoMdVolumeOff, IoMdVolumeHigh } from "react-icons/io";
+
+import './Controls.css'
 
 const Controls: React.FC<ControlsProps> = ({
   audioRef,
@@ -14,6 +18,29 @@ const Controls: React.FC<ControlsProps> = ({
   handlePlayPause,
 }) => {
 
+  const [volume, setVolume] = useState(1);
+
+
+  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newVolume = parseFloat(event.target.value);
+    setVolume(newVolume);
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume;
+    }
+  };
+
+
+  const toggleMute = () => {
+    if (audioRef.current) {
+      if (audioRef.current.volume === 0) {
+        setVolume(1);
+        audioRef.current.volume = 1;
+      } else {
+        setVolume(0);
+        audioRef.current.volume = 0;
+      }
+    }
+  };
  
 
   const handleRewind = () => {
@@ -49,6 +76,25 @@ const Controls: React.FC<ControlsProps> = ({
       <button onClick={handleFastForward}><TbRewindForward10 /></button>
       <button onClick={handleNext}><MdSkipNext /></button>
       <div ref={progressBarRef} className="progress-bar" onTimeUpdate={handleProgress} />
+      
+      <div className="volume-control-wrapper">
+        <div className="volume-control">
+          <div onClick={toggleMute}>
+            {volume === 0 ? <IoMdVolumeOff /> : <IoMdVolumeHigh />}
+          </div>
+          <input
+            type="range"
+            id="volume"
+            name="volume"
+            min="0"
+            max="1"
+            step="0.01"
+            value={volume}
+            onChange={handleVolumeChange}
+            className="volume-slider"
+          />
+        </div>
+      </div>
     </div>
   );
 };
