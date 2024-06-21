@@ -9,6 +9,7 @@ import { isErrorWithMessage } from "../../utils/funstionsUtils";
 import SortButton from "../../components/SortButton/SortButton";
 import SearchQuery from "../../components/SearchQuery/SearchQuery";
 import { format } from 'date-fns';
+import Fuse from 'fuse.js';
 
 
 export default function Shows(){
@@ -42,10 +43,14 @@ export default function Shows(){
       }
     };
 
-      const filteredShows = searchTerm
-      ? sortedShows.filter(show => 
-        show.title.toLowerCase().includes(searchTerm.toLowerCase()))
-      : sortedShows;
+      const fuse = new Fuse(sortedShows, {
+        keys: ['title', 'description'],
+        threshold: 0.5
+    });
+
+    const filteredShows = searchTerm
+    ? fuse.search(searchTerm).map(result => result.item)
+    : sortedShows;
 
 
       function getGenreTitles(genreIds: number[]): string[] {
@@ -93,7 +98,7 @@ export default function Shows(){
                             <br></br>
                             {show.seasons} {show.seasons > 1 ? 'Seasons' : 'Season'}
                             <br></br>
-                            Last updated: {format(new Date(show.updated), 'PPP')}
+                            Updated: {format(new Date(show.updated), 'PPP')}
                             </p>
                            
                             
