@@ -1,6 +1,7 @@
 .search-container {
     display: flex;
     align-items: center;
+    position: relative;
   }
   
   .search-form {
@@ -18,9 +19,11 @@
     width: 24px;
     height: 24px;
     cursor: pointer;
-    margin-right: 1rem;
     fill: var(--primary-color);
+    margin-right: 0.5rem;
   }
+  
+
   
 
   

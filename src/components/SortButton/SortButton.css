@@ -1,6 +1,10 @@
 .sort-button-container {
-    position: relative;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative; /* Ensure relative positioning */
+  width: fit-content; /* Ensure the container does not expand */
+}
   
   .sort-button {
     border: 1px solid var(--primary-color);

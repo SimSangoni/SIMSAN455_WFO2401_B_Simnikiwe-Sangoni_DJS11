@@ -1,19 +1,21 @@
 .user-input {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* Stack vertically by default */
+  gap: 1rem;
   margin: 1rem 0;
-}
-
-.search-container {
-  flex: 1;
-  justify-content: flex-end;
+  position: relative;
 }
 
 .sort-button-container {
-  flex: 1;
   display: flex;
   justify-content: flex-start;
 }
+
+.search-query-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
 
 
 .home {
@@ -87,5 +89,9 @@
   @media (min-width: 768px) {
     .home {
       grid-template-columns: 1fr 1fr;
+    }
+    .user-input {
+      flex-direction: row; /* Arrange side-by-side for larger screens */
+      justify-content: space-between;
     }
   }
