@@ -1,6 +1,6 @@
-# 🎵 [Podcastyly](https://podcastly.netlify.app/){:target="_blank"} | PORTFOLIO PIECE 💿
+# 🎵 <a href="https://podcastly.netlify.app/" target="_blank">Podcastly</a> | PORTFOLIO PIECE 💿
 
-Podcastly is a web application that allows users to explore and listen to a variety of podcast shows. Users can search for shows, sort them based on different criteria and  mark episodes as favorites. The application is built using React and TypeScript, and it is deployed on Netlify.
+Podcastly is a web application that allows users to explore and listen to a variety of podcast shows. Users can search for shows, sort them based on different criteria and mark episodes as favorites. The application is built using React and TypeScript, and it is deployed on Netlify.
 
 ## **Table of Contents**
 
@@ -10,8 +10,8 @@ Podcastly is a web application that allows users to explore and listen to a vari
 - [Contact Information](#contact-information)
 - [Future Enhancements](#future-enhancements)
 - [Deployment](#deployment)
-- [Project Plan](ProjectPlan.md){:target="_blank"}
-- [Components and Requirements](Comp-and-Pages-plan.md){:target="_blank"}
+- [Project Plan](ProjectPlan.md)
+- [Components and Requirements](Comp-and-Pages-plan.md)
 
 ## Introduction
 
@@ -31,7 +31,7 @@ To set up the project locally, follow these steps:
 
 1. **Clone the repository:**
    ```bash
-   git clone <https://github.com/SimSangoni/SIMSAN455_WFO2401_B_Simnikiwe-Sangoni_DJS11.git>
+   git clone https://github.com/SimSangoni/SIMSAN455_WFO2401_B_Simnikiwe-Sangoni_DJS11.git
    ```
 
 2. **Install dependencies:**
@@ -62,7 +62,7 @@ Once the application is set up and running, you can:
    - The home page displays a list of podcast shows. You can sort the shows using the sort button and search for shows using the search bar.
 
 2. **View Show Details:**
-   - Click on a show to view its details, including seasons and episodes. 
+   - Click on a show to view its details, including seasons and episodes.
 
 3. **Play Episodes:**
    - Select an episode to start playing. You can control playback using the audio player.
@@ -78,9 +78,9 @@ Once the application is set up and running, you can:
 For any questions or feedback, feel free to reach out:
 
 - **Email:** <simnikiwesangoni@gmail.com>
-- **LinkedIn:** <https://www.linkedin.com/in/simnikiwe-sangoni-8a3892164/>{:target="_blank"}
-- **GitHub:** <https://github.com/SimSangoni>{:target="_blank"}
-- **Portfolio Website:** <https://simnikiwe-sangoni.netlify.app/>{:target="_blank"}
+- **LinkedIn:** <a href="https://www.linkedin.com/in/simnikiwe-sangoni-8a3892164/" target="_blank">LinkedIn Profile</a>
+- **GitHub:** <a href="https://github.com/SimSangoni" target="_blank">GitHub Profile</a>
+- **Portfolio Website:** <a href="https://simnikiwe-sangoni.netlify.app/" target="_blank">Portfolio Website</a>
 
 ## Future Enhancements
 
@@ -93,10 +93,10 @@ For any questions or feedback, feel free to reach out:
 
 ## Deployment
 
-Podcastly is deployed on Netlify and can be accessed [here](https://podcastly.netlify.app/){:target="_blank"}.
+Podcastly is deployed on Netlify and can be accessed <a href="https://podcastly.netlify.app/" target="_blank">here</a>.
 
 ## Additional Documentation
 
-- [Project Plan](ProjectPlan.md){:target="_blank"}
-- [Components and Requirements](Comp-and-Pages-plan.md){:target="_blank"}
-
+- <a href="ProjectPlan.md" target="_blank">Project Plan</a>
+- <a href="Comp-and-Pages-plan.md" target="_blank">Components and Requirements</a>
+```
