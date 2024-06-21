@@ -60,6 +60,7 @@ export default function Favourites() {
 
   const handleFilterChange = (showTitle: string | null) => {
     setFilteredShowTitle(showTitle);
+    setSortMenuOpen(false);
   };
 
   const filteredGroupedFavourites = filteredShowTitle
