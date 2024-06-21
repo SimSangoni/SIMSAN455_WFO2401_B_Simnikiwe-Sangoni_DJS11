@@ -40,6 +40,15 @@
   transform: translateX(-10%);
   z-index: 1; /* Ensure it overlays other elements */
   flex-grow: 1;
+  max-width: 80%;
+}
+
+.search-form input {
+  flex-grow: 1; /* Make the input take available space */
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text-color);
 }
 
 .search-icon {
@@ -51,6 +60,24 @@
   position: absolute; /* Position it absolutely */
   right: 0; /* Align it to the right */
   z-index: 2; /* Ensure it overlays other elements */
+}
+
+@media (max-width: 576px) { /* Adjust for smaller screens */
+  .search-container {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .search-form {
+    margin-right: 0;
+    width: 100%; /* Full width on small screens */
+  }
+
+  .search-icon {
+    /* position: relative; */
+    right: 0;
+    margin-top: 0.5rem;
+  }
 }
 
 

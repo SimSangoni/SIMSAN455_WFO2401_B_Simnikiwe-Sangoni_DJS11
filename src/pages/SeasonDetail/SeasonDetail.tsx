@@ -77,7 +77,7 @@ export default function SeasonDetail(){
           );
         }
         
-        console.log(storedFavorites)
+        // console.log(storedFavorites)
         localStorage.setItem('favoriteDetails', JSON.stringify(storedFavorites));
       };
     
