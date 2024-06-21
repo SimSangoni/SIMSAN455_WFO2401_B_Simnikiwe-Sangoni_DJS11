@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { ProgressBarProps } from '../../utils/Interfaces';
+import './ProgressBar.css'
 
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
