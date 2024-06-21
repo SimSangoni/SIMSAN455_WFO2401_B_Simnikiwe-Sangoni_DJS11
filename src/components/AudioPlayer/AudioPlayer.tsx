@@ -3,6 +3,8 @@ import { useAudioPlayer } from './AudioPlayerContext';
 import DisplayTrack from './DisplayTrack';
 import Controls from './Controls';
 import ProgressBar from './ProgressBar';
+import Modal from '../Modal/Modal'
+
 import { FaTimes } from 'react-icons/fa';
 import './AudioPlayer.css';
 
@@ -18,6 +20,7 @@ const AudioPlayer: React.FC = () => {
     const [timeProgress, setTimeProgress] = useState(0);
     const [duration, setDuration] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
   
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const progressBarRef = useRef<HTMLDivElement | null>(null);
@@ -32,18 +35,9 @@ const AudioPlayer: React.FC = () => {
         setIsPlaying(true);
       }
     }, [episode]);
-
-    const handleClosePlayer = () => {
-      setCurrentTrack(null);
-      if (audioRef.current) {
-        audioRef.current.pause();
-        setIsPlaying(false);
-      }
-    };
-
+  
     const handlePlayPause = () => {
       if (audioRef.current) {
-        setIsPlaying(true);
         if (audioRef.current.paused) {
           audioRef.current.play();
           setIsPlaying(true);
@@ -53,6 +47,28 @@ const AudioPlayer: React.FC = () => {
         }
       }
     };
+  
+    const handleClosePlayer = () => {
+      if (isPlaying) {
+        setIsModalOpen(true);
+        console.log('Modal should be open', isModalOpen); // Debug log
+      } else {
+        closePlayer();
+      }
+    };
+  
+    const closePlayer = () => {
+      setCurrentTrack(null);
+      if (audioRef.current) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      }
+      setIsModalOpen(false);
+    };
+  
+    useEffect(() => {
+      console.log('isModalOpen:', isModalOpen); // Debug log to check modal state
+    }, [isModalOpen]);
 
   
     if (!currentTrack) return null;
@@ -93,6 +109,11 @@ const AudioPlayer: React.FC = () => {
       
           </div>
         </div>
+          <Modal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            onConfirm={closePlayer}
+            />
       </div>
     );
   };
