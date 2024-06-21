@@ -19,22 +19,28 @@ import GenreDetail from './pages/GenresDetail/GenreDetail';
 import './App.css' // For global styling in future
 import './styles/themes.css'
 
-
+const getInitialTheme = () => {
+  const savedTheme = localStorage.getItem('theme') as 'light' | 'dark';
+  return savedTheme ? savedTheme : 'dark';
+};
 
 export default function App() {
 
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [theme, setTheme] = useState<'light' | 'dark'>(getInitialTheme);
 
 
   useEffect(() => {
     document.body.classList.remove('light-theme', 'dark-theme');
     document.body.classList.add(theme === 'light' ? 'light-theme' : 'dark-theme');
-    }
-  , [theme]);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
+
+  
+
 
   return (
   <AudioPlayerProvider> 
