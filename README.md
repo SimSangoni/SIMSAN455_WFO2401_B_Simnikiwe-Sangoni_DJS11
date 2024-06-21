@@ -49,11 +49,6 @@ To set up the project locally, follow these steps:
    npm run build
    ```
 
-5. **Run tests:**
-   ```bash
-   npm test
-   ```
-
 ## Usage
 
 Once the application is set up and running, you can:
