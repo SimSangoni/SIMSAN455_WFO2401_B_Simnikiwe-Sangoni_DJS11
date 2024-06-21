@@ -16,7 +16,6 @@
 }
 
 .sort-button {
-  border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px 20px;
   cursor: pointer;
@@ -24,14 +23,8 @@
   align-items: center;
   justify-content: space-between;
   width: 200px;
-  background-color: #333; 
-  color: #fff;
 }
 
-.sort-button:hover,
-.filter-button:hover {
-  background-color: #444;  
-}
 
 .sort-menu {
   display: flex;
@@ -41,10 +34,8 @@
   left: 0;
   border-radius: 4px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 200px;
+  width: 80%;
   z-index: 1000;
-  background-color: #333; 
-  color: #fff; 
 }
 
 .sort-menu button {
@@ -53,14 +44,9 @@
   text-align: left;
   cursor: pointer;
   width: 100%;
-  background-color: #333; 
-  color: #fff;
 }
 
 
-.sort-menu button:hover {
-  background-color: #444; 
-}
 
 .favourite-list {
   display: flex;
@@ -117,4 +103,22 @@
 
 .season-group {
   margin-left: 20px;
+}
+
+@media (max-width: 576px) {
+  .controls {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Adjust gap as needed */
+  }
+
+  .sort-button-container,
+  .filter-button-container {
+    width: 80%;
+  }
+
+  .sort-button,
+  .filter-button {
+    width: 80%;
+  }
 }
