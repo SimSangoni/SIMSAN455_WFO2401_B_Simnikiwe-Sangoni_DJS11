@@ -4,12 +4,14 @@ import FavouriteSortButton from '../../components/SortButton/FavourtieSortButton
 import './Favourites.css';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { AiFillDownCircle } from "react-icons/ai";
+import { LuFilter } from "react-icons/lu";
 
 export default function Favourites() {
   const [favouriteEpisodes, setFavouriteEpisodes] = useState<FavouriteDetail[]>([]);
   const [sortedFavourites, setSortedFavourites] = useState<FavouriteDetail[]>([]);
   const [filteredShowTitle, setFilteredShowTitle] = useState<string | null>(null);
   const [sortMenuOpen, setSortMenuOpen] = useState(false);
+  const [filterLabel, setFilterLabel] = useState('All Shows');
 
   useEffect(() => {
     try {
@@ -61,6 +63,7 @@ export default function Favourites() {
   const handleFilterChange = (showTitle: string | null) => {
     setFilteredShowTitle(showTitle);
     setSortMenuOpen(false);
+    setFilterLabel(showTitle ? showTitle : 'All Shows');
   };
 
   const filteredGroupedFavourites = filteredShowTitle
@@ -78,7 +81,7 @@ export default function Favourites() {
         <FavouriteSortButton shows={favouriteEpisodes} setSortedShows={setSortedFavourites} />
         <div className="filter-button-container">
           <button onClick={() => setSortMenuOpen(!sortMenuOpen)} className="sort-button">
-            Filter By: <AiFillDownCircle className="icon" />
+          <LuFilter /> {filterLabel}<AiFillDownCircle className="icon" />
           </button>
           {sortMenuOpen && (
             <div className="sort-menu">

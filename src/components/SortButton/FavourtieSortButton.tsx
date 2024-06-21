@@ -3,6 +3,9 @@ import { AiFillDownCircle } from "react-icons/ai";
 import { FavouriteDetail } from '../../utils/Interfaces';
 import './SortButton.css';
 
+import { FaSortAlphaDown, FaSortAlphaDownAlt, FaSortNumericDownAlt, FaSortNumericUp } from "react-icons/fa";
+import { LiaSortSolid } from "react-icons/lia";
+
 interface FavouriteSortButtonProps {
   shows: FavouriteDetail[];
   setSortedShows: (shows: FavouriteDetail[]) => void;
@@ -17,7 +20,7 @@ const FavouriteSortButton: React.FC<FavouriteSortButtonProps> = ({ shows, setSor
     }, []);
 
     function handleSort(option: string) {
-        setSelectedSortOption(`Sort By: ${option}`);
+        setSelectedSortOption(` ${option}`);
         setSortMenuOpen(false);
         sortShows(option);
     }
@@ -50,14 +53,14 @@ const FavouriteSortButton: React.FC<FavouriteSortButtonProps> = ({ shows, setSor
     return (
         <div className="sort-button-container">
             <button onClick={toggleSortMenu} className="sort-button">
-                {selectedSortOption} <AiFillDownCircle className="icon" />
+            <LiaSortSolid /> {selectedSortOption} <AiFillDownCircle className="icon" />
             </button>
             {sortMenuOpen && (
                 <div className="sort-menu">
-                    <button onClick={() => handleSort('A-Z')}>A-Z</button>
-                    <button onClick={() => handleSort('Z-A')}>Z-A</button>
-                    <button onClick={() => handleSort('Newest')}>Newest</button>
-                    <button onClick={() => handleSort('Oldest')}>Oldest</button>
+                    <button onClick={() => handleSort('A-Z')}><FaSortAlphaDown /></button>
+                    <button onClick={() => handleSort('Z-A')}><FaSortAlphaDownAlt /></button>
+                    <button onClick={() => handleSort('Newest')}><FaSortNumericDownAlt /></button>
+                    <button onClick={() => handleSort('Oldest')}><FaSortNumericUp /></button>
                 </div>
             )}
         </div>

@@ -3,17 +3,19 @@ import { AiFillDownCircle } from "react-icons/ai";
 import { SortButtonProps } from '../../utils/Interfaces';
 import './SortButton.css'
 
+import { FaSortAlphaDown, FaSortAlphaDownAlt, FaSortNumericDownAlt, FaSortNumericUp } from "react-icons/fa";
+import { LiaSortSolid } from "react-icons/lia";
 
 const SortButton: React.FC<SortButtonProps> = ({ shows, setSortedShows }) => {
     const [sortMenuOpen, setSortMenuOpen] = useState(false);
-    const [selectedSortOption, setSelectedSortOption] = useState('Sort By: A-Z');
+    const [selectedSortOption, setSelectedSortOption] = useState('A-Z');
 
     useEffect(() => {
         handleSort('A-Z');
     }, []);
 
     function handleSort(option: string) {
-        setSelectedSortOption(`Sort By: ${option}`);
+        setSelectedSortOption(`${option}`);
         setSortMenuOpen(false);
         sortShows(option);
     }
@@ -46,14 +48,14 @@ const SortButton: React.FC<SortButtonProps> = ({ shows, setSortedShows }) => {
     return (
         <div className="sort-button-container">
             <button onClick={toggleSortMenu} className="sort-button">
-                {selectedSortOption} <AiFillDownCircle className="icon" />
+            <LiaSortSolid />{selectedSortOption} <AiFillDownCircle className="icon" />
             </button>
             {sortMenuOpen && (
                 <div className="sort-menu">
-                    <button onClick={() => handleSort('A-Z')}>A-Z</button>
-                    <button onClick={() => handleSort('Z-A')}>Z-A</button>
-                    <button onClick={() => handleSort('Newest')}>Newest</button>
-                    <button onClick={() => handleSort('Oldest')}>Oldest</button>
+                    <button onClick={() => handleSort('A-Z')}><FaSortAlphaDown /></button>
+                    <button onClick={() => handleSort('Z-A')}><FaSortAlphaDownAlt /></button>
+                    <button onClick={() => handleSort('Newest')}><FaSortNumericDownAlt /></button>
+                    <button onClick={() => handleSort('Oldest')}><FaSortNumericUp /></button>
                 </div>
             )}
         </div>
