@@ -5,7 +5,7 @@ export interface HeaderProps {
 
 export interface SearchQueryProps {
   searchQuery: string;
-  setSearchQuery: (query: string) => void;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
 
@@ -16,6 +16,7 @@ export interface Show {
     seasons: number;
     image: string;
     genres: number[];
+    genreTitles?: string[];
     updated: string;
 }
 

@@ -28,23 +28,33 @@ export default function Shows(){
 
     async function fetchShows() {
       try {
-        const { shows, genres } = await fetchShowsAndGenres();
-        setShows(shows);
-        setGenres(genres);
-        setLoading(false);
+          const { shows, genres } = await fetchShowsAndGenres();
+          const showsWithGenres = shows.map(show => ({
+              ...show,
+              genreTitles: show.genres
+                  .map(genreId => genres.find(genre => genre.id === genreId)?.title)
+                  .filter((title): title is string => title !== undefined)
+          }));
+
+          showsWithGenres.sort((a, b) => a.title.localeCompare(b.title));
+
+          setShows(showsWithGenres);
+          setGenres(genres);
+          setSortedShows(showsWithGenres);
+          setLoading(false);
       } catch (error: unknown) {
-        if  (isErrorWithMessage(error)) {
-          setError(error.message);
-        } else {
-          setError('An unknown error occurred');
-        }
+          if (isErrorWithMessage(error)) {
+              setError(error.message);
+          } else {
+              setError('An unknown error occurred');
+          }
       } finally {
-        setLoading(false);
+          setLoading(false);
       }
-    };
+  }
 
       const fuse = new Fuse(sortedShows, {
-        keys: ['title', 'description'],
+        keys: ['title', 'description', 'genreTitles'],
         threshold: 0.5
     });
 
