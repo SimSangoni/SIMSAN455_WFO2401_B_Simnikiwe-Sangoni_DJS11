@@ -76,7 +76,7 @@ export default function ShowDetail(){
             };   
 
         const handleBack = () => {
-          navigate(-1); 
+          navigate(-2); 
         };
 
         const getFilteredGenres = (genres: string[]) => {
