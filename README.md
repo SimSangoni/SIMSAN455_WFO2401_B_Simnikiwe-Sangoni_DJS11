@@ -1,4 +1,4 @@
-# 🎵 Podcastly | PORTFOLIO PIECE 💿
+# 🎵 [Podcastyly](https://podcastly.netlify.app/){:target="_blank"} | PORTFOLIO PIECE 💿
 
 Podcastly is a web application that allows users to explore and listen to a variety of podcast shows. Users can search for shows, sort them based on different criteria and  mark episodes as favorites. The application is built using React and TypeScript, and it is deployed on Netlify.
 
@@ -10,8 +10,8 @@ Podcastly is a web application that allows users to explore and listen to a vari
 - [Contact Information](#contact-information)
 - [Future Enhancements](#future-enhancements)
 - [Deployment](#deployment)
-- [Project Plan](ProjectPlan.md)
-- [Components and Requirements](Comp-and-Pages-plan.md)
+- [Project Plan](ProjectPlan.md){:target="_blank"}
+- [Components and Requirements](Comp-and-Pages-plan.md){:target="_blank"}
 
 ## Introduction
 
@@ -78,9 +78,9 @@ Once the application is set up and running, you can:
 For any questions or feedback, feel free to reach out:
 
 - **Email:** <simnikiwesangoni@gmail.com>
-- **LinkedIn:** <https://www.linkedin.com/in/simnikiwe-sangoni-8a3892164/>
-- **GitHub:** <https://github.com/SimSangoni>
-- **Portfolio Website:** <https://simnikiwe-sangoni.netlify.app/>
+- **LinkedIn:** <https://www.linkedin.com/in/simnikiwe-sangoni-8a3892164/>{:target="_blank"}
+- **GitHub:** <https://github.com/SimSangoni>{:target="_blank"}
+- **Portfolio Website:** <https://simnikiwe-sangoni.netlify.app/>{:target="_blank"}
 
 ## Future Enhancements
 
@@ -93,10 +93,10 @@ For any questions or feedback, feel free to reach out:
 
 ## Deployment
 
-Podcastly is deployed on Netlify and can be accessed [here](https://podcastly.netlify.app/).
+Podcastly is deployed on Netlify and can be accessed [here](https://podcastly.netlify.app/){:target="_blank"}.
 
 ## Additional Documentation
 
-- [Project Plan](ProjectPlan.md)
-- [Components and Requirements](Comp-and-Pages-plan.md)
+- [Project Plan](ProjectPlan.md){:target="_blank"}
+- [Components and Requirements](Comp-and-Pages-plan.md){:target="_blank"}
 
