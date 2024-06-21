@@ -1,12 +1,6 @@
 export interface HeaderProps {
   toggleTheme: () => void;
   theme: 'light' | 'dark';
-  searchQuery: string;
-  setSearchQuery: (query: string) => void;
-  sortOption: string;
-  sortMenuOpen: boolean;
-  toggleSortMenu: () => void;
-  handleSortOption: (option: string) => void;
 }
 
 export interface SearchQueryProps {
@@ -32,11 +26,7 @@ export interface Genre {
     shows: string[];
   }
 
-export interface ShowProps {
-    searchQuery: string;
-    sortOption: string;
-    
-  }
+
 
 export interface GenresProps {
     shows: Show[];

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import './Shows.css'
-import { ShowProps, Show, Genre } from "../../utils/Interfaces";
+import {  Show, Genre } from "../../utils/Interfaces";
 import { fetchShowsAndGenres } from "../../utils/apiRequests";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
@@ -11,14 +11,14 @@ import SearchQuery from "../../components/SearchQuery/SearchQuery";
 import { format } from 'date-fns';
 
 
-export default function Shows({ searchQuery }: ShowProps){
+export default function Shows(){
 
     const[shows, setShows] = useState<Show[]>([])
     const [genres, setGenres] = useState<Genre[]>([]);
     const [sortedShows, setSortedShows] = useState<Show[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [searchTerm, setSearchTerm] = useState(searchQuery);
+    const [searchTerm, setSearchTerm] = useState('');
 
 
     useEffect(() => {

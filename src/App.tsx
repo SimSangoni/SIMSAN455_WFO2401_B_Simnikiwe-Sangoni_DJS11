@@ -24,21 +24,7 @@ import './styles/themes.css'
 export default function App() {
 
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [sortOption, setSortOption] = useState('A-Z');
-  const [sortMenuOpen, setSortMenuOpen] = useState(false);
 
-
-
-
-  const toggleSortMenu = () => {
-    setSortMenuOpen(!sortMenuOpen);
-  };
-
-  const handleSortOption = (option: string) => {
-    setSortOption(option);
-    setSortMenuOpen(false);
-  };
 
   useEffect(() => {
     document.body.classList.remove('light-theme', 'dark-theme');
@@ -56,17 +42,11 @@ export default function App() {
       <Header 
         toggleTheme={toggleTheme} 
         theme={theme}
-        searchQuery={searchQuery} 
-        setSearchQuery={setSearchQuery}
-        sortOption={sortOption}
-        sortMenuOpen={sortMenuOpen}
-        toggleSortMenu={toggleSortMenu}
-        handleSortOption={handleSortOption}
       />
       <div className='body-content'>
       <ScrollToTop>
       <Routes>
-              <Route path="/" element={<Shows searchQuery={searchQuery} sortOption={sortOption} />} />
+              <Route path="/" element={<Shows/>} />
               <Route path="show/:id" element={<ShowDetail />}>
                 <Route path="season/:seasonId" element={<SeasonDetail />} />
               </Route>
