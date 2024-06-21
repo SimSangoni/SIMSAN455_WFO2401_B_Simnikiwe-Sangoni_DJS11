@@ -99,4 +99,4 @@ Podcastly is deployed on Netlify and can be accessed <a href="https://podcastly.
 
 - <a href="ProjectPlan.md" target="_blank">Project Plan</a>
 - <a href="Comp-and-Pages-plan.md" target="_blank">Components and Requirements</a>
-```
+
