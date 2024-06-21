@@ -1,7 +1,7 @@
 .user-input {
   display: flex;
-  flex-direction: column; /* Stack vertically by default */
-  gap: 1rem;
+  flex-direction: column; 
+  gap: 2rem;
   margin: 1rem 0;
   position: relative;
 }
@@ -13,7 +13,44 @@
 
 .search-query-container {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
+  flex: 1; /* Allow the search container to take available space */
+  position: relative; /* Relative positioning to handle absolute elements */
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  background: var(--background-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  color: var(--text-color);
+  position: absolute; /* Position it absolutely */
+  right: 0; /* Align it to the right */
+  transform: translateX(-10%);
+  z-index: 1; /* Ensure it overlays other elements */
+  flex-grow: 1;
+}
+
+.search-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  fill: var(--primary-color);
+  margin-right: 0.5rem; /* Ensure consistent margin */
+  position: absolute; /* Position it absolutely */
+  right: 0; /* Align it to the right */
+  z-index: 2; /* Ensure it overlays other elements */
 }
 
 
@@ -90,8 +127,11 @@
     .home {
       grid-template-columns: 1fr 1fr;
     }
+    
     .user-input {
-      flex-direction: row; /* Arrange side-by-side for larger screens */
+      flex-direction: row; 
       justify-content: space-between;
     }
   }
+
+ 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect  } from 'react';
 import { FaSearch } from "react-icons/fa";
 import './SearchQuery.css';
 import { SearchQueryProps } from '../../utils/Interfaces';
@@ -6,10 +6,17 @@ import { SearchQueryProps } from '../../utils/Interfaces';
 
 const SearchQuery: React.FC<SearchQueryProps> = ({ searchQuery, setSearchQuery }) => {
   const [searchOpen, setSearchOpen] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   function toggleSearch() {
     setSearchOpen(!searchOpen);
   }
+
+  useEffect(() => {
+    if (searchOpen && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [searchOpen]);
 
   return (
     <div className="search-container">
@@ -17,6 +24,7 @@ const SearchQuery: React.FC<SearchQueryProps> = ({ searchQuery, setSearchQuery }
         <div className="search-form">
           <input
             type="text"
+            ref={inputRef}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search for podcasts..."
