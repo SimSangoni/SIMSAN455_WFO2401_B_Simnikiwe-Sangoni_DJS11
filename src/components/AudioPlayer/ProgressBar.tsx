@@ -5,8 +5,6 @@ import { ProgressBarProps } from '../../utils/Interfaces';
 const ProgressBar: React.FC<ProgressBarProps> = ({
   progressBarRef,
   audioRef,
-  timeProgress,
-  duration,
 }) => {
   useEffect(() => {
     if (audioRef.current) {
@@ -29,7 +27,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 
   return (
     <div className="progress-container">
-      <div className="progress-bar" ref={progressBarRef} style={{ width: `${(timeProgress / duration) * 100}%` }} />
+      <div className="progress-bar" ref={progressBarRef}  />
     </div>
   );
 };

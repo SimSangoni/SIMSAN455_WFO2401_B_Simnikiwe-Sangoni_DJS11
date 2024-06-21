@@ -2,7 +2,7 @@ import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { TbRewindBackward10, TbRewindForward10  } from "react-icons/tb";
 import { ControlsProps } from "../../utils/Interfaces";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoMdVolumeOff, IoMdVolumeHigh } from "react-icons/io";
 
 import './Controls.css'
@@ -18,8 +18,17 @@ const Controls: React.FC<ControlsProps> = ({
   handlePlayPause,
 }) => {
 
-  const [volume, setVolume] = useState(1);
+  const [volume, setVolume] = useState<number>(() => {
+    const savedVolume = localStorage.getItem('audio-player-volume');
+    return savedVolume ? parseFloat(savedVolume) : 0.5; 
+  });
 
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume;
+    }
+  }, [volume, audioRef]);
 
   const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(event.target.value);
@@ -27,6 +36,7 @@ const Controls: React.FC<ControlsProps> = ({
     if (audioRef.current) {
       audioRef.current.volume = newVolume;
     }
+    localStorage.setItem('audio-player-volume', newVolume.toString());
   };
 
 
@@ -35,9 +45,11 @@ const Controls: React.FC<ControlsProps> = ({
       if (audioRef.current.volume === 0) {
         setVolume(1);
         audioRef.current.volume = 1;
+        localStorage.setItem('audio-player-volume', '1');
       } else {
         setVolume(0);
         audioRef.current.volume = 0;
+        localStorage.setItem('audio-player-volume', '0');
       }
     }
   };
