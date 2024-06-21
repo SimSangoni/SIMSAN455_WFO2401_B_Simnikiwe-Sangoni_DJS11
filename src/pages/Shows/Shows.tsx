@@ -70,8 +70,13 @@ export default function Shows(){
     return (
         <>
         <div className="user-input">
+        <div className="sort-button-container">
           <SortButton shows={shows} setSortedShows={setSortedShows} />
+        </div>
+        <div className="search-query-container">
           <SearchQuery searchQuery={searchTerm} setSearchQuery={setSearchTerm} />
+        </div>
+          
         </div>
          
         <div className="home">
